@@ -69,9 +69,8 @@ The core product insight: existing tools check ad copy text. No tool checks the 
 - Frontend auth flow (no MSAL / API key entry UI)
 - Enrich node still tries yt-dlp/Video Indexer on upload path (wasted 5s latency on failed calls)
 - Containers run as root (no USER directive in Dockerfiles)
-- In-memory rate limiter resets on every deploy (Redis planned)
 - AUTH_DISABLED=TRUE in production Container App
-- V2 modules not yet wired into worker/nodes.py (old pipeline still runs in production)
+- Old LangGraph pipeline (nodes.py) still used for URL-mode audits; V2 modules handle upload-mode only
 
 ---
 
