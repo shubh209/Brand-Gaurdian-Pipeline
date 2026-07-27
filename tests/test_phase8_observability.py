@@ -26,7 +26,7 @@ def test_langfuse_setup_returns_handler_when_keys_set():
 
     env = {"LANGFUSE_PUBLIC_KEY": "pk-test", "LANGFUSE_SECRET_KEY": "sk-test"}
     with patch.dict("os.environ", env, clear=False):
-        with patch.dict("sys.modules", {"langfuse.callback": fake_module}):
+        with patch.dict("sys.modules", {"langfuse.langchain": fake_module}):
             fn = _get_setup_langfuse()
             result = fn()
 

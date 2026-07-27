@@ -20,6 +20,7 @@ from src.config import config
 from src.errors import RetryableError, PermanentError
 from src.services.policy_retriever import PolicyRetriever, PolicyChunk
 from src.services.video_analyzer import AnalysisResult
+from src.tracing import get_langfuse_callbacks
 
 logger = logging.getLogger("brand-guardian.auditor")
 
@@ -223,7 +224,10 @@ class ComplianceAuditor:
         )
 
         try:
-            response = _mini_llm().invoke([HumanMessage(content=prompt)])
+            response = _mini_llm().invoke(
+                [HumanMessage(content=prompt)],
+                config={"callbacks": get_langfuse_callbacks()},
+            )
             claims = _parse_json(response.content)
             if isinstance(claims, list):
                 return claims
@@ -323,6 +327,7 @@ class ComplianceAuditor:
                 [SystemMessage(content=system), HumanMessage(content=user)],
                 logprobs=True,
                 top_logprobs=5,
+                config={"callbacks": get_langfuse_callbacks()},
             )
 
             # Extract confidence from logprobs

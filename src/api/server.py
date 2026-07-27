@@ -43,7 +43,7 @@ def _setup_langfuse():
         logging.getLogger("api-server").info("Langfuse tracing disabled (LANGFUSE_PUBLIC_KEY/SECRET_KEY not set)")
         return None
     try:
-        from langfuse.callback import CallbackHandler
+        from langfuse.langchain import CallbackHandler
         handler = CallbackHandler(
             public_key=public_key,
             secret_key=secret_key,

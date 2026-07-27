@@ -62,6 +62,11 @@ class Config:
     # Sanitizer defaults
     MAX_TRANSCRIPT_TOKENS: int = field(default_factory=lambda: int(_optional("MAX_TRANSCRIPT_TOKENS", "4000")))
 
+    # Langfuse observability
+    LANGFUSE_PUBLIC_KEY: str = field(default_factory=lambda: _optional("LANGFUSE_PUBLIC_KEY", ""))
+    LANGFUSE_SECRET_KEY: str = field(default_factory=lambda: _optional("LANGFUSE_SECRET_KEY", ""))
+    LANGFUSE_HOST: str = field(default_factory=lambda: _optional("LANGFUSE_HOST", "https://cloud.langfuse.com"))
+
 
 # ponytail: single module-level instance. Import `config` — not the class.
 config = Config()
