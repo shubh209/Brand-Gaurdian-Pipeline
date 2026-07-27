@@ -39,6 +39,8 @@ dependencies = [
     "azure-communication-email>=1.0.0",
     "langfuse>=2.0.0",
     "youtube-transcript-api>=0.6.3",
+    "python-magic>=0.4.27",
+    "pytesseract>=0.3.13",
 ]
 
 [tool.pytest.ini_options]

@@ -42,10 +42,17 @@ The core product insight: existing tools check ad copy text. No tool checks the 
 - Phi-4-mini-instruct integrated for cheap extraction tasks
 - youtube-transcript-api for caption fetching (works locally, blocked on Azure IPs)
 
+**V2 Architecture foundation (tickets 01-03 complete):**
+- `src/config.py` — centralized config with fail-fast validation on missing env vars
+- `src/errors.py` — typed error hierarchy: RetryableError, PermanentError, ValidationError
+- `src/security/sanitizer.py` — InputSanitizer: MIME check (python-magic), audio track check (ffprobe), prompt injection stripping, unicode control char removal, tiktoken token truncation
+- `src/services/video_analyzer.py` — VideoAnalyzer module: `analyze(video_path, options) → AnalysisResult` with Whisper segments, Tesseract OCR, optional GPT-4o Vision
+- Dockerfile.worker updated with `tesseract-ocr` apt package
+- Dependencies added: python-magic, pytesseract
+
 **What is NOT working / not yet built:**
 - Violations list not serialized to polling endpoint (report text is there, structured list isn't)
 - Worker has no retry logic — job lost if processing fails mid-audit
-- OCR on video frames (code exists, Azure AI Vision not configured; Tesseract planned)
 - Live reindex with structured extraction not yet run (costs ~1,050 Firecrawl credits)
 - Test suite hangs on Neon DB cold start (need connection timeout on DATABASE_URL)
 - Email delivery (code exists, Azure Communication Services resource not created)
@@ -54,6 +61,8 @@ The core product insight: existing tools check ad copy text. No tool checks the 
 - Containers run as root (no USER directive in Dockerfiles)
 - In-memory rate limiter resets on every deploy (Redis planned)
 - AUTH_DISABLED=TRUE in production Container App
+- VideoAnalyzer not yet wired into worker (old video_processor.transcribe still used in worker/main.py)
+- PolicyRetriever, ComplianceAuditor, ReportGenerator modules not yet built (tickets 04-06)
 
 ---
 
