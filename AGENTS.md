@@ -42,7 +42,7 @@ The core product insight: existing tools check ad copy text. No tool checks the 
 - Phi-4-mini-instruct integrated for cheap extraction tasks
 - youtube-transcript-api for caption fetching (works locally, blocked on Azure IPs)
 
-**V2 Architecture foundation (tickets 01-06 complete):**
+**V2 Architecture (all 13 tickets complete):**
 - `src/config.py` — centralized config with fail-fast validation on missing env vars
 - `src/errors.py` — typed error hierarchy: RetryableError, PermanentError, ValidationError
 - `src/security/sanitizer.py` — InputSanitizer: MIME check (python-magic), audio track check (ffprobe), prompt injection stripping, unicode control char removal, tiktoken token truncation
@@ -50,14 +50,21 @@ The core product insight: existing tools check ad copy text. No tool checks the 
 - `src/services/policy_retriever.py` — PolicyRetriever: `retrieve(claim, platforms, k) → list[PolicyChunk]` with query expansion (Phi-4-mini), platform filtering, cross-encoder reranking, and `retrieval_eval()` for measuring recall/precision independently
 - `src/services/compliance_auditor.py` — ComplianceAuditor: `audit(analysis, platforms) → AuditReport` with per-timestamp claim extraction, greedy batching by shared chunks, GPT-4o reasoning with logprobs confidence, suggested rewrites, per-platform PASS/FAIL
 - `src/services/report_generator.py` — ReportGenerator: `generate(audit_report, formats) → dict[str, bytes]` with JSON, PDF (text), CSV output; timestamps as MM:SS, per-platform sections
+- Worker retry (3x exponential backoff) + dead-letter table for failed jobs
+- Postgres-backed rate limiter (sliding window, rate limit headers, Retry-After)
+- SHA-256 file hash dedup (same file → return existing audit, no reprocessing)
+- Audit versioning: file_hash, prompt_hash, model_version columns
+- Global error handlers: ValidationError→400, PermanentError→422, RetryableError→503
+- Observability middleware: correlation ID + latency tracking per request
+- Frontend: X platform, timestamp + confidence + suggested rewrite in violation cards
+- Integration test suite (5 tests), test fixture, blob lifecycle (keep on failure)
+- Alembic migration 004: dead_letter_jobs, rate_limit_hits, audit versioning columns
 - Dockerfile.worker updated with `tesseract-ocr` apt package
 - Dependencies added: python-magic, pytesseract
 
 **What is NOT working / not yet built:**
-- Violations list not serialized to polling endpoint (report text is there, structured list isn't)
-- Worker has no retry logic — job lost if processing fails mid-audit
-- Live reindex with structured extraction not yet run (costs ~1,050 Firecrawl credits)
-- Test suite hangs on Neon DB cold start (need connection timeout on DATABASE_URL)
+- Live reindex with structured extraction not yet run (costs ~1,050 Firecrawl credits — needs user confirmation)
+- Test suite hangs on Neon DB cold start (need connect_timeout=10 on DATABASE_URL)
 - Email delivery (code exists, Azure Communication Services resource not created)
 - Frontend auth flow (no MSAL / API key entry UI)
 - Enrich node still tries yt-dlp/Video Indexer on upload path (wasted 5s latency on failed calls)
@@ -65,9 +72,6 @@ The core product insight: existing tools check ad copy text. No tool checks the 
 - In-memory rate limiter resets on every deploy (Redis planned)
 - AUTH_DISABLED=TRUE in production Container App
 - V2 modules not yet wired into worker/nodes.py (old pipeline still runs in production)
-- Worker retry + dead-letter not yet built (ticket 07)
-- Rate limiter Postgres-backed not yet built (ticket 08)
-- Idempotency + versioning not yet built (ticket 09)
 
 ---
 

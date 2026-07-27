@@ -446,6 +446,10 @@
         <input type="checkbox" id="plat-facebook" value="facebook" />
         <span>Facebook</span>
       </label>
+      <label class="platform-check">
+        <input type="checkbox" id="plat-x" value="x" />
+        <span>X (Twitter)</span>
+      </label>
     </div>
     <div class="platform-err" id="platformErr">⚠ Select at least one platform.</div>
 
@@ -762,7 +766,7 @@ function setMode(mode) {
 
 // ── PLATFORM HELPERS ──────────────────────────────────────────────────────────
 function getSelectedPlatforms() {
-  return ['youtube','tiktok','facebook'].filter(p =>
+  return ['youtube','tiktok','facebook','x'].filter(p =>
     document.getElementById(`plat-${p}`).checked
   );
 }
@@ -771,7 +775,7 @@ function validatePlatforms() {
   document.getElementById('platformErr').style.display = ok ? 'none' : 'block';
   return ok;
 }
-['youtube','tiktok','facebook'].forEach(p => {
+['youtube','tiktok','facebook','x'].forEach(p => {
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById(`plat-${p}`).addEventListener('change', () => {
       if (getSelectedPlatforms().length > 0)
@@ -1065,9 +1069,12 @@ function showResults(data) {
       item.innerHTML = `
         <span class="v-badge">${v.severity}</span>
         <div class="v-content">
-          <div class="v-category">${v.category}${platTags}</div>
-          <div class="v-desc">${v.description}</div>
-          ${v.citation_excerpt ? `<div class="v-desc" style="margin-top:.4rem;color:var(--muted);font-size:.7rem">Citation (${v.citation_source || 'policy'}): ${v.citation_excerpt.slice(0,200)}</div>` : ''}
+          <div class="v-category">${v.category}${platTags}${v.timestamp_display ? ` <span class="v-platform-tag">⏱ ${v.timestamp_display}</span>` : ''}</div>
+          <div class="v-desc">${v.claim || v.description}</div>
+          ${v.description && v.claim ? `<div class="v-desc" style="margin-top:.3rem">${v.description}</div>` : ''}
+          ${v.confidence ? `<div class="v-desc" style="margin-top:.3rem;font-size:.65rem">Confidence: ${Math.round(v.confidence * 100)}%</div>` : ''}
+          ${v.citation || v.citation_excerpt ? `<div class="v-desc" style="margin-top:.4rem;color:var(--muted);font-size:.7rem">Citation: ${(v.citation || v.citation_excerpt || '').slice(0,200)}</div>` : ''}
+          ${v.suggested_rewrite ? `<div class="v-desc" style="margin-top:.4rem;color:var(--accent);font-size:.7rem">💡 Suggested rewrite: ${v.suggested_rewrite}</div>` : ''}
         </div>`;
       list.appendChild(item);
     });
@@ -1218,7 +1225,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setMode('url');
 
   // Platform checkbox change — clear error
-  ['youtube','tiktok','facebook'].forEach(p => {
+  ['youtube','tiktok','facebook','x'].forEach(p => {
     document.getElementById(`plat-${p}`).addEventListener('change', () => {
       if (getSelectedPlatforms().length > 0)
         document.getElementById('platformErr').style.display = 'none';

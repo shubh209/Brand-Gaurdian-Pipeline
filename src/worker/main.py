@@ -11,8 +11,14 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
+from src.errors import RetryableError, PermanentError
+
 logger = logging.getLogger("brand-guardian.worker")
 logging.basicConfig(level=logging.INFO)
+
+# Retry config
+MAX_RETRIES = 3
+BACKOFF_BASE = 2  # seconds: 2, 4, 8
 
 
 def _queue_client():
@@ -111,6 +117,18 @@ def _process_message(db, message_body: dict) -> None:
     _delete_blob(blob_url)
 
 
+def _dead_letter(db, audit_id: str, error_message: str, payload: dict) -> None:
+    """Move failed job to dead_letter_jobs table for admin inspection."""
+    from src.db.models import DeadLetterJob
+    db.add(DeadLetterJob(
+        audit_id=audit_id,
+        error_message=error_message,
+        original_payload=payload,
+    ))
+    db.commit()
+    logger.warning("Dead-lettered audit %s: %s", audit_id, error_message)
+
+
 def run_worker():
     from src.db.session import SessionLocal
     from src.db.repository import update_processing_status
@@ -130,18 +148,47 @@ def run_worker():
 
             db = SessionLocal()
             try:
-                _process_message(db, body)
+                # Retry loop for transient failures
+                last_exc = None
+                for attempt in range(1, MAX_RETRIES + 1):
+                    try:
+                        _process_message(db, body)
+                        last_exc = None
+                        break
+                    except RetryableError as exc:
+                        last_exc = exc
+                        if attempt < MAX_RETRIES:
+                            wait = BACKOFF_BASE ** attempt
+                            logger.warning(
+                                "Retryable error on audit %s (attempt %d/%d), retrying in %ds: %s",
+                                audit_id, attempt, MAX_RETRIES, wait, exc,
+                            )
+                            time.sleep(wait)
+                        else:
+                            logger.error("Audit %s exhausted retries: %s", audit_id, exc)
+                    except PermanentError as exc:
+                        # No retry — dead-letter immediately
+                        last_exc = exc
+                        logger.error("Permanent failure on audit %s: %s", audit_id, exc)
+                        break
+
+                if last_exc is not None:
+                    try:
+                        update_processing_status(db, audit_id, "failed")
+                        _dead_letter(db, audit_id, str(last_exc), body)
+                    except Exception:
+                        db.rollback()
+                    # ponytail: keep blob for failed audits (debugging). Cleaned after 7 days.
+
             except Exception as exc:
-                logger.error("Audit %s failed: %s", audit_id, exc)
+                # Unexpected errors (not typed) — treat as permanent
+                logger.error("Unexpected error on audit %s: %s", audit_id, exc)
                 try:
                     update_processing_status(db, audit_id, "failed")
-                    db.commit()
+                    _dead_letter(db, audit_id, f"Unexpected: {exc}", body)
                 except Exception:
-                    pass
-                try:
-                    _delete_blob(body.get("blob_url", ""))
-                except Exception:
-                    pass
+                    db.rollback()
+                # ponytail: keep blob for failed audits (debugging). Cleaned after 7 days.
             finally:
                 db.close()
 

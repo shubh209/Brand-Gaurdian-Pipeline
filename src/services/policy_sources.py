@@ -22,6 +22,7 @@ POLICY_SOURCES: list[dict] = [
     # FTC
     {"id": "ftc-endorsement", "platform": "generic", "name": "FTC Endorsement Guides", "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking"},
     {"id": "ftc-health-claims", "platform": "generic", "name": "FTC Health Claims Guidance", "url": "https://www.ftc.gov/business-guidance/resources/dietary-supplements-advertising-guide-industry"},
+    {"id": "ftc-testimonials", "platform": "generic", "name": "FTC Testimonials and Before/After Results", "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking#typicalresults"},
     # Meta / Facebook
     {"id": "meta-ad-standards", "platform": "facebook", "name": "Meta Advertising Standards", "url": "https://transparency.meta.com/en-us/policies/ad-standards/"},
     {"id": "meta-prohibited", "platform": "facebook", "name": "Meta Prohibited Content", "url": "https://www.facebook.com/policies/ads/prohibited_content"},

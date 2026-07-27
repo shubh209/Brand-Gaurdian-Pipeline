@@ -84,6 +84,9 @@ class Audit(Base):
     processing_status: Mapped[str | None] = mapped_column(String(32), nullable=True)
     audit_mode: Mapped[str | None] = mapped_column(String(8), nullable=True)
     platforms: Mapped[str | None] = mapped_column(Text, nullable=True)
+    file_hash: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    prompt_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    model_version: Mapped[str | None] = mapped_column(String(128), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     team: Mapped["Team"] = relationship(back_populates="audits")
@@ -123,6 +126,25 @@ class ReviewDecision(Base):
 
     audit: Mapped["Audit"] = relationship(back_populates="reviews")
     reviewer: Mapped["User"] = relationship(back_populates="reviews")
+
+
+class RateLimitHit(Base):
+    __tablename__ = "rate_limit_hits"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    key: Mapped[str] = mapped_column(String(255), nullable=False)
+    endpoint: Mapped[str] = mapped_column(String(128), nullable=False)
+    hit_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class DeadLetterJob(Base):
+    __tablename__ = "dead_letter_jobs"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    audit_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    error_message: Mapped[str] = mapped_column(Text, nullable=False)
+    original_payload: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    failed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
 class TeamApiKey(Base):

@@ -28,6 +28,8 @@ from src.db.repository import get_current_policy_version, save_audit
 from src.db.session import SessionLocal, get_db
 from src.pipeline.workflow import app as compliance_graph
 from src.middleware.rate_limit import RateLimitMiddleware
+from src.middleware.observability import ObservabilityMiddleware
+from src.api.error_handlers import register_error_handlers
 from src.services.export import DISCLAIMER
 
 setup_telemetry()
@@ -91,6 +93,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+app.add_middleware(ObservabilityMiddleware)
 app.add_middleware(RateLimitMiddleware)
 app.add_middleware(
     CORSMiddleware,
@@ -104,6 +107,8 @@ app.include_router(audits_router)
 app.include_router(reviews_router)
 app.include_router(admin_router)
 app.include_router(export_router)
+
+register_error_handlers(app)
 
 
 class AuditRequest(BaseModel):
@@ -278,6 +283,14 @@ async def upload_video_for_audit(
     if len(content) > _MAX_UPLOAD_BYTES:
         raise HTTPException(status_code=413, detail="File exceeds 500 MB limit")
 
+    # Idempotency: SHA-256 dedup — return existing audit if same file was already processed
+    import hashlib
+    file_hash = hashlib.sha256(content).hexdigest()
+    from src.db.models import Audit as AuditModel
+    existing = db.query(AuditModel).filter(AuditModel.file_hash == file_hash, AuditModel.team_id == user.team_id).first()
+    if existing:
+        return {"audit_id": existing.session_id, "status": existing.processing_status or "completed", "deduplicated": True}
+
     ext = Path(file.filename or "video.mp4").suffix or ".mp4"
     audit_id = str(uuid.uuid4())
 
@@ -346,6 +359,7 @@ async def upload_video_for_audit(
             processing_status="pending",
             audit_mode="file",
             platforms=",".join(platforms),
+            file_hash=file_hash,
         )
         db.add(audit)
         db.commit()
