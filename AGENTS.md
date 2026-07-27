@@ -42,11 +42,14 @@ The core product insight: existing tools check ad copy text. No tool checks the 
 - Phi-4-mini-instruct integrated for cheap extraction tasks
 - youtube-transcript-api for caption fetching (works locally, blocked on Azure IPs)
 
-**V2 Architecture foundation (tickets 01-03 complete):**
+**V2 Architecture foundation (tickets 01-06 complete):**
 - `src/config.py` — centralized config with fail-fast validation on missing env vars
 - `src/errors.py` — typed error hierarchy: RetryableError, PermanentError, ValidationError
 - `src/security/sanitizer.py` — InputSanitizer: MIME check (python-magic), audio track check (ffprobe), prompt injection stripping, unicode control char removal, tiktoken token truncation
 - `src/services/video_analyzer.py` — VideoAnalyzer module: `analyze(video_path, options) → AnalysisResult` with Whisper segments, Tesseract OCR, optional GPT-4o Vision
+- `src/services/policy_retriever.py` — PolicyRetriever: `retrieve(claim, platforms, k) → list[PolicyChunk]` with query expansion (Phi-4-mini), platform filtering, cross-encoder reranking, and `retrieval_eval()` for measuring recall/precision independently
+- `src/services/compliance_auditor.py` — ComplianceAuditor: `audit(analysis, platforms) → AuditReport` with per-timestamp claim extraction, greedy batching by shared chunks, GPT-4o reasoning with logprobs confidence, suggested rewrites, per-platform PASS/FAIL
+- `src/services/report_generator.py` — ReportGenerator: `generate(audit_report, formats) → dict[str, bytes]` with JSON, PDF (text), CSV output; timestamps as MM:SS, per-platform sections
 - Dockerfile.worker updated with `tesseract-ocr` apt package
 - Dependencies added: python-magic, pytesseract
 
@@ -61,8 +64,10 @@ The core product insight: existing tools check ad copy text. No tool checks the 
 - Containers run as root (no USER directive in Dockerfiles)
 - In-memory rate limiter resets on every deploy (Redis planned)
 - AUTH_DISABLED=TRUE in production Container App
-- VideoAnalyzer not yet wired into worker (old video_processor.transcribe still used in worker/main.py)
-- PolicyRetriever, ComplianceAuditor, ReportGenerator modules not yet built (tickets 04-06)
+- V2 modules not yet wired into worker/nodes.py (old pipeline still runs in production)
+- Worker retry + dead-letter not yet built (ticket 07)
+- Rate limiter Postgres-backed not yet built (ticket 08)
+- Idempotency + versioning not yet built (ticket 09)
 
 ---
 
