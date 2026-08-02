@@ -20,7 +20,7 @@ from src.config import config
 from src.errors import RetryableError, PermanentError
 from src.services.policy_retriever import PolicyRetriever, PolicyChunk
 from src.services.video_analyzer import AnalysisResult
-from src.tracing import get_langfuse_callbacks
+from src.tracing import observe, get_langchain_handler, update_trace
 
 logger = logging.getLogger("brand-guardian.auditor")
 
@@ -158,8 +158,18 @@ class ComplianceAuditor:
         Run the full compliance audit on analyzed video content.
         Returns AuditReport with per-platform status and violations.
         """
+        return self._audit_traced(analysis, platforms)
+
+    @observe(name="compliance_audit")
+    def _audit_traced(self, analysis: AnalysisResult, platforms: list[str]) -> AuditReport:
+        """Traced inner method — creates the top-level Langfuse trace."""
         if not platforms:
             platforms = ["youtube"]
+
+        update_trace(
+            metadata={"platforms": platforms, "segment_count": len(analysis.transcript_segments)},
+            tags=["audit"] + platforms,
+        )
 
         # Stage 1: Extract claims with timestamps
         claims = self._extract_claims(analysis)
@@ -206,6 +216,7 @@ class ComplianceAuditor:
             chunk_count=total_chunks,
         )
 
+    @observe(name="extract_claims")
     def _extract_claims(self, analysis: AnalysisResult) -> list[dict]:
         """Extract claims with timestamps from analysis result."""
         # Build segment text with timestamps for the LLM
@@ -224,9 +235,10 @@ class ComplianceAuditor:
         )
 
         try:
+            handler = get_langchain_handler()
             response = _mini_llm().invoke(
                 [HumanMessage(content=prompt)],
-                config={"callbacks": get_langfuse_callbacks()},
+                config={"callbacks": [handler] if handler else []},
             )
             claims = _parse_json(response.content)
             if isinstance(claims, list):
@@ -302,6 +314,7 @@ class ComplianceAuditor:
 
         return [(bc, list(cm.values())) for bc, cm in batches]
 
+    @observe(name="policy_reasoning")
     def _reason_batch(
         self,
         claims: list[dict],
@@ -323,11 +336,12 @@ class ComplianceAuditor:
         )
 
         try:
+            handler = get_langchain_handler()
             response = _llm(temperature=0.1).invoke(
                 [SystemMessage(content=system), HumanMessage(content=user)],
                 logprobs=True,
                 top_logprobs=5,
-                config={"callbacks": get_langfuse_callbacks()},
+                config={"callbacks": [handler] if handler else []},
             )
 
             # Extract confidence from logprobs

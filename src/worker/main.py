@@ -58,10 +58,19 @@ def _process_message(db, message_body: dict) -> None:
     from src.services.compliance_auditor import ComplianceAuditor
     from src.services.report_generator import ReportGenerator
     from src.services.email_service import send_audit_report
+    from src.tracing import update_trace
 
     audit_id = message_body["audit_id"]
     blob_url = message_body["blob_url"]
     platforms = message_body.get("platforms", ["youtube"])
+    email = message_body.get("email")
+
+    # Attach audit context to Langfuse trace
+    update_trace(
+        session_id=audit_id,
+        metadata={"platforms": platforms, "blob_url": blob_url, "audit_mode": "file"},
+        tags=["worker", "upload"] + platforms,
+    )
     email = message_body.get("email")
 
     # Download blob to temp file for VideoAnalyzer

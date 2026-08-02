@@ -36,7 +36,9 @@ setup_telemetry()
 
 
 def _setup_langfuse():
-    """Set up Langfuse tracing if credentials are configured."""
+    """Set up Langfuse tracing if credentials are configured.
+    ponytail: v4 reads env vars automatically. Just instantiate — no args needed.
+    """
     public_key = os.getenv("LANGFUSE_PUBLIC_KEY", "")
     secret_key = os.getenv("LANGFUSE_SECRET_KEY", "")
     if not public_key or not secret_key:
@@ -44,11 +46,7 @@ def _setup_langfuse():
         return None
     try:
         from langfuse.langchain import CallbackHandler
-        handler = CallbackHandler(
-            public_key=public_key,
-            secret_key=secret_key,
-            host=os.getenv("LANGFUSE_HOST", "https://cloud.langfuse.com"),
-        )
+        handler = CallbackHandler()
         logging.getLogger("api-server").info("Langfuse tracing enabled")
         return handler
     except Exception as exc:

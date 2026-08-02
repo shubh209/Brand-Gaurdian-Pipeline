@@ -15,7 +15,7 @@ from langchain_core.messages import HumanMessage
 from src.config import config
 from src.services.policy_store import RetrievedChunk, search_policy_chunks
 from src.services.reranker import rerank
-from src.tracing import get_langfuse_callbacks
+from src.tracing import observe, get_langchain_handler
 
 logger = logging.getLogger("brand-guardian.retriever")
 
@@ -64,13 +64,15 @@ _EXPAND_PROMPT = (
 )
 
 
+@observe(name="expand_claim")
 def _expand_claim(claim: str) -> str:
     """Rewrite consumer claim into policy terminology for better retrieval."""
     try:
         prompt = _EXPAND_PROMPT.format(claim=claim)
+        handler = get_langchain_handler()
         return _get_mini_llm().invoke(
             [HumanMessage(content=prompt)],
-            config={"callbacks": get_langfuse_callbacks()},
+            config={"callbacks": [handler] if handler else []},
         ).content.strip()
     except Exception:
         return claim  # fallback: use original
@@ -91,6 +93,7 @@ class PolicyRetriever:
     Unified retrieval: expand → search → filter → rerank → return.
     """
 
+    @observe(name="policy_retrieval")
     def retrieve(
         self,
         claim: str,
