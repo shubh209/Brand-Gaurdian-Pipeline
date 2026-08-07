@@ -71,11 +71,18 @@ def observe(func=None, *, name=None, **kwargs):
 def get_langchain_handler():
     """
     Get a LangChain callback handler for tracing LLM calls.
-    ponytail: Langfuse CallbackHandler v4 blocks on init when host is unreachable.
-    Disabled until auth/host issue resolved. Returns None (no tracing).
-    Ceiling: no LLM call tracing. Upgrade path: fix LANGFUSE_HOST, re-enable.
+    Uses Langfuse CallbackHandler — fire-and-forget, non-blocking.
+    Returns None if Langfuse is not configured.
     """
-    return None
+    if not _langfuse_enabled():
+        return None
+    try:
+        import os
+        os.environ.setdefault("LANGFUSE_HOST", config.LANGFUSE_HOST)
+        from langfuse.langchain import CallbackHandler
+        return CallbackHandler()
+    except Exception:
+        return None
 
 
 def update_trace(

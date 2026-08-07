@@ -3,7 +3,7 @@
   "platforms": [
     "youtube"
   ],
-  "total_time_seconds": 2.9,
+  "total_time_seconds": 2.7,
   "overall_status": "PASS",
   "per_platform": {
     "youtube": "PASS"
