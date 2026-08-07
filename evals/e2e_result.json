@@ -1,0 +1,82 @@
+{
+  "video": "videos/videoplayback.mp4",
+  "platforms": [
+    "youtube"
+  ],
+  "total_time_seconds": 2.9,
+  "overall_status": "PASS",
+  "per_platform": {
+    "youtube": "PASS"
+  },
+  "claim_count": 0,
+  "chunk_count": 0,
+  "violation_count": 0,
+  "violations": [],
+  "transcript_segments": [
+    {
+      "text": "Hi, I'm Dr. Neera, here to interview John Cena,",
+      "start": 0.96,
+      "end": 3.84
+    },
+    {
+      "text": "the new face of Neutrogena Ultra Sheer sunscreen.",
+      "start": 3.84,
+      "end": 6.64
+    },
+    {
+      "text": "What's up? Let's do this.",
+      "start": 6.64,
+      "end": 8.04
+    },
+    {
+      "text": "But as you can see, he flaked.",
+      "start": 8.04,
+      "end": 10.04
+    },
+    {
+      "text": "What? I'm right here.",
+      "start": 10.04,
+      "end": 11.92
+    },
+    {
+      "text": "Anyway, Ultra Sheer gives you high SPF protection,",
+      "start": 11.92,
+      "end": 15.48
+    },
+    {
+      "text": "and it has an invisible finish.",
+      "start": 15.48,
+      "end": 17.44
+    },
+    {
+      "text": "Hello?",
+      "start": 17.44,
+      "end": 18.279999
+    },
+    {
+      "text": "You can't see it.",
+      "start": 18.279999,
+      "end": 19.68
+    },
+    {
+      "text": "And cut.",
+      "start": 19.68,
+      "end": 20.72
+    },
+    {
+      "text": "You know you can't do that.",
+      "start": 20.72,
+      "end": 22.119999
+    },
+    {
+      "text": "Ready to trade.",
+      "start": 22.119999,
+      "end": 23.32
+    },
+    {
+      "text": "Thank you.",
+      "start": 30.0,
+      "end": 31.0
+    }
+  ]
+}

@@ -107,7 +107,37 @@ class VideoAnalyzer:
         return result
 
     def _transcribe(self, video_path: str) -> list[TranscriptSegment]:
-        """Transcribe via Azure OpenAI Whisper. Returns segments with timestamps."""
+        """Transcribe video. Uses Groq Whisper if GROQ_API_KEY is set, else Azure OpenAI Whisper."""
+        if config.GROQ_API_KEY:
+            return self._transcribe_groq(video_path)
+        return self._transcribe_azure(video_path)
+
+    def _transcribe_groq(self, video_path: str) -> list[TranscriptSegment]:
+        """Transcribe via Groq Whisper (whisper-large-v3-turbo). Fast and free-tier available."""
+        from openai import OpenAI
+
+        client = OpenAI(
+            api_key=config.GROQ_API_KEY,
+            base_url="https://api.groq.com/openai/v1",
+        )
+
+        try:
+            with open(video_path, "rb") as f:
+                result = client.audio.transcriptions.create(
+                    model="whisper-large-v3-turbo",
+                    file=f,
+                    response_format="verbose_json",
+                    timestamp_granularities=["segment"],
+                )
+        except Exception as exc:
+            if "429" in str(exc) or "timeout" in str(exc).lower():
+                raise RetryableError(f"Groq Whisper failed (transient): {exc}") from exc
+            raise PermanentError(f"Groq Whisper failed: {exc}") from exc
+
+        return self._parse_whisper_result(result)
+
+    def _transcribe_azure(self, video_path: str) -> list[TranscriptSegment]:
+        """Transcribe via Azure OpenAI Whisper. Fallback when Groq is not configured."""
         from openai import AzureOpenAI
 
         client = AzureOpenAI(
@@ -125,10 +155,14 @@ class VideoAnalyzer:
                     timestamp_granularities=["segment"],
                 )
         except Exception as exc:
-            # Rate limit or transient → retryable
             if "429" in str(exc) or "timeout" in str(exc).lower():
                 raise RetryableError(f"Whisper transcription failed (transient): {exc}") from exc
             raise PermanentError(f"Whisper transcription failed: {exc}") from exc
+
+        return self._parse_whisper_result(result)
+
+    def _parse_whisper_result(self, result) -> list[TranscriptSegment]:
+        """Parse Whisper API response into TranscriptSegments."""
 
         segments = []
         for seg in getattr(result, "segments", []):
