@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Guardian — Ad Compliance Auditor</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=block');
+.font-serif { font-family: 'Playfair Display', serif; }
+.font-body { font-family: 'Lora', serif; }
+.font-sans { font-family: 'Inter', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.sharp-corners { border-radius: 0px !important; }
+.hard-shadow-hover { transition: all 200ms ease-out; }
+.hard-shadow-hover:hover { box-shadow: 4px 4px 0px 0px #111111; transform: translate(-2px, -2px); }
+body { font-family: 'Inter', sans-serif; background: #F9F9F7; color: #111111; }
+</style>
+</head>
+<body class="min-h-screen" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23111111' fill-opacity='0.04' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E&quot;)">
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<header class="sticky top-0 z-40 bg-[#F9F9F7] border-b-2 border-[#111111]">
+  <div class="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-14">
+    <div class="flex items-center gap-3">
+      <span class="font-serif font-black text-xl tracking-tight">Brand Guardian</span>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 hidden sm:inline">Ad Compliance Auditor</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs uppercase tracking-widest">
+      <a href="#dashboard" class="hover:text-[#CC0000] transition-colors">Dashboard</a>
+      <a href="#how-it-works" class="hover:text-[#CC0000] transition-colors">How It Works</a>
+      <a href="#new-audit" class="hover:text-[#CC0000] transition-colors">New Audit</a>
+      <a href="#result" class="hover:text-[#CC0000] transition-colors">Results</a>
+      <a href="#prompt-gen" class="hover:text-[#CC0000] transition-colors">Prompt</a>
+      <a href="#history" class="hover:text-[#CC0000] transition-colors">History</a>
+      <a href="#policies" class="hover:text-[#CC0000] transition-colors">Policies</a>
+    </nav>
+    <div class="font-mono text-[10px] text-neutral-500 uppercase tracking-widest">
+      Vol. 2 | Jul 2026
+    </div>
+  </div>
+</header>
+
+<!-- Marquee Ticker -->
+<div class="bg-[#111111] text-[#F9F9F7] overflow-hidden border-b border-[#111111]">
+  <div class="animate-marquee whitespace-nowrap py-1.5 font-mono text-xs uppercase tracking-widest">
+    <span class="mx-8">24 Audits Completed</span>
+    <span class="mx-8 text-[#CC0000]">&#9679;</span>
+    <span class="mx-8">71% Pass Rate</span>
+    <span class="mx-8 text-[#CC0000]">&#9679;</span>
+    <span class="mx-8">Last: Neutrogena Ultra Sheer — PASS</span>
+    <span class="mx-8 text-[#CC0000]">&#9679;</span>
+    <span class="mx-8">122 Policy Chunks Indexed</span>
+    <span class="mx-8 text-[#CC0000]">&#9679;</span>
+    <span class="mx-8">Platforms: YouTube, Meta, TikTok, X, FTC</span>
+    <span class="mx-8 text-[#CC0000]">&#9679;</span>
+    <span class="mx-8">Avg Audit: 2.9s</span>
+    <span class="mx-8 text-[#CC0000]">&#9679;</span>
+    <span class="mx-8">24 Audits Completed</span>
+    <span class="mx-8 text-[#CC0000]">&#9679;</span>
+    <span class="mx-8">71% Pass Rate</span>
+    <span class="mx-8 text-[#CC0000]">&#9679;</span>
+    <span class="mx-8">Last: Neutrogena Ultra Sheer — PASS</span>
+    <span class="mx-8 text-[#CC0000]">&#9679;</span>
+    <span class="mx-8">122 Policy Chunks Indexed</span>
+  </div>
+</div>
+<style>
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.animate-marquee { animation: marquee 30s linear infinite; display: inline-block; }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECTION 1: DASHBOARD
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="dashboard" class="max-w-screen-xl mx-auto px-4 py-16 border-b border-[#111111]">
+  <div class="mb-8 grid grid-cols-1 lg:grid-cols-12 gap-0">
+    <div class="lg:col-span-7">
+      <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">Section I</span>
+      <h1 class="font-serif font-black text-5xl lg:text-7xl leading-[0.9] tracking-tighter mt-2">
+        Compliance<br>Dashboard
+      </h1>
+    </div>
+    <div class="lg:col-span-5 flex flex-col justify-end lg:text-right mt-4 lg:mt-0">
+      <p class="font-body text-sm text-neutral-600 leading-relaxed max-w-sm lg:ml-auto">
+        Pre-publication video ad compliance scanning. Check your ads against live platform policies before you publish.
+      </p>
+      <div class="mt-4">
+        <a href="#new-audit" class="inline-block bg-[#111111] text-[#F9F9F7] px-6 py-3 font-mono text-xs uppercase tracking-widest hover:bg-white hover:text-[#111111] border-2 border-[#111111] transition-all" style="border-radius:0">
+          Run New Audit
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Row -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 border border-[#111111]">
+    <div class="p-6 border-r border-b lg:border-b-0 border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Total Audits</span>
+      <p class="font-serif font-black text-4xl mt-1">24</p>
+    </div>
+    <div class="p-6 border-b lg:border-b-0 lg:border-r border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Pass Rate</span>
+      <p class="font-serif font-black text-4xl mt-1">71%</p>
+    </div>
+    <div class="p-6 border-r border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Violations Found</span>
+      <p class="font-serif font-black text-4xl mt-1 text-[#CC0000]">38</p>
+    </div>
+    <div class="p-6">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Avg. Time</span>
+      <p class="font-serif font-black text-4xl mt-1">2.9s</p>
+    </div>
+  </div>
+
+  <!-- Recent Audits Table -->
+  <div class="mt-8 border border-[#111111]">
+    <div class="bg-[#111111] text-[#F9F9F7] px-4 py-2 font-mono text-xs uppercase tracking-widest">
+      Recent Audits
+    </div>
+    <table class="w-full text-sm font-sans">
+      <thead class="border-b border-[#111111]">
+        <tr class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">
+          <th class="text-left px-4 py-2">Date</th>
+          <th class="text-left px-4 py-2">Video</th>
+          <th class="text-left px-4 py-2">Platform</th>
+          <th class="text-left px-4 py-2">Status</th>
+          <th class="text-left px-4 py-2">Violations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-neutral-200 hover:bg-neutral-100 transition-colors">
+          <td class="px-4 py-3 font-mono text-xs">Jul 27, 2026</td>
+          <td class="px-4 py-3">Neutrogena Ultra Sheer — John Cena</td>
+          <td class="px-4 py-3 font-mono text-xs uppercase">YouTube</td>
+          <td class="px-4 py-3"><span class="border border-[#111111] px-2 py-0.5 text-xs font-mono uppercase">Pass</span></td>
+          <td class="px-4 py-3 font-mono">0</td>
+        </tr>
+        <tr class="border-b border-neutral-200 hover:bg-neutral-100 transition-colors">
+          <td class="px-4 py-3 font-mono text-xs">Jul 26, 2026</td>
+          <td class="px-4 py-3">SlimFast Pro — Burn Fat 3X Faster</td>
+          <td class="px-4 py-3 font-mono text-xs uppercase">YouTube</td>
+          <td class="px-4 py-3"><span class="bg-[#CC0000] text-white px-2 py-0.5 text-xs font-mono uppercase">Fail</span></td>
+          <td class="px-4 py-3 font-mono text-[#CC0000] font-bold">4</td>
+        </tr>
+        <tr class="hover:bg-neutral-100 transition-colors">
+          <td class="px-4 py-3 font-mono text-xs">Jul 25, 2026</td>
+          <td class="px-4 py-3">CryptoWealth AI — Guaranteed Returns</td>
+          <td class="px-4 py-3 font-mono text-xs uppercase">YouTube, Meta</td>
+          <td class="px-4 py-3"><span class="bg-[#CC0000] text-white px-2 py-0.5 text-xs font-mono uppercase">Fail</span></td>
+          <td class="px-4 py-3 font-mono text-[#CC0000] font-bold">6</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECTION 2: HOW IT WORKS (inverted)
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="how-it-works" class="bg-[#111111] text-[#F9F9F7] border-b border-[#111111]">
+  <div class="max-w-screen-xl mx-auto px-4 py-16">
+    <div class="mb-8">
+      <span class="font-mono text-xs uppercase tracking-widest text-neutral-400">Section II</span>
+      <h2 class="font-serif font-black text-4xl lg:text-5xl leading-[0.9] tracking-tighter mt-2">
+        How It Works
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-neutral-700">
+      <div class="p-8 border-r border-b md:border-b-0 border-neutral-700">
+        <span class="text-[#CC0000] font-mono font-bold text-3xl">01</span>
+        <p class="font-serif font-bold text-xl mt-3">Upload or Paste</p>
+        <p class="font-body text-sm text-neutral-400 mt-2 leading-relaxed">
+          Submit a video file (MP4, up to 60s) or paste a YouTube URL. The system extracts audio and on-screen text.
+        </p>
+      </div>
+      <div class="p-8 border-r border-b md:border-b-0 border-neutral-700">
+        <span class="text-[#CC0000] font-mono font-bold text-3xl">02</span>
+        <p class="font-serif font-bold text-xl mt-3">AI Analysis</p>
+        <p class="font-body text-sm text-neutral-400 mt-2 leading-relaxed">
+          Whisper transcribes speech with timestamps. Claims are extracted and matched against live platform policies via vector retrieval.
+        </p>
+      </div>
+      <div class="p-8">
+        <span class="text-[#CC0000] font-mono font-bold text-3xl">03</span>
+        <p class="font-serif font-bold text-xl mt-3">Compliance Report</p>
+        <p class="font-body text-sm text-neutral-400 mt-2 leading-relaxed">
+          Each violation is cited with the exact policy rule, a confidence score, and a suggested compliant rewrite. Export as PDF or CSV.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECTION 3: NEW AUDIT
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="new-audit" class="max-w-screen-xl mx-auto px-4 py-16 border-b border-[#111111]">
+  <div class="mb-8">
+    <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">Section III</span>
+    <h2 class="font-serif font-black text-4xl lg:text-5xl leading-[0.9] tracking-tighter mt-2">
+      Run New Audit
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-[#111111]">
+    <!-- Left: Upload -->
+    <div class="lg:col-span-8 p-8 lg:border-r border-b lg:border-b-0 border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 block mb-4">Upload Video</span>
+
+      <div class="border-2 border-dashed border-[#111111] p-12 text-center hover:bg-neutral-100 transition-colors cursor-pointer">
+        <p class="font-serif text-2xl mb-2">Drop video file here</p>
+        <p class="font-mono text-xs text-neutral-500 uppercase tracking-widest">MP4, MOV, AVI, WebM — max 60 seconds</p>
+      </div>
+
+      <div class="mt-6">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 block mb-2">Or paste YouTube URL</span>
+        <div class="flex gap-0">
+          <input type="url" placeholder="https://youtu.be/..." class="flex-1 border-2 border-[#111111] bg-transparent px-4 py-3 font-mono text-sm focus:bg-[#F0F0F0] focus:outline-none" style="border-radius:0">
+          <button class="bg-[#111111] text-[#F9F9F7] px-6 py-3 font-mono text-xs uppercase tracking-widest border-2 border-[#111111] hover:bg-white hover:text-[#111111] transition-all" style="border-radius:0">
+            Audit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Options -->
+    <div class="lg:col-span-4 p-8">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 block mb-4">Target Platforms</span>
+      <div class="space-y-3">
+        <label class="flex items-center gap-3 cursor-pointer hover:bg-neutral-100 p-2 -ml-2 transition-colors">
+          <input type="checkbox" checked class="w-4 h-4 accent-[#111111]" style="border-radius:0">
+          <span class="font-sans text-sm">YouTube</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer hover:bg-neutral-100 p-2 -ml-2 transition-colors">
+          <input type="checkbox" class="w-4 h-4 accent-[#111111]" style="border-radius:0">
+          <span class="font-sans text-sm">Meta / Facebook</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer hover:bg-neutral-100 p-2 -ml-2 transition-colors">
+          <input type="checkbox" class="w-4 h-4 accent-[#111111]" style="border-radius:0">
+          <span class="font-sans text-sm">TikTok</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer hover:bg-neutral-100 p-2 -ml-2 transition-colors">
+          <input type="checkbox" class="w-4 h-4 accent-[#111111]" style="border-radius:0">
+          <span class="font-sans text-sm">X (Twitter)</span>
+        </label>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-[#111111]">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 block mb-2">Email report to</span>
+        <input type="email" placeholder="you@company.com" class="w-full border-b-2 border-[#111111] bg-transparent px-3 py-2 font-mono text-sm focus:bg-[#F0F0F0] focus:outline-none" style="border-radius:0">
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress State (visible during audit) -->
+  <div class="mt-8 border border-[#111111] p-6">
+    <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 block mb-3">Pipeline Status</span>
+    <div class="flex items-center gap-0 font-mono text-xs uppercase tracking-widest">
+      <span class="bg-[#111111] text-[#F9F9F7] px-3 py-1">Transcribing</span>
+      <span class="border-t border-b border-[#111111] px-3 py-1 text-neutral-400">Analyzing</span>
+      <span class="border-t border-b border-r border-[#111111] px-3 py-1 text-neutral-400">Auditing</span>
+      <span class="border-t border-b border-r border-[#111111] px-3 py-1 text-neutral-400">Done</span>
+    </div>
+    <div class="mt-3 h-1 bg-neutral-200">
+      <div class="h-1 bg-[#111111] w-1/4 transition-all duration-500"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECTION 4: AUDIT RESULT
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="result" class="max-w-screen-xl mx-auto px-4 py-16 border-b border-[#111111]">
+  <div class="mb-8">
+    <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">Section IV</span>
+    <h2 class="font-serif font-black text-4xl lg:text-5xl leading-[0.9] tracking-tighter mt-2">
+      Audit Report
+    </h2>
+  </div>
+
+  <!-- Verdict Banner -->
+  <div class="border-4 border-[#CC0000] p-6 mb-8 flex items-center justify-between">
+    <div>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Verdict</span>
+      <p class="font-serif font-black text-3xl text-[#CC0000] mt-1">FAIL — Policy Violations Detected</p>
+    </div>
+    <div class="text-right">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Confidence</span>
+      <p class="font-serif font-black text-3xl mt-1">92%</p>
+    </div>
+  </div>
+
+  <!-- Per-Platform Status -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 border border-[#111111] mb-8">
+    <div class="p-4 border-r border-[#111111] bg-[#CC0000] text-white">
+      <span class="font-mono text-[10px] uppercase tracking-widest opacity-70">YouTube</span>
+      <p class="font-mono font-bold text-lg mt-1">FAIL</p>
+    </div>
+    <div class="p-4 border-r border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Meta</span>
+      <p class="font-mono font-bold text-lg mt-1">PASS</p>
+    </div>
+    <div class="p-4 border-r border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">TikTok</span>
+      <p class="font-mono font-bold text-lg mt-1">PASS</p>
+    </div>
+    <div class="p-4">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">X</span>
+      <p class="font-mono font-bold text-lg mt-1">N/A</p>
+    </div>
+  </div>
+
+  <!-- Violations Timeline -->
+  <div class="border border-[#111111]">
+    <div class="bg-[#111111] text-[#F9F9F7] px-4 py-2 font-mono text-xs uppercase tracking-widest flex justify-between">
+      <span>Violations (4)</span>
+      <span>SlimFast Pro — Burn Fat 3X Faster</span>
+    </div>
+
+    <!-- Violation 1 -->
+    <div class="p-6 border-b border-[#111111] hover:bg-neutral-100 transition-colors">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-16 text-center">
+          <span class="bg-[#CC0000] text-white font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 inline-block">Critical</span>
+          <p class="font-mono text-xs text-neutral-500 mt-1">00:02</p>
+        </div>
+        <div class="flex-1">
+          <p class="font-serif font-bold text-lg">"I lost 30 pounds in just 2 weeks"</p>
+          <p class="font-body text-sm text-neutral-600 mt-1 leading-relaxed">
+            Unsubstantiated weight loss claim. FTC requires competent and reliable scientific evidence for weight loss claims. 30 lbs in 14 days is physiologically implausible without medical intervention.
+          </p>
+          <div class="mt-3 border-l-2 border-neutral-300 pl-3">
+            <p class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Policy Citation</p>
+            <p class="font-body text-xs text-neutral-600 italic mt-0.5">FTC Dietary Supplements Guide: "Advertisers must have adequate substantiation for all claims before disseminating..."</p>
+          </div>
+          <div class="mt-3 bg-neutral-100 p-3">
+            <p class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Suggested Rewrite</p>
+            <p class="font-body text-sm">"I achieved noticeable results with SlimFast Pro as part of a balanced diet and exercise program. Individual results may vary."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Violation 2 -->
+    <div class="p-6 border-b border-[#111111] hover:bg-neutral-100 transition-colors">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-16 text-center">
+          <span class="bg-[#CC0000] text-white font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 inline-block">Critical</span>
+          <p class="font-mono text-xs text-neutral-500 mt-1">00:05</p>
+        </div>
+        <div class="flex-1">
+          <p class="font-serif font-bold text-lg">"It literally melts fat while you sleep"</p>
+          <p class="font-body text-sm text-neutral-600 mt-1 leading-relaxed">
+            Unsubstantiated mechanism claim. No dietary supplement can "melt fat" during sleep without any behavioral change. This implies a drug-like mechanism without FDA approval.
+          </p>
+          <div class="mt-3 bg-neutral-100 p-3">
+            <p class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Suggested Rewrite</p>
+            <p class="font-body text-sm">"SlimFast Pro supports your weight management goals when combined with healthy lifestyle choices."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Violation 3 -->
+    <div class="p-6 border-b border-[#111111] hover:bg-neutral-100 transition-colors">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-16 text-center">
+          <span class="bg-[#CC0000] text-white font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 inline-block">Critical</span>
+          <p class="font-mono text-xs text-neutral-500 mt-1">00:08</p>
+        </div>
+        <div class="flex-1">
+          <p class="font-serif font-bold text-lg">"No exercise needed, no diet changes"</p>
+          <p class="font-body text-sm text-neutral-600 mt-1 leading-relaxed">
+            Misleading efficacy claim. Claims that weight loss requires no effort violate YouTube's misleading claims policy and FTC substantiation requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Violation 4 (Warning) -->
+    <div class="p-6 hover:bg-neutral-100 transition-colors">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-16 text-center">
+          <span class="border border-[#111111] font-mono text-[10px] uppercase tracking-widest px-2 py-0.5 inline-block">Warning</span>
+          <p class="font-mono text-xs text-neutral-500 mt-1">00:15</p>
+        </div>
+        <div class="flex-1">
+          <p class="font-serif font-bold text-lg">"Use code SLIM50 for 50% off today only"</p>
+          <p class="font-body text-sm text-neutral-600 mt-1 leading-relaxed">
+            Time-limited offer without disclosure of typical availability. If this offer is recurring, the "today only" language may constitute deceptive urgency.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Export Row -->
+  <div class="mt-6 flex gap-4 font-mono text-xs uppercase tracking-widest">
+    <button class="border border-[#111111] px-4 py-2 hover:bg-[#111111] hover:text-[#F9F9F7] transition-all">Download PDF</button>
+    <button class="border border-[#111111] px-4 py-2 hover:bg-[#111111] hover:text-[#F9F9F7] transition-all">Export CSV</button>
+    <button class="border border-[#111111] px-4 py-2 hover:bg-[#111111] hover:text-[#F9F9F7] transition-all">Share Report</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECTION 5: COMPLIANCE PROMPT GENERATOR
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="prompt-gen" class="max-w-screen-xl mx-auto px-4 py-16 border-b border-[#111111]">
+  <div class="mb-8">
+    <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">Section V</span>
+    <h2 class="font-serif font-black text-4xl lg:text-5xl leading-[0.9] tracking-tighter mt-2">
+      Compliance Prompt<br>Generator
+    </h2>
+    <p class="font-body text-sm text-neutral-600 mt-3 max-w-2xl leading-relaxed">
+      Creating an ad with AI? Paste your brief below and get a compliance-aware prompt that avoids common policy violations before you generate.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-[#111111]">
+    <!-- Input Side -->
+    <div class="p-8 border-r border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 block mb-3">Your Ad Brief</span>
+      <textarea class="w-full h-40 border-2 border-[#111111] bg-transparent p-4 font-body text-sm focus:bg-[#F0F0F0] focus:outline-none resize-none" style="border-radius:0" placeholder="e.g. We're promoting a weight loss supplement called SlimFit. Target: women 25-45. Key benefit: fast results. Platform: YouTube pre-roll."></textarea>
+
+      <div class="mt-4 flex gap-3">
+        <select class="border-2 border-[#111111] bg-transparent px-3 py-2 font-mono text-xs uppercase tracking-widest focus:outline-none" style="border-radius:0">
+          <option>YouTube</option>
+          <option>Meta / Facebook</option>
+          <option>TikTok</option>
+          <option>X (Twitter)</option>
+        </select>
+        <select class="border-2 border-[#111111] bg-transparent px-3 py-2 font-mono text-xs uppercase tracking-widest focus:outline-none" style="border-radius:0">
+          <option>ChatGPT / GPT-4</option>
+          <option>Claude</option>
+          <option>Midjourney</option>
+          <option>Runway / Sora</option>
+        </select>
+        <button class="bg-[#111111] text-[#F9F9F7] px-6 py-2 font-mono text-xs uppercase tracking-widest hover:bg-white hover:text-[#111111] border-2 border-[#111111] transition-all" style="border-radius:0">
+          Generate
+        </button>
+      </div>
+    </div>
+
+    <!-- Output Side -->
+    <div class="p-8 bg-neutral-100">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 block mb-3">Compliance-Aware Prompt</span>
+      <div class="border-2 border-[#111111] bg-[#F9F9F7] p-4 h-40 overflow-y-auto">
+        <p class="font-mono text-xs leading-relaxed text-neutral-700">
+          Write a 30-second YouTube pre-roll ad script for SlimFit, a weight management supplement for women 25-45. <span class="text-[#CC0000] font-bold">IMPORTANT COMPLIANCE RULES:</span> Do NOT claim specific pounds lost or timeframes. Do NOT say "no exercise needed" or "no diet changes." Do NOT use before/after comparisons. DO include "results may vary" and "as part of a balanced diet and exercise." DO include clear sponsorship disclosure if using testimonials. Avoid words: guaranteed, cure, miracle, melt, burn.
+        </p>
+      </div>
+      <div class="mt-3 flex gap-3">
+        <button class="border border-[#111111] px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest hover:bg-[#111111] hover:text-[#F9F9F7] transition-all">Copy</button>
+        <button class="border border-[#111111] px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest hover:bg-[#111111] hover:text-[#F9F9F7] transition-all">Regenerate</button>
+      </div>
+      <p class="font-mono text-[10px] text-neutral-400 mt-3 uppercase tracking-widest">
+        Based on 15 YouTube + 2 FTC policy sources
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECTION 6: LIVE PIPELINE DEMO
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="pipeline-demo" class="max-w-screen-xl mx-auto px-4 py-16 border-b border-[#111111]">
+  <div class="mb-8">
+    <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">Section VI</span>
+    <h2 class="font-serif font-black text-4xl lg:text-5xl leading-[0.9] tracking-tighter mt-2">
+      Live Pipeline Demo
+    </h2>
+    <p class="font-body text-sm text-neutral-600 mt-3">Watch the audit pipeline process a video in real time. Auto-replays every 8 seconds.</p>
+  </div>
+
+  <!-- Pipeline Stages -->
+  <div class="border border-[#111111] p-8">
+    <div class="flex flex-col lg:flex-row items-stretch gap-0" id="pipelineStages">
+      <!-- Stage 1: Upload -->
+      <div class="flex-1 border border-[#111111] p-4 pipeline-stage" data-stage="0">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-6 h-6 border border-[#111111] flex items-center justify-center font-mono text-[10px] pipeline-icon">1</div>
+          <span class="font-mono text-[10px] uppercase tracking-widest">Upload</span>
+        </div>
+        <div class="h-1 bg-neutral-200 mt-2"><div class="h-1 bg-[#111111] pipeline-bar" style="width:0%"></div></div>
+      </div>
+      <!-- Connector -->
+      <div class="hidden lg:flex items-center px-1"><span class="font-mono text-neutral-300 pipeline-connector">&#9654;</span></div>
+      <!-- Stage 2: Transcribe -->
+      <div class="flex-1 border border-[#111111] p-4 pipeline-stage" data-stage="1">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-6 h-6 border border-[#111111] flex items-center justify-center font-mono text-[10px] pipeline-icon">2</div>
+          <span class="font-mono text-[10px] uppercase tracking-widest">Transcribe</span>
+        </div>
+        <div class="h-1 bg-neutral-200 mt-2"><div class="h-1 bg-[#111111] pipeline-bar" style="width:0%"></div></div>
+      </div>
+      <div class="hidden lg:flex items-center px-1"><span class="font-mono text-neutral-300 pipeline-connector">&#9654;</span></div>
+      <!-- Stage 3: Extract Claims -->
+      <div class="flex-1 border border-[#111111] p-4 pipeline-stage" data-stage="2">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-6 h-6 border border-[#111111] flex items-center justify-center font-mono text-[10px] pipeline-icon">3</div>
+          <span class="font-mono text-[10px] uppercase tracking-widest">Claims</span>
+        </div>
+        <div class="h-1 bg-neutral-200 mt-2"><div class="h-1 bg-[#111111] pipeline-bar" style="width:0%"></div></div>
+      </div>
+      <div class="hidden lg:flex items-center px-1"><span class="font-mono text-neutral-300 pipeline-connector">&#9654;</span></div>
+      <!-- Stage 4: Retrieve Policy -->
+      <div class="flex-1 border border-[#111111] p-4 pipeline-stage" data-stage="3">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-6 h-6 border border-[#111111] flex items-center justify-center font-mono text-[10px] pipeline-icon">4</div>
+          <span class="font-mono text-[10px] uppercase tracking-widest">Retrieve</span>
+        </div>
+        <div class="h-1 bg-neutral-200 mt-2"><div class="h-1 bg-[#111111] pipeline-bar" style="width:0%"></div></div>
+      </div>
+      <div class="hidden lg:flex items-center px-1"><span class="font-mono text-neutral-300 pipeline-connector">&#9654;</span></div>
+      <!-- Stage 5: Reason -->
+      <div class="flex-1 border border-[#111111] p-4 pipeline-stage" data-stage="4">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-6 h-6 border border-[#111111] flex items-center justify-center font-mono text-[10px] pipeline-icon">5</div>
+          <span class="font-mono text-[10px] uppercase tracking-widest">Reason</span>
+        </div>
+        <div class="h-1 bg-neutral-200 mt-2"><div class="h-1 bg-[#111111] pipeline-bar" style="width:0%"></div></div>
+      </div>
+      <div class="hidden lg:flex items-center px-1"><span class="font-mono text-neutral-300 pipeline-connector">&#9654;</span></div>
+      <!-- Stage 6: Report -->
+      <div class="flex-1 border border-[#111111] p-4 pipeline-stage" data-stage="5">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-6 h-6 border border-[#111111] flex items-center justify-center font-mono text-[10px] pipeline-icon">6</div>
+          <span class="font-mono text-[10px] uppercase tracking-widest">Report</span>
+        </div>
+        <div class="h-1 bg-neutral-200 mt-2"><div class="h-1 bg-[#111111] pipeline-bar" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <!-- Typewriter Output -->
+    <div class="mt-6 border-t border-[#111111] pt-4">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Pipeline Output</span>
+      <div class="mt-2 font-mono text-xs leading-relaxed h-24 overflow-hidden" id="pipelineOutput">
+        <p class="text-neutral-400">Waiting...</p>
+      </div>
+    </div>
+
+    <!-- Verdict Stamp -->
+    <div class="mt-4 text-center" id="verdictStamp" style="opacity:0">
+      <span class="inline-block border-4 border-[#111111] px-8 py-3 font-serif font-black text-3xl transform rotate-[-2deg]">
+        PASS
+      </span>
+    </div>
+  </div>
+</section>
+
+<script>
+// Pipeline animation controller
+(function() {
+  const stages = document.querySelectorAll('.pipeline-stage');
+  const connectors = document.querySelectorAll('.pipeline-connector');
+  const output = document.getElementById('pipelineOutput');
+  const stamp = document.getElementById('verdictStamp');
+
+  const messages = [
+    { stage: 0, text: '> Receiving video... 2.1MB MP4 validated' },
+    { stage: 1, text: '> Whisper: "Hi, I\'m Dr. Neera, here to interview John Cena..."' },
+    { stage: 2, text: '> Extracted 3 claims: product_claim, product_claim, general' },
+    { stage: 3, text: '> Retrieved 8 policy chunks (YouTube Ad Specs, FTC)' },
+    { stage: 4, text: '> GPT-4o reasoning: no violations detected. Confidence: 92%' },
+    { stage: 5, text: '> Report generated: PASS | 0 violations | 2.9s total' },
+  ];
+
+  function reset() {
+    stages.forEach(s => {
+      s.style.background = '';
+      s.querySelector('.pipeline-icon').style.background = '';
+      s.querySelector('.pipeline-icon').style.color = '';
+      s.querySelector('.pipeline-bar').style.width = '0%';
+      s.querySelector('.pipeline-bar').style.transition = 'none';
+    });
+    connectors.forEach(c => { c.style.color = '#d4d4d4'; });
+    output.innerHTML = '<p class="text-neutral-400">Waiting...</p>';
+    stamp.style.opacity = '0';
+    stamp.style.transform = 'scale(1.5) rotate(-2deg)';
+  }
+
+  function activateStage(index) {
+    const stage = stages[index];
+    const bar = stage.querySelector('.pipeline-bar');
+    const icon = stage.querySelector('.pipeline-icon');
+
+    // Fill icon
+    icon.style.background = '#111111';
+    icon.style.color = '#F9F9F7';
+    icon.style.transition = 'all 150ms';
+
+    // Animate bar
+    bar.style.transition = 'width 600ms ease-out';
+    bar.style.width = '100%';
+
+    // Light connector
+    if (index > 0) {
+      connectors[index - 1].style.color = '#111111';
+      connectors[index - 1].style.transition = 'color 200ms';
+    }
+
+    // Typewriter message
+    const msg = messages[index];
+    const line = document.createElement('p');
+    line.textContent = msg.text;
+    line.style.opacity = '0';
+    line.style.transform = 'translateY(4px)';
+    line.style.transition = 'all 200ms';
+    output.appendChild(line);
+    requestAnimationFrame(() => {
+      line.style.opacity = '1';
+      line.style.transform = 'translateY(0)';
+    });
+  }
+
+  function showVerdict() {
+    stamp.style.transition = 'all 150ms ease-out';
+    stamp.style.opacity = '1';
+    stamp.style.transform = 'scale(1) rotate(-2deg)';
+  }
+
+  function runCycle() {
+    reset();
+    let delay = 500;
+    const stageDelay = 1000;
+
+    for (let i = 0; i < 6; i++) {
+      setTimeout(() => activateStage(i), delay + i * stageDelay);
+    }
+    setTimeout(showVerdict, delay + 6 * stageDelay + 300);
+    setTimeout(runCycle, delay + 6 * stageDelay + 2500);
+  }
+
+  // Start after a short pause
+  setTimeout(runCycle, 1000);
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECTION 7: AUDIT HISTORY
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="history" class="max-w-screen-xl mx-auto px-4 py-16 border-b border-[#111111]">
+  <div class="mb-8">
+    <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">Section VII</span>
+    <h2 class="font-serif font-black text-4xl lg:text-5xl leading-[0.9] tracking-tighter mt-2">
+      Audit History
+    </h2>
+  </div>
+
+  <!-- Filters -->
+  <div class="flex flex-wrap gap-3 mb-6 font-mono text-xs uppercase tracking-widest">
+    <button class="bg-[#111111] text-[#F9F9F7] px-3 py-1.5">All</button>
+    <button class="border border-[#111111] px-3 py-1.5 hover:bg-[#111111] hover:text-[#F9F9F7] transition-all">Pass</button>
+    <button class="border border-[#111111] px-3 py-1.5 hover:bg-[#111111] hover:text-[#F9F9F7] transition-all">Fail</button>
+    <button class="border border-[#111111] px-3 py-1.5 hover:bg-[#111111] hover:text-[#F9F9F7] transition-all">YouTube</button>
+    <button class="border border-[#111111] px-3 py-1.5 hover:bg-[#111111] hover:text-[#F9F9F7] transition-all">Meta</button>
+    <button class="border border-[#111111] px-3 py-1.5 hover:bg-[#111111] hover:text-[#F9F9F7] transition-all">TikTok</button>
+  </div>
+
+  <!-- History Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-[#111111]">
+    <!-- Card 1 -->
+    <div class="border-r border-b border-[#111111] p-6 hover:bg-neutral-100 transition-colors hard-shadow-hover cursor-pointer">
+      <div class="flex justify-between items-start mb-3">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Jul 27</span>
+        <span class="border border-[#111111] px-2 py-0.5 text-[10px] font-mono uppercase">Pass</span>
+      </div>
+      <p class="font-serif font-bold text-lg mb-2">Neutrogena Ultra Sheer</p>
+      <p class="font-body text-sm text-neutral-600">Clean brand ad with celebrity endorsement. No policy violations detected.</p>
+      <div class="mt-3 flex gap-2">
+        <span class="font-mono text-[10px] uppercase tracking-widest bg-neutral-100 px-2 py-0.5">YouTube</span>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="border-r border-b border-[#111111] p-6 hover:bg-neutral-100 transition-colors hard-shadow-hover cursor-pointer">
+      <div class="flex justify-between items-start mb-3">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Jul 26</span>
+        <span class="bg-[#CC0000] text-white px-2 py-0.5 text-[10px] font-mono uppercase">Fail</span>
+      </div>
+      <p class="font-serif font-bold text-lg mb-2">SlimFast Pro — Burn Fat 3X</p>
+      <p class="font-body text-sm text-neutral-600">4 critical violations: unsubstantiated health claims, misleading efficacy.</p>
+      <div class="mt-3 flex gap-2">
+        <span class="font-mono text-[10px] uppercase tracking-widest bg-neutral-100 px-2 py-0.5">YouTube</span>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="border-r border-b border-[#111111] p-6 hover:bg-neutral-100 transition-colors hard-shadow-hover cursor-pointer">
+      <div class="flex justify-between items-start mb-3">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Jul 25</span>
+        <span class="bg-[#CC0000] text-white px-2 py-0.5 text-[10px] font-mono uppercase">Fail</span>
+      </div>
+      <p class="font-serif font-bold text-lg mb-2">CryptoWealth AI</p>
+      <p class="font-body text-sm text-neutral-600">6 violations across 2 platforms. Guaranteed returns, zero-risk claims.</p>
+      <div class="mt-3 flex gap-2">
+        <span class="font-mono text-[10px] uppercase tracking-widest bg-neutral-100 px-2 py-0.5">YouTube</span>
+        <span class="font-mono text-[10px] uppercase tracking-widest bg-neutral-100 px-2 py-0.5">Meta</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECTION 8: POLICY COVERAGE
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="policies" class="max-w-screen-xl mx-auto px-4 py-16 border-b border-[#111111]">
+  <div class="mb-8">
+    <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">Section VIII</span>
+    <h2 class="font-serif font-black text-4xl lg:text-5xl leading-[0.9] tracking-tighter mt-2">
+      Policy Coverage
+    </h2>
+    <p class="font-body text-sm text-neutral-600 mt-3 max-w-2xl leading-relaxed">
+      Brand Guardian indexes live platform advertising policies and regulatory guidelines. Audits are evaluated against the most recent indexed version.
+    </p>
+  </div>
+
+  <!-- Platform Coverage Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-[#111111]">
+    <div class="p-6 border-r border-b border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Platform</span>
+      <p class="font-serif font-bold text-2xl mt-1">YouTube</p>
+      <p class="font-mono text-xs text-neutral-500 mt-2">15 policy sources indexed</p>
+      <div class="mt-3 space-y-1 font-body text-xs text-neutral-600">
+        <p>Ad content policies</p>
+        <p>Health claims restrictions</p>
+        <p>Financial services rules</p>
+        <p>Gambling & alcohol rules</p>
+      </div>
+      <p class="font-mono text-[10px] text-neutral-400 mt-3 uppercase tracking-widest">Last indexed: Jul 2026</p>
+    </div>
+    <div class="p-6 border-r border-b border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Platform</span>
+      <p class="font-serif font-bold text-2xl mt-1">Meta / Facebook</p>
+      <p class="font-mono text-xs text-neutral-500 mt-2">8 policy sources indexed</p>
+      <div class="mt-3 space-y-1 font-body text-xs text-neutral-600">
+        <p>Advertising standards</p>
+        <p>Personal attributes policy</p>
+        <p>Misleading claims policy</p>
+        <p>Drugs & pharmaceuticals</p>
+      </div>
+      <p class="font-mono text-[10px] text-neutral-400 mt-3 uppercase tracking-widest">Last indexed: Jul 2026</p>
+    </div>
+    <div class="p-6 border-b border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Platform</span>
+      <p class="font-serif font-bold text-2xl mt-1">TikTok</p>
+      <p class="font-mono text-xs text-neutral-500 mt-2">5 policy sources indexed</p>
+      <div class="mt-3 space-y-1 font-body text-xs text-neutral-600">
+        <p>Advertising policies</p>
+        <p>Prohibited content</p>
+        <p>Industry entry rules</p>
+      </div>
+      <p class="font-mono text-[10px] text-neutral-400 mt-3 uppercase tracking-widest">Last indexed: Jul 2026</p>
+    </div>
+    <div class="p-6 border-r border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Platform</span>
+      <p class="font-serif font-bold text-2xl mt-1">X (Twitter)</p>
+      <p class="font-mono text-xs text-neutral-500 mt-2">5 policy sources indexed</p>
+      <div class="mt-3 space-y-1 font-body text-xs text-neutral-600">
+        <p>Ads policies</p>
+        <p>Prohibited practices</p>
+        <p>Political content rules</p>
+      </div>
+      <p class="font-mono text-[10px] text-neutral-400 mt-3 uppercase tracking-widest">Last indexed: Jul 2026</p>
+    </div>
+    <div class="p-6 border-r border-[#111111]">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Regulatory</span>
+      <p class="font-serif font-bold text-2xl mt-1">FTC</p>
+      <p class="font-mono text-xs text-neutral-500 mt-2">3 policy sources indexed</p>
+      <div class="mt-3 space-y-1 font-body text-xs text-neutral-600">
+        <p>Endorsement guides</p>
+        <p>Health claims guidance</p>
+        <p>Testimonials & before/after</p>
+      </div>
+      <p class="font-mono text-[10px] text-neutral-400 mt-3 uppercase tracking-widest">Last indexed: Jul 2026</p>
+    </div>
+    <div class="p-6">
+      <span class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Index Stats</span>
+      <p class="font-serif font-bold text-2xl mt-1">122 Chunks</p>
+      <p class="font-mono text-xs text-neutral-500 mt-2">Azure AI Search (vector)</p>
+      <div class="mt-3 space-y-1 font-body text-xs text-neutral-600">
+        <p>36 policy source URLs</p>
+        <p>Cross-encoder reranking</p>
+        <p>Query expansion via Phi-4</p>
+      </div>
+      <p class="font-mono text-[10px] text-neutral-400 mt-3 uppercase tracking-widest">Version: v1.0</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECTION 9: INTEGRATIONS
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="integrations" class="max-w-screen-xl mx-auto px-4 py-16 border-b border-[#111111]">
+  <div class="mb-8">
+    <span class="font-mono text-xs uppercase tracking-widest text-neutral-500">Section IX</span>
+    <h2 class="font-serif font-black text-4xl lg:text-5xl leading-[0.9] tracking-tighter mt-2">
+      Integrations
+    </h2>
+    <p class="font-body text-sm text-neutral-600 mt-3 max-w-2xl leading-relaxed">
+      Connect Brand Guardian to the tools your compliance team already uses. Get alerts, export reports, and create tickets automatically.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-0 border border-[#111111]">
+    <!-- Slack -->
+    <div class="p-6 border-r border-b lg:border-b-0 border-[#111111] hover:bg-neutral-100 transition-colors hard-shadow-hover cursor-pointer">
+      <div class="w-12 h-12 border border-[#111111] flex items-center justify-center mb-4 font-serif font-bold text-xl">#</div>
+      <p class="font-serif font-bold text-lg">Slack</p>
+      <p class="font-body text-xs text-neutral-600 mt-1 leading-relaxed">Violation alerts to your channel. Get notified when an audit fails.</p>
+      <span class="inline-block mt-3 font-mono text-[10px] uppercase tracking-widest border border-[#111111] px-2 py-0.5">Connect</span>
+    </div>
+    <!-- Google Sheets -->
+    <div class="p-6 border-r border-b lg:border-b-0 border-[#111111] hover:bg-neutral-100 transition-colors hard-shadow-hover cursor-pointer">
+      <div class="w-12 h-12 border border-[#111111] flex items-center justify-center mb-4 font-mono text-xs">GS</div>
+      <p class="font-serif font-bold text-lg">Google Sheets</p>
+      <p class="font-body text-xs text-neutral-600 mt-1 leading-relaxed">Auto-export audit results to a shared compliance tracker spreadsheet.</p>
+      <span class="inline-block mt-3 font-mono text-[10px] uppercase tracking-widest border border-[#111111] px-2 py-0.5">Connect</span>
+    </div>
+    <!-- Jira -->
+    <div class="p-6 border-r border-b lg:border-b-0 border-[#111111] hover:bg-neutral-100 transition-colors hard-shadow-hover cursor-pointer">
+      <div class="w-12 h-12 border border-[#111111] flex items-center justify-center mb-4 font-mono text-xs">JR</div>
+      <p class="font-serif font-bold text-lg">Jira</p>
+      <p class="font-body text-xs text-neutral-600 mt-1 leading-relaxed">Create tickets for critical violations. Assign to the creative team.</p>
+      <span class="inline-block mt-3 font-mono text-[10px] uppercase tracking-widest border border-[#111111] px-2 py-0.5">Connect</span>
+    </div>
+    <!-- Linear -->
+    <div class="p-6 border-r border-b lg:border-b-0 border-[#111111] hover:bg-neutral-100 transition-colors hard-shadow-hover cursor-pointer">
+      <div class="w-12 h-12 border border-[#111111] flex items-center justify-center mb-4 font-mono text-xs">LN</div>
+      <p class="font-serif font-bold text-lg">Linear</p>
+      <p class="font-body text-xs text-neutral-600 mt-1 leading-relaxed">Push violations as issues. Auto-prioritize by severity level.</p>
+      <span class="inline-block mt-3 font-mono text-[10px] uppercase tracking-widest border border-[#111111] px-2 py-0.5">Connect</span>
+    </div>
+    <!-- Notion -->
+    <div class="p-6 hover:bg-neutral-100 transition-colors hard-shadow-hover cursor-pointer">
+      <div class="w-12 h-12 border border-[#111111] flex items-center justify-center mb-4 font-serif font-bold text-xl">N</div>
+      <p class="font-serif font-bold text-lg">Notion</p>
+      <p class="font-body text-xs text-neutral-600 mt-1 leading-relaxed">Sync reports to your compliance wiki. Build an audit knowledge base.</p>
+      <span class="inline-block mt-3 font-mono text-[10px] uppercase tracking-widest border border-[#111111] px-2 py-0.5">Connect</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<footer class="max-w-screen-xl mx-auto px-4 py-12">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+    <div class="md:col-span-4">
+      <p class="font-serif font-black text-xl">Brand Guardian</p>
+      <p class="font-body text-sm text-neutral-600 mt-2 leading-relaxed">
+        Pre-publication video ad compliance scanning. Check before you publish.
+      </p>
+    </div>
+    <div class="md:col-span-2">
+      <p class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 mb-3">Product</p>
+      <ul class="space-y-1 font-sans text-sm text-neutral-600">
+        <li>Dashboard</li>
+        <li>New Audit</li>
+        <li>History</li>
+        <li>Policies</li>
+      </ul>
+    </div>
+    <div class="md:col-span-2">
+      <p class="font-mono text-[10px] uppercase tracking-widest text-neutral-500 mb-3">Stack</p>
+      <ul class="space-y-1 font-sans text-sm text-neutral-600">
+        <li>GPT-4o + Phi-4</li>
+        <li>Azure AI Search</li>
+        <li>Groq Whisper</li>
+        <li>FastAPI</li>
+      </ul>
+    </div>
+    <div class="md:col-span-4 text-right">
+      <p class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">Edition</p>
+      <p class="font-mono text-xs text-neutral-400 mt-1">Vol. 2.0 | July 2026</p>
+      <p class="font-mono text-xs text-neutral-400 mt-0.5">Azure Container Apps</p>
+      <p class="font-body text-xs text-neutral-400 mt-3 italic">Decision support only — not legal advice.</p>
+    </div>
+  </div>
+  <div class="border-t border-[#111111] mt-8 pt-4 font-mono text-[10px] uppercase tracking-widest text-neutral-400 text-center">
+    Brand Guardian AI &mdash; Built by Shubh Kapadia
+  </div>
+</footer>
+
+</body>
+</html>
