@@ -1,6 +1,7 @@
 """
 Global exception handlers for consistent API error responses.
 Maps typed errors to proper HTTP status codes + structured error schema.
+All errors include trace_id from the X-Correlation-ID header.
 """
 import logging
 
@@ -12,8 +13,15 @@ from src.errors import RetryableError, PermanentError, ValidationError
 logger = logging.getLogger("brand-guardian.api")
 
 
-def _error_response(status_code: int, code: str, message: str, details: dict | None = None) -> JSONResponse:
-    body = {"error": {"code": code, "message": message}}
+def _get_trace_id(request: Request) -> str:
+    return request.headers.get("x-correlation-id", "unknown")
+
+
+def _error_response(
+    status_code: int, code: str, message: str,
+    trace_id: str = "unknown", details: dict | None = None,
+) -> JSONResponse:
+    body = {"error": {"code": code, "message": message, "trace_id": trace_id}}
     if details:
         body["error"]["details"] = details
     return JSONResponse(status_code=status_code, content=body)
@@ -24,17 +32,17 @@ def register_error_handlers(app: FastAPI) -> None:
 
     @app.exception_handler(ValidationError)
     async def validation_error_handler(request: Request, exc: ValidationError):
-        return _error_response(400, "validation_error", str(exc))
+        return _error_response(400, "validation_error", str(exc), _get_trace_id(request))
 
     @app.exception_handler(PermanentError)
     async def permanent_error_handler(request: Request, exc: PermanentError):
-        return _error_response(422, "permanent_error", str(exc))
+        return _error_response(422, "permanent_error", str(exc), _get_trace_id(request))
 
     @app.exception_handler(RetryableError)
     async def retryable_error_handler(request: Request, exc: RetryableError):
-        return _error_response(503, "service_unavailable", str(exc))
+        return _error_response(503, "service_unavailable", str(exc), _get_trace_id(request))
 
     @app.exception_handler(Exception)
     async def generic_error_handler(request: Request, exc: Exception):
         logger.error("Unhandled exception: %s", exc, exc_info=True)
-        return _error_response(500, "internal_error", "An internal error occurred.")
+        return _error_response(500, "internal_error", "An internal error occurred.", _get_trace_id(request))

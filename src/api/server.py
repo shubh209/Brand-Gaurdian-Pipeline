@@ -19,8 +19,11 @@ from sqlalchemy.orm import Session
 
 from src.api.routes.admin import router as admin_router
 from src.api.routes.audits import router as audits_router
+from src.api.routes.dashboard import router as dashboard_router
 from src.api.routes.export import router as export_router
+from src.api.routes.prompt_generator import router as prompt_router
 from src.api.routes.reviews import router as reviews_router
+from src.api.routes.uploads import router as uploads_router
 from src.api.telemetry import setup_telemetry
 from src.auth.dependencies import get_current_user, require_audit_submitter
 from src.auth.models import UserContext
@@ -30,6 +33,7 @@ from src.pipeline.workflow import app as compliance_graph
 from src.middleware.rate_limit import RateLimitMiddleware
 from src.middleware.observability import ObservabilityMiddleware
 from src.api.error_handlers import register_error_handlers
+from src.api.schemas import HealthResponse, UploadAcceptedResponse
 from src.services.export import DISCLAIMER
 
 setup_telemetry()
@@ -105,6 +109,9 @@ app.include_router(audits_router)
 app.include_router(reviews_router)
 app.include_router(admin_router)
 app.include_router(export_router)
+app.include_router(dashboard_router)
+app.include_router(uploads_router)
+app.include_router(prompt_router)
 
 register_error_handlers(app)
 
@@ -367,7 +374,7 @@ async def upload_video_for_audit(
     return {"audit_id": audit_id, "status": "pending"}
 
 
-@app.get("/health")
+@app.get("/health", response_model=HealthResponse)
 def health_check():
     return {"status": "healthy", "service": "Brand Guardian AI", "version": "3.0.0"}
 

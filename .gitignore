@@ -38,10 +38,12 @@ temp_audit_video.mp4
 # --- IDE & OS -------------------------------------------------
 .vscode/
 .idea/
+.scratch/
 *.swp
 *.swo
 .DS_Store
 Thumbs.db
+docs/
 
 # --- Logs -----------------------------------------------------
 *.log
@@ -58,3 +60,5 @@ cookies.txt
 
 skills-main/
 .commitshow/
+node_modules/
+.next/
