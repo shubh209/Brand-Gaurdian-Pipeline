@@ -14,63 +14,61 @@ The core product insight: existing tools check ad copy text. No tool checks the 
 
 ## Current state (as of last session)
 
-**Pipeline status: E2E WORKING — Upload path confirmed, eval baseline established**
+**Pipeline status: E2E WORKING + FRONTEND CONNECTED**
 
 - Health endpoint: responding at `https://brand-guardian-api.wonderfulbay-f06178ea.eastus.azurecontainerapps.io/health`
-- Upload path (primary): User uploads MP4 → blob storage → queue → worker transcribes with Whisper → 4-stage audit → result stored in Postgres → polling returns violations. Confirmed working.
-- URL path (secondary): Metadata-only on deployed server (YouTube bot-detects Azure IPs). Works locally via youtube-transcript-api. Useful for quick title/description screening but not full transcript.
-- GPT-4o quota: raised to 50K TPM. No longer a bottleneck.
-- Multi-model: Phi-4-mini-instruct on Azure AI Foundry handles claim extraction + report synthesis. GPT-4o handles policy reasoning only. Reduces token cost significantly.
-- Golden eval: 8/10 (80%) baseline established. Two failures: personal attributes (retrieval gap) and before/after (insufficient violation count). Both improve after reindex.
-- Worker Container App: `brand-guardian-worker` deployed, running, picks up jobs from Azure Storage Queue.
-- Whisper deployment: `whisper` on brand-guardian-openai (eastus2), rate limit 1 req/60s.
+- Upload path (primary): User uploads MP4 → blob storage → queue → worker (V2 modules: VideoAnalyzer → ComplianceAuditor → ReportGenerator) → result stored in Postgres. Confirmed working (2.9s E2E).
+- URL path (secondary): Metadata-only on deployed server. Has a known variable-scoping bug in old LangGraph nodes.py — V2 upload path bypasses it.
+- Transcription: **Groq Whisper** (whisper-large-v3-turbo) — fast, free-tier. Azure Whisper is a fallback.
+- LLM endpoints: GPT-4o (50K TPM, Azure OpenAI), Phi-4-mini-instruct (Azure AI Foundry at `.cognitiveservices.azure.com`)
+- Langfuse: Traces flowing to `https://us.cloud.langfuse.com` (CallbackHandler, non-blocking)
+- Frontend: Next.js 14 scaffold in `frontend-app/` — Dashboard page working, calls real API
+- CI/CD: GitHub Actions → tests → build → deploy to Azure Container Apps on push to main
+- Database: Neon PostgreSQL with migration 004 applied
+- Golden eval: 8/10 (80%) baseline. E2E eval on real video: PASS (Neutrogena ad, 2.9s)
 
 **What is working:**
-- 4-stage audit pipeline (Phi-4-mini claim extraction → per-claim retrieval + rerank → GPT-4o reasoning → Phi-4-mini synthesis)
-- Per-claim retrieval with query expansion (`_expand_claim` rewrites to policy terminology)
+- V2 pipeline: VideoAnalyzer (Groq Whisper + OCR) → ComplianceAuditor (claim extraction + batched reasoning) → ReportGenerator (JSON/PDF/CSV)
+- Worker retry (3x exponential backoff, dead-letter on permanent failure)
+- Postgres-backed rate limiter with rate limit headers
+- SHA-256 file hash dedup (no reprocessing on duplicate upload)
+- Observability middleware (correlation ID + latency per request)
+- Global error handlers with trace_id in every error response
 - Cross-encoder reranking (ms-marco-MiniLM-L-6-v2)
-- Chain-of-thought system prompt on GPT-4o
-- Risk level output (HIGH/MEDIUM/LOW) per violation
-- Azure Container Apps deployment: API + Worker (GHCR images, CI/CD on push to main)
-- Neon PostgreSQL with all migrations applied (003_new_architecture)
-- Azure AI Search index `brand-compliance-rules` — 122 chunks, retrieval confirmed working
-- Policy sources: 35 leaf-level URLs across YouTube (15), Meta (8), TikTok (5), X (5), FTC (2)
-- Async admin reindex endpoint (returns 202, runs in background)
-- Firecrawl structured extraction with blob cache fallback
-- Video upload → Whisper transcription → async audit via worker
-- Golden evaluation dataset (10 synthetic cases, run via `evals/run_eval.py`)
-- Phi-4-mini-instruct integrated for cheap extraction tasks
-- youtube-transcript-api for caption fetching (works locally, blocked on Azure IPs)
+- Prompt injection sanitization at all LLM trust boundaries
+- 48 backend tests passing
+- CI/CD: test → build → deploy on push to main
+- Next.js frontend scaffold (Dashboard page with stats + audit list)
 
-**V2 Architecture (all 13 tickets complete):**
-- `src/config.py` — centralized config with fail-fast validation on missing env vars
-- `src/errors.py` — typed error hierarchy: RetryableError, PermanentError, ValidationError
-- `src/security/sanitizer.py` — InputSanitizer: MIME check (python-magic), audio track check (ffprobe), prompt injection stripping, unicode control char removal, tiktoken token truncation
-- `src/services/video_analyzer.py` — VideoAnalyzer module: `analyze(video_path, options) → AnalysisResult` with Whisper segments, Tesseract OCR, optional GPT-4o Vision
-- `src/services/policy_retriever.py` — PolicyRetriever: `retrieve(claim, platforms, k) → list[PolicyChunk]` with query expansion (Phi-4-mini), platform filtering, cross-encoder reranking, and `retrieval_eval()` for measuring recall/precision independently
-- `src/services/compliance_auditor.py` — ComplianceAuditor: `audit(analysis, platforms) → AuditReport` with per-timestamp claim extraction, greedy batching by shared chunks, GPT-4o reasoning with logprobs confidence, suggested rewrites, per-platform PASS/FAIL
-- `src/services/report_generator.py` — ReportGenerator: `generate(audit_report, formats) → dict[str, bytes]` with JSON, PDF (text), CSV output; timestamps as MM:SS, per-platform sections
-- Worker retry (3x exponential backoff) + dead-letter table for failed jobs
-- Postgres-backed rate limiter (sliding window, rate limit headers, Retry-After)
-- SHA-256 file hash dedup (same file → return existing audit, no reprocessing)
-- Audit versioning: file_hash, prompt_hash, model_version columns
-- Global error handlers: ValidationError→400, PermanentError→422, RetryableError→503
-- Observability middleware: correlation ID + latency tracking per request
-- Frontend: X platform, timestamp + confidence + suggested rewrite in violation cards
-- Integration test suite (5 tests), test fixture, blob lifecycle (keep on failure)
-- Alembic migration 004: dead_letter_jobs, rate_limit_hits, audit versioning columns
-- Dockerfile.worker updated with `tesseract-ocr` apt package
-- Dependencies added: python-magic, pytesseract
+**API endpoints (all typed with Pydantic response models in `src/api/schemas.py`):**
+- `GET /health` — liveness
+- `GET /dashboard/stats` — aggregated stats
+- `GET /audits` — paginated list with status/platform filters
+- `GET /audits/{id}` — full detail with violations
+- `GET /audits/{id}/stream` — SSE (5s poll, 5min timeout)
+- `POST /uploads/presign` — presigned Azure Blob URL (5-min SAS token)
+- `POST /uploads/{id}/start` — enqueue processing after direct upload
+- `POST /prompt/generate` — compliance-aware agent prompt with MCP tools
+- `POST /audit` — URL-mode audit (old LangGraph pipeline)
+- `POST /audit/upload` — legacy direct upload (kept as fallback)
+
+**Frontend (`frontend-app/`):**
+- Next.js 14 + TypeScript + Tailwind CSS (Newsprint design system)
+- Dashboard page: stats row + recent audits table
+- API client at `src/lib/api.ts` (typed fetch wrapper)
+- Design reference: `frontend/prototype.html` (9 sections, finalized layout)
+- Spec for remaining pages: `docs/SPEC-frontend-pages.md`
 
 **What is NOT working / not yet built:**
-- Live reindex with structured extraction not yet run (costs ~1,050 Firecrawl credits — needs user confirmation)
-- Test suite hangs on Neon DB cold start (need connect_timeout=10 on DATABASE_URL)
-- Email delivery (code exists, Azure Communication Services resource not created)
-- Frontend auth flow (no MSAL / API key entry UI)
-- Enrich node still tries yt-dlp/Video Indexer on upload path (wasted 5s latency on failed calls)
-- Containers run as root (no USER directive in Dockerfiles)
-- AUTH_DISABLED=TRUE in production Container App
-- Old LangGraph pipeline (nodes.py) still used for URL-mode audits; V2 modules handle upload-mode only
+- Frontend pages: New Audit, Audit Result, History, Prompt Generator (spec ready)
+- Frontend deployment to Vercel/Cloudflare (not yet configured)
+- Live reindex (costs ~1,050 Firecrawl credits — needs user confirmation)
+- Email delivery (code exists, resource not created)
+- URL-mode audit variable-scoping bug in nodes.py
+- Containers run as root (no USER directive)
+- AUTH_DISABLED=TRUE in production
+
+**Next task:** Read `docs/SPEC-frontend-pages.md` and implement pages 1-5 (New Audit, Audit Result, History, Prompt Generator, Deploy).
 
 ---
 
