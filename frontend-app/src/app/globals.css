@@ -10,3 +10,11 @@ body {
   background: #F9F9F7;
   color: #111111;
 }
+
+.hard-shadow-hover {
+  transition: all 200ms ease-out;
+}
+.hard-shadow-hover:hover {
+  box-shadow: 4px 4px 0px 0px #111111;
+  transform: translate(-2px, -2px);
+}

@@ -23,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/" className="hover:text-accent transition-colors">Dashboard</a>
               <a href="/audit/new" className="hover:text-accent transition-colors">New Audit</a>
               <a href="/history" className="hover:text-accent transition-colors">History</a>
+              <a href="/prompt" className="hover:text-accent transition-colors">Prompt</a>
             </nav>
             <div className="font-mono text-[10px] text-neutral-500 uppercase tracking-widest">
               Vol. 2 | Jul 2026
