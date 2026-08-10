@@ -132,3 +132,20 @@ def revoke_team_api_key(
     if not revoke_api_key(db, key_id, user.team_id):
         raise HTTPException(status_code=404, detail="API key not found")
     return {"status": "revoked"}
+
+
+@router.get("/error-analysis")
+def get_error_analysis(
+    days: int = Query(default=30, ge=1, le=365),
+    user: UserContext = Depends(require_admin),
+    db: Session = Depends(get_db),
+):
+    """
+    Operational error analysis: pipeline failures, quality patterns, retrieval gaps.
+    Computes on-demand from recent audit data. Pushes scores to Langfuse.
+    """
+    from src.services.error_analysis import run_error_analysis, push_to_langfuse
+
+    report = run_error_analysis(db, days=days)
+    push_to_langfuse(report)
+    return report
