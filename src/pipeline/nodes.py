@@ -36,6 +36,7 @@ def _llm(temperature: float = 0.1) -> AzureChatOpenAI:
         api_key=_require_env("AZURE_OPENAI_API_KEY"),
         openai_api_version=_require_env("AZURE_OPENAI_API_VERSION"),
         temperature=temperature,
+        request_timeout=60,
     )
 
 
@@ -52,6 +53,7 @@ def _mini_llm(temperature: float = 0.1):
             base_url=phi_endpoint,
             api_key=phi_key,
             temperature=temperature,
+            request_timeout=60,
         )
     deployment = os.getenv("AZURE_OPENAI_MINI_DEPLOYMENT", "gpt-4o")
     return AzureChatOpenAI(
@@ -60,6 +62,7 @@ def _mini_llm(temperature: float = 0.1):
         api_key=_require_env("AZURE_OPENAI_API_KEY"),
         openai_api_version=_require_env("AZURE_OPENAI_API_VERSION"),
         temperature=temperature,
+        request_timeout=60,
     )
 
 

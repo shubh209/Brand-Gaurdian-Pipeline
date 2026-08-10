@@ -257,6 +257,7 @@ class VideoAnalyzer:
                     ],
                     max_tokens=150,
                     temperature=0.1,
+                    timeout=60,
                 )
                 desc = response.choices[0].message.content.strip()
                 if desc:

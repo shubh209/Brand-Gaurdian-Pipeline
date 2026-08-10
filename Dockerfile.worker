@@ -16,4 +16,7 @@ RUN uv pip install --system .
 
 COPY . .
 
+RUN adduser --disabled-password --no-create-home nonroot
+USER nonroot
+
 CMD ["python", "-m", "src.worker.main"]

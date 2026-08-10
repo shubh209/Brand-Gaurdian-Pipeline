@@ -13,6 +13,9 @@ RUN uv pip install --system .
 
 COPY . .
 
+RUN adduser --disabled-password --no-create-home nonroot
+USER nonroot
+
 EXPOSE 8000
 
 CMD ["uvicorn", "src.api.server:app", "--host", "0.0.0.0", "--port", "8000", "--timeout-keep-alive", "300"]

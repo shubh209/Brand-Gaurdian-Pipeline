@@ -68,7 +68,10 @@ logger = logging.getLogger("api-server")
 
 
 def _parse_allowed_origins() -> list[str]:
-    raw = os.getenv("ALLOWED_ORIGINS", "http://localhost:8000")
+    raw = os.getenv(
+        "ALLOWED_ORIGINS",
+        "http://localhost:8000,http://localhost:3000,https://brand-guardian-nine.vercel.app",
+    )
     origins = [origin.strip() for origin in raw.split(",") if origin.strip()]
     return origins or ["http://localhost:8000"]
 

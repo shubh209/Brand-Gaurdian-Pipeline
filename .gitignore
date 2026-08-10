@@ -43,7 +43,6 @@ temp_audit_video.mp4
 *.swo
 .DS_Store
 Thumbs.db
-docs/
 
 # --- Logs -----------------------------------------------------
 *.log
