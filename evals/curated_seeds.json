@@ -1,0 +1,206 @@
+{
+  "note": "Curated seed claims: verbatim FTC-quoted ad language suitable for variant generation. Each is an actual advertising claim found illegal by the FTC.",
+  "total_seeds": 20,
+  "seeds": [
+    {
+      "id": "seed-health-001",
+      "category": "health_claim",
+      "claim_text": "maintains joint health and mobility into old age",
+      "violation_reason": "Unsubstantiated health claim for topical ointment without adequate scientific evidence",
+      "source": "FTC Health Products Compliance Guidance, Example 6 (Arthricure)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-health-002",
+      "category": "health_claim",
+      "claim_text": "a natural pain remedy without the side effects of over-the-counter pain relievers",
+      "violation_reason": "False safety claim — product can cause nausea but omits that material fact",
+      "source": "FTC Health Products Compliance Guidance, Example 9",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-health-003",
+      "category": "health_claim",
+      "claim_text": "clinically tested ingredient for improving blood flow and increasing endurance",
+      "violation_reason": "Misleading claim implying clinical testing proves effectiveness when study was on ingredient, not product",
+      "source": "FTC Health Products Compliance Guidance, Example 18 (sports drink)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-health-004",
+      "category": "health_claim",
+      "claim_text": "proven to promote cardiovascular health",
+      "violation_reason": "Overstated claim based on single small study; one underpowered trial doesn't support 'proven' language",
+      "source": "FTC Health Products Compliance Guidance, Example 31 (fruit drink)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-health-005",
+      "category": "health_claim",
+      "claim_text": "clinically proven to improve memory",
+      "violation_reason": "Study tested narrow working memory tasks; ad generalizes to all memory improvement",
+      "source": "FTC Health Products Compliance Guidance, Example 32 (brain training software)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-efficacy-001",
+      "category": "misleading_efficacy",
+      "claim_text": "in just 10 minutes a day for 30 days, you can effortlessly lose two or more inches and 10 pounds from your waist",
+      "violation_reason": "Unsubstantiated weight loss claim with specific numbers; FDA approval was for different indication",
+      "source": "FTC Health Products Compliance Guidance, Example 48 (exercise device infomercial)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-efficacy-002",
+      "category": "misleading_efficacy",
+      "claim_text": "promising, preliminary scientific studies show that our product may be effective in reducing cholesterol",
+      "violation_reason": "Qualifiers like 'promising' and 'may' do not sufficiently convey limitations; consumers interpret as proven",
+      "source": "FTC Health Products Compliance Guidance, Example 12",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "WARNING"
+    },
+    {
+      "id": "seed-efficacy-003",
+      "category": "misleading_efficacy",
+      "claim_text": "signal the brain's hypothalamus to burn current body fat stores",
+      "violation_reason": "Pseudo-scientific mechanism claim without substantiation; implies drug-like action",
+      "source": "FTC vs Florida Supplement Sellers (2017)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-efficacy-004",
+      "category": "misleading_efficacy",
+      "claim_text": "an all-natural sleep aid for when life's stresses get you down or you are just too anxious to fall asleep",
+      "violation_reason": "Marketed for anxiety/insomnia without disclosing dangerous drug interactions",
+      "source": "FTC Health Products Compliance Guidance, Example 11 (botanical supplement)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-disclosure-001",
+      "category": "disclosure_violation",
+      "claim_text": "The first pill I took, I could feel a difference. I went from 549 to 112 in 24 hours with Nobetes",
+      "violation_reason": "Consumer endorsement claiming specific blood sugar results without adequate substantiation or typicality disclosure",
+      "source": "FTC Deceptive Diabetes Claims (2018) - Nobetes endorsement",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-disclosure-002",
+      "category": "disclosure_violation",
+      "claim_text": "At nighttime, I had tingling in my arms and dry mouth and even blurry vision. Now all of those symptoms are gone",
+      "violation_reason": "Testimonial implying product cures diabetes symptoms without disclosure that results are atypical",
+      "source": "FTC Deceptive Diabetes Claims (2018) - Nobetes endorsement",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-disclosure-003",
+      "category": "disclosure_violation",
+      "claim_text": "I still eat the same old crap I always did. But once I eat all that crap, I just pop my Nobetes and my blood sugar levels are normal",
+      "violation_reason": "Endorsement implying no lifestyle changes needed; material connection not disclosed; atypical results",
+      "source": "FTC Deceptive Diabetes Claims (2018) - Nobetes endorsement",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-health-006",
+      "category": "health_claim",
+      "claim_text": "super-charge your immune system and defeat the common cold, flu, viruses and deadly diseases",
+      "violation_reason": "Unsubstantiated disease prevention/treatment claims for dietary supplement",
+      "source": "FTC vs Florida Supplement Sellers (2017)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-health-007",
+      "category": "health_claim",
+      "claim_text": "reduces health-related time-off from work by a whopping 97%",
+      "violation_reason": "Specific statistical claim without substantiating clinical evidence",
+      "source": "FTC vs Florida Supplement Sellers (2017)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-health-008",
+      "category": "health_claim",
+      "claim_text": "Lower Your Blood Pressure Naturally, Now",
+      "violation_reason": "Disease treatment claim for supplement without adequate scientific evidence",
+      "source": "FTC vs Florida Supplement Sellers (2017)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-health-009",
+      "category": "health_claim",
+      "claim_text": "87% of this country suffers from digestive issues like occasional irregularity and Activia can help",
+      "violation_reason": "Unsubstantiated prevalence statistic combined with efficacy claim for yogurt product",
+      "source": "FTC vs Dannon (Activia/DanActive, 2010)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-health-010",
+      "category": "health_claim",
+      "claim_text": "With the natural culture Bifidus Regularis, Activia eaten every day is clinically proven to help with slow intestinal transit",
+      "violation_reason": "Clinically proven claim without adequate evidence for the specific product formulation",
+      "source": "FTC vs Dannon (Activia/DanActive, 2010)",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "seed-before-after-001",
+      "category": "before_after",
+      "claim_text": "These results are not typical. Your weight loss may not be the same",
+      "violation_reason": "Inadequate disclaimer for weight loss testimonial — fine print disclaimer does not cure misleading impression from dramatic before/after",
+      "source": "FTC Health Products Compliance Guidance, Example 38",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "WARNING"
+    },
+    {
+      "id": "seed-efficacy-005",
+      "category": "misleading_efficacy",
+      "claim_text": "In an 8-week study, subjects taking the supplement lost an average of 5 pounds. Subjects taking a placebo lost an average of 1 pound",
+      "violation_reason": "Study results presented adjacent to atypical testimonial to create misleading net impression of greater efficacy",
+      "source": "FTC Health Products Compliance Guidance, Example 39",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "WARNING"
+    },
+    {
+      "id": "seed-health-011",
+      "category": "health_claim",
+      "claim_text": "based on Nobel Prize-Winning research and proven effective by $5 Million in NIH Research",
+      "violation_reason": "Nobel Prize was for unrelated use of ingredient; NIH funding doesn't equal proof of efficacy for this product",
+      "source": "FTC Health Products Compliance Guidance, Example 17",
+      "platform_relevant": ["youtube", "meta", "tiktok"],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL"
+    }
+  ]
+}
