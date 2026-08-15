@@ -1,0 +1,927 @@
+{
+  "generated_at": "2026-08-15T21:17:02.176722+00:00",
+  "source_count": 5,
+  "total_seeds": 54,
+  "extraction_method": "verbatim_quotes",
+  "note": "All claim_text fields are exact quotes from FTC publications, not paraphrased",
+  "seeds": [
+    {
+      "id": "ftc-health-compliance-001",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "significant scientific agreement",
+      "violation_reason": "Health claims that meet the FDA \u201csignificant scientific agreement\u201d standard will be presumed to be substantiated under FTC law.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-002",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "maintains joint health and mobility",
+      "violation_reason": "Example 6: An ad for a topical ointment called \u201cArthricure\u201d claims that the product \u201cmaintains joint health and mobility\u201d into old age.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-003",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "without the side effects of over-the-counter pain relievers.",
+      "violation_reason": "Example 9:\u00a0 An ad for an herbal product claims it is a natural pain remedy \u201cwithout the side effects of over-the-counter pain relievers.\u201d\u00a0 However, there is substantial evidence that the product can cause nausea in some consumers when taken regularly.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-004",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "misleading_efficacy",
+      "claim_text": "when life\u2019s stresses get you down or you are just too anxious to fall asleep.",
+      "violation_reason": "Example 11: A botanical supplement is marketed as an all-natural sleep aid for \u201cwhen life\u2019s stresses get you down or you are just too anxious to fall asleep.\u201d\u00a0 Although the botanical supplement doesn\u2019t present any safety risk when used alone, the active compounds in the product use the same metaboli",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-005",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "promising, preliminary scientific studies show that our product may be effective in reducing cholesterol.",
+      "violation_reason": "The company makes a claim in advertising that \u201cpromising, preliminary scientific studies show that our product may be effective in reducing cholesterol.\u201d\u00a0 The use of the words \u201cpromising,\u201d \u201cpreliminary,\u201d and \u201cmay\u201d is unlikely to sufficiently convey the limitations of the science.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-006",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "This app is for entertainment purposes only and is not intended for the treatment of any disease or medical condition.",
+      "violation_reason": "\u201d\u00a0 Just below the claim, in the same print size, color, and style, is the statement, \u201cThis app is for entertainment purposes only and is not intended for the treatment of any disease or medical condition.\u201d\u00a0 Given the express claim that the app improves acne, the disclaimer that it doesn\u2019t treat medi",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-007",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "no clinical study has been performed on the product.",
+      "violation_reason": "A fine print disclosure in the \u201cTerms and Conditions\u201d section of the website states that \u201cno clinical study has been performed on the product.\u201d \u00a0The statement is inadequate to correct the false scientific proof claim both because it directly contradicts the claim and because it is not clear and cons",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-008",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "sufficient in quality and quantity based on standards generally accepted in the relevant scientific fields, when considered in light of the entire body of relevant and reliable scientific evidence, to substantiate that the representation is true.",
+      "violation_reason": "gov/business-guidance/resources/health-products-compliance-guidanceedn29 \"\") \u00a0In addition, the FTC requires that the research must be \u201csufficient in quality and quantity based on standards generally accepted in the relevant scientific fields, when considered in light of the entire body of relevant a",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-009",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "$5 Million in NIH Research.",
+      "violation_reason": "Example 17: An advertiser claims that its product is based on \u201cNobel Prize-Winning\u201d research and has been \u201cproven effective\u201d by \u201c$5 Million in NIH Research.\u201d\u00a0 The Nobel Prize referred to in the ad, however, was for an unrelated use of the product\u2019s active ingredient and has nothing to do with the cl",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-010",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "clinically tested ingredient",
+      "violation_reason": "Example 18:\u00a0 The website for a sports drink touts a \u201cclinically tested ingredient\u201d for improving blood flow and increasing endurance.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-011",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "proven to promote cardiovascular health.",
+      "violation_reason": "Example 31:\u00a0 The marketer of a fruit drink claims that its product is \u201cproven to promote cardiovascular health.\u201d\u00a0 There is one small human clinical study finding a significant difference in arterial plaque build-up compared to a placebo drink.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-012",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "clinically proven to improve memory.",
+      "violation_reason": "The ad claims that the software has been \u201cclinically proven to improve memory.\u201d\u00a0 A clinical study employed three laboratory tasks to test working memory (the short-term mental manipulation of information, such as numbers).",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-013",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "misleading_efficacy",
+      "claim_text": "These results are not typical.\u00a0 Your weight loss may not be the same.",
+      "violation_reason": "An asterisk next to the quote references a disclaimer in fine print at the bottom of the ad that reads, \u201cThese results are not typical.\u00a0 Your weight loss may not be the same.\u201d\u00a0 The experience of the woman is accurately represented, but a well-conducted RCT demonstrating the efficacy of the supplemen",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-014",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "misleading_efficacy",
+      "claim_text": "In an 8-week study, subjects taking the supplement lost an average of 5 pounds.\u00a0 Subjects taking a placebo lost an average of 1 pound,",
+      "violation_reason": "The statement, \u201cIn an 8-week study, subjects taking the supplement lost an average of 5 pounds.\u00a0 Subjects taking a placebo lost an average of 1 pound,\u201d immediately adjacent to the quote and in prominent font is likely to be effective.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-015",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "disclosure_violation",
+      "claim_text": "Ancient remedy used for centuries to aid digestion.\u00a0 There is no scientific evidence that it works.",
+      "violation_reason": "Example 44:\u00a0The advertiser of an herbal tea makes the claim, \u201cAncient remedy used for centuries to aid digestion.\u00a0 There is no scientific evidence that it works.\u201d\u00a0 The first statement about traditional use is accurate and the advertised product is consistent with the formulation of the product as tr",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-016",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "and the reduced risk of heart disease is uncertain, because there is little scientific evidence for the relationship.",
+      "violation_reason": "After reviewing the scientific literature, the FDA issues a letter indicating that it will consider exercising its enforcement discretion to allow the marketer to make a claim in labeling that \u201cthe relationship between\u201d the substance in the shake \u201cand the reduced risk of heart disease is uncertain, ",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-017",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "Meets FDA Qualified Health Claim.",
+      "violation_reason": "\u201d\u00a0 Ads for the shake feature a prominent banner stating, \u201cMeets FDA Qualified Health Claim.\u201d\u00a0 By using a technical regulatory term unfamiliar to most consumers, the banner mischaracterizes the FDA\u2019s action and likely communicates both FDA approval of the product for heart disease and a high level of",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-018",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "in just 10 minutes a day for 30 days, you can effortlessly lose two or more inches and 10 pounds from your waist.",
+      "violation_reason": "The marketer airs an infomercial for the device with repeated references to the fact that the product is \u201cFDA Approved,\u201d alongside claims that \u201cin just 10 minutes a day for 30 days, you can effortlessly lose two or more inches and 10 pounds from your waist.\u201d\u00a0 The infomercial is deceptive because the",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-019",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "_Substantiation Policy Statement_",
+      "violation_reason": "gov/public-statements/1983/03/ftc-policy-statement-regarding-advertising-substantiation) (\u201c Substantiation Policy Statement\u201d).",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-020",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "_Daniel Chapter One Initial Decision_",
+      "violation_reason": "832, 904-35 (2009) (initial decision) (\u201c Daniel Chapter One Initial Decision\u201d) (claims made in radio programs, newsletter, catalog, and website).",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-021",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "imposes no duty on the FTC in this false advertising action",
+      "violation_reason": "2016)(passage of DSHEA\u201cimposes no duty on the FTC in this false advertising action\u201d); Bristol-Myers Co.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-022",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "_Food Advertising Policy Statement_",
+      "violation_reason": "gov/public-statements/1994/05/enforcement-policy-statement-food-advertising) (\u201c Food Advertising Policy Statement\u201d).",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-023",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "If the advertisement explicitly states or clearly and conspicuously implies a claim, the court need not look to extrinsic evidence to ascertain whether the advertisement made the claim",
+      "violation_reason": "2d at 1189 (\u201cIf the advertisement explicitly states or clearly and conspicuously implies a claim, the court need not look to extrinsic evidence to ascertain whether the advertisement made the claim\u201d).",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-024",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "experience and research show that it is very difficult to adequately qualify a disease risk-reduction claim in advertising to indicate that the science supporting the claimed effect is limited",
+      "violation_reason": "1, 20 (2011) (consent order) (analysis to aid public comment noting that Commission\u201cexperience and research show that it is very difficult to adequately qualify a disease risk-reduction claim in advertising to indicate that the science supporting the claimed effect is limited\u201d).",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-025",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "especially when the chosen adjectives . . . provide a positive spin on the studies, rather than a substantive disclaimer",
+      "violation_reason": "13-14 (use of adjectives such as \u201cpromising\u201d or \u201cpreliminary\u201d does not alter the net impression of the efficacy claims, \u201cespecially when the chosen adjectives . . . provide a positive spin on the studies, rather than a substantive disclaimer\u201d) (Commissioner Ohlhausen concurring but finding that cert",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-026",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "because those are non-establishment health-related efficacy claims, the defendants must be able to point to \u2018competent and reliable scientific evidence\u2019 as substantiation",
+      "violation_reason": "2d at 300 (\u201cbecause those are non-establishment health-related efficacy claims, the defendants must be able to point to \u2018competent and reliable scientific evidence\u2019 as substantiation\u201d) (citing Removatron Int\u2019l Corp.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-027",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "misleading_efficacy",
+      "claim_text": "inapposite both procedurally and factually,",
+      "violation_reason": "The court ruled that Bayer was \u201cinapposite both procedurally and factually,\u201d because it turned on a narrow question of whether Bayer had violated an existing FTC consent decree.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-028",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "requiring RCTs or challenging claims for lack of an RCT",
+      "violation_reason": "It reasoned that the Bayer court\u2019s refusal to read an RCT requirement into the language of a specific FTC decree provision did not preclude the FTC from \u201crequiring RCTs or challenging claims for lack of an RCT\u201d in the case before it.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-029",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "adequate and well-controlled clinical testing",
+      "violation_reason": "1989) (requiring \u201cadequate and well-controlled clinical testing\u201d to substantiate claims for hair removal product); Thompson Med.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-030",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "cannot be characterized as serious scientific research",
+      "violation_reason": "1999) (stating animal and in vitro studies \u201ccannot be characterized as serious scientific research\u201d without medical proof that effects would be the same in humans).",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-031",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "not the same as stating that a causal link has been established.",
+      "violation_reason": "3d at 495 (citing expert\u2019s acknowledgement that health recommendations are made when the data is not supported by RCTs, based on \u201cbest available evidence\u201d which is \u201cnot the same as stating that a causal link has been established.\u201d)\n\n[\\[39\\]](https://www.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-032",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "selective touting of ostensibly favorable results and nondisclosure of contrary indications from the same or a later study",
+      "violation_reason": "at 494 (citing Commission opinion that POM\u2019s \u201cselective touting of ostensibly favorable results and nondisclosure of contrary indications from the same or a later study\u201d were deceptive omissions of material facts).",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-033",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "there may be interactions between the ingredients that affect their physiological actions",
+      "violation_reason": "19, 2014) (order granting FTC summary judgment) (accepting expert requirement that RCTs for diabetes supplement should be on the same dosage and formulation rather than on individual ingredients because \u201cthere may be interactions between the ingredients that affect their physiological actions\u201d).",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-health-compliance-034",
+      "source": "FTC Health Products Compliance Guidance",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+      "category": "health_claim",
+      "claim_text": "leaves an overall impression of nonsense, not clarity",
+      "violation_reason": "9 (disclaimers that products were not intended to diagnose, treat, or cure any disease, in light of statement that studies prove disease cure, \u201cleaves an overall impression of nonsense, not clarity\u201d); Spencer, 132 F.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-diabetes-endorsements-001",
+      "source": "FTC Deceptive Diabetes Claims (endorsement enforcement)",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2018/12/endorsement-enforcement-deceptive-diabetes-claims-challenged",
+      "category": "disclosure_violation",
+      "claim_text": "Is your diabetes out of control? . . . Are your blood sugar numbers dangerously high? You need to try the all-natural supplement called Nobetes.",
+      "violation_reason": "\u201d Other ads opened with this Q&A: \u201cIs your diabetes out of control? . . . Are your blood sugar numbers dangerously high? You need to try the all-natural supplement called Nobetes.\u201d\n\nAds featured consumer endorsers who claimed to achieve impressive results, sometimes immediately: \u201cThe first pill I to",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-diabetes-endorsements-002",
+      "source": "FTC Deceptive Diabetes Claims (endorsement enforcement)",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2018/12/endorsement-enforcement-deceptive-diabetes-claims-challenged",
+      "category": "disclosure_violation",
+      "claim_text": "The first pill I took, I could feel a difference. I went from 549 to 112 in 24 hours with Nobetes.",
+      "violation_reason": "\u201d\n\nAds featured consumer endorsers who claimed to achieve impressive results, sometimes immediately: \u201cThe first pill I took, I could feel a difference. I went from 549 to 112 in 24 hours with Nobetes.\u201d According to another endorser, \u201cAt nighttime, I had tingling in my arms and dry mouth and even blu",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-diabetes-endorsements-003",
+      "source": "FTC Deceptive Diabetes Claims (endorsement enforcement)",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2018/12/endorsement-enforcement-deceptive-diabetes-claims-challenged",
+      "category": "disclosure_violation",
+      "claim_text": "At nighttime, I had tingling in my arms and dry mouth and even blurry vision. This has all gone away just by taking a pill.",
+      "violation_reason": "\u201d According to another endorser, \u201cAt nighttime, I had tingling in my arms and dry mouth and even blurry vision. This has all gone away just by taking a pill.\u201d Others claimed that Nobetes allowed them to reduce or even stop their use of insulin or prescription drugs.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-diabetes-endorsements-004",
+      "source": "FTC Deceptive Diabetes Claims (endorsement enforcement)",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2018/12/endorsement-enforcement-deceptive-diabetes-claims-challenged",
+      "category": "health_claim",
+      "claim_text": "I still eat the same old crap I always did. But once I eat all that crap, my sugar will go up. But when I take my Nobetes after dinner, by evening, I\u2019m right back where I was when I started.",
+      "violation_reason": "According to another user, he could control his diabetes without changing his diet simply by taking Nobetes: \u201cI still eat the same old crap I always did. But once I eat all that crap, my sugar will go up. But when I take my Nobetes after dinner, by evening, I\u2019m right back where I was when I started.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-diabetes-endorsements-005",
+      "source": "FTC Deceptive Diabetes Claims (endorsement enforcement)",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2018/12/endorsement-enforcement-deceptive-diabetes-claims-challenged",
+      "category": "health_claim",
+      "claim_text": "Get two bottles free. Just pay processing and handling. Nobetes, it will change your life forever.",
+      "violation_reason": "\u201d\n\nFor consumers still on the fence, many Nobetes ads touted a free trial: \u201cGet two bottles free. Just pay processing and handling. Nobetes, it will change your life forever.\u201d\n\nBut according to the FTC, the operative word for many of Nobetes\u2019 practices was \u201cno\u201d \u2013 no sound science to support their dr",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-diabetes-endorsements-006",
+      "source": "FTC Deceptive Diabetes Claims (endorsement enforcement)",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2018/12/endorsement-enforcement-deceptive-diabetes-claims-challenged",
+      "category": "health_claim",
+      "claim_text": "in the same manner the advertiser would be required to do if it had made the representation directly.",
+      "violation_reason": "255&rgn=div5) state, \u201c\\[T\\]he advertiser must possess and rely upon adequate substantiation\u201d to support claims made through endorsements \u201cin the same manner the advertiser would be required to do if it had made the representation directly.\u201d\n\nExperts need to be expert.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-amberen-weight-loss-001",
+      "source": "FTC vs Amberen - Weight Loss & Menopause Claims",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2016/05/marketers-dietary-supplement-amberen-settle-ftc-charges-regarding-misleading-weight-loss-menopause",
+      "category": "health_claim",
+      "claim_text": "The Lunada defendants made strong claims about the effectiveness of their supplement without the scientific evidence to back them up,",
+      "violation_reason": "\u201cThe Lunada defendants made strong claims about the effectiveness of their supplement without the scientific evidence to back them up,\u201d said Jessica Rich, Director of the FTC\u2019s Bureau of Consumer Protection.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-amberen-weight-loss-002",
+      "source": "FTC vs Amberen - Weight Loss & Menopause Claims",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2016/05/marketers-dietary-supplement-amberen-settle-ftc-charges-regarding-misleading-weight-loss-menopause",
+      "category": "health_claim",
+      "claim_text": "The relief provided by this court order is intended to prevent the defendants from making unsupported health benefit claims in the future.",
+      "violation_reason": "\u201cThe relief provided by this court order is intended to prevent the defendants from making unsupported health benefit claims in the future.\u201d\n\nThe FTC filed its [original complaint in May 2015](https://www.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-florida-supplements-001",
+      "source": "FTC vs Florida Supplement Sellers",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2017/11/florida-based-supplement-sellers-settle-ftc-false-advertising-charges",
+      "category": "misleading_efficacy",
+      "claim_text": "signal the brain\u2019s hypothalamus to burn current body fat stores.",
+      "violation_reason": "According to ads for the defendants\u2019 BioMazing HCG supplement, the product contained the hormone Human Chorionic Gonadotropin (HCG), which would \u201csignal the brain\u2019s hypothalamus to burn current body fat stores.\u201d Ads further claimed that product users would burn 1,500 to 4,000 calories of excess fat ",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-florida-supplements-002",
+      "source": "FTC vs Florida Supplement Sellers",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2017/11/florida-based-supplement-sellers-settle-ftc-false-advertising-charges",
+      "category": "misleading_efficacy",
+      "claim_text": "real life success stories",
+      "violation_reason": "Ads for defendants\u2019 Hoodoba diet pills claimed the product would suppress the appetite, and included supposed \u201creal life success stories\u201d from consumers who said they lost substantial weight, such as 100 pounds in six months, after using the product.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-florida-supplements-003",
+      "source": "FTC vs Florida Supplement Sellers",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2017/11/florida-based-supplement-sellers-settle-ftc-false-advertising-charges",
+      "category": "health_claim",
+      "claim_text": "super-charge your immune system",
+      "violation_reason": "Immune Strong was touted as able to \u201csuper-charge your immune system\u201d and \u201cdefeat the common cold, flu, viruses & deadly diseases.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-florida-supplements-004",
+      "source": "FTC vs Florida Supplement Sellers",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2017/11/florida-based-supplement-sellers-settle-ftc-false-advertising-charges",
+      "category": "health_claim",
+      "claim_text": "defeat the common cold, flu, viruses & deadly diseases.",
+      "violation_reason": "Immune Strong was touted as able to \u201csuper-charge your immune system\u201d and \u201cdefeat the common cold, flu, viruses & deadly diseases.\u201d It contained extracts from 19 plants.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-florida-supplements-005",
+      "source": "FTC vs Florida Supplement Sellers",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2017/11/florida-based-supplement-sellers-settle-ftc-false-advertising-charges",
+      "category": "health_claim",
+      "claim_text": "reduces health-related time-off from work by a whopping 97%,",
+      "violation_reason": "Citing \u201cRock-Solid Science,\u201d the defendants claimed Immune Strong \u201cworks wonders\u201d against cold, flu, and viruses, \u201creduces health-related time-off from work by a whopping 97%,\u201d and fights ailments ranging from multiple sclerosis to HIV and cancer.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-florida-supplements-006",
+      "source": "FTC vs Florida Supplement Sellers",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2017/11/florida-based-supplement-sellers-settle-ftc-false-advertising-charges",
+      "category": "health_claim",
+      "claim_text": "Ingredients Supported by Scientific Studies",
+      "violation_reason": "Ads claimed that \u201cIngredients Supported by Scientific Studies\u201d would \u201cLower Your Blood Pressure Naturally, Now.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-florida-supplements-007",
+      "source": "FTC vs Florida Supplement Sellers",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2017/11/florida-based-supplement-sellers-settle-ftc-false-advertising-charges",
+      "category": "health_claim",
+      "claim_text": "Lower Your Blood Pressure Naturally, Now.",
+      "violation_reason": "Ads claimed that \u201cIngredients Supported by Scientific Studies\u201d would \u201cLower Your Blood Pressure Naturally, Now.\u201d\u00a0 This claim was enhanced by quotes from supposed \u201chappy customers\u201d testifying to significant decreases in blood pressure from use of VascuVite.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-florida-supplements-008",
+      "source": "FTC vs Florida Supplement Sellers",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2017/11/florida-based-supplement-sellers-settle-ftc-false-advertising-charges",
+      "category": "misleading_efficacy",
+      "claim_text": "the most reliable evaluator of trust in the online marketplace.",
+      "violation_reason": "\u201d Consumer who clicked on the seal were taken to another website claiming that defendants\u2019 website had been verified as \u201cethical\u201d and \u201ctrustworthy\u201d by Ethical Site, \u201cthe most reliable evaluator of trust in the online marketplace.\u201d The FTC alleged that Ethical Site was not an independent third-party ",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-dannon-activia-001",
+      "source": "FTC vs Dannon Activia/DanActive",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2010/12/ftc-challenges-dannons-claims-activia-yogurt-danactive",
+      "category": "health_claim",
+      "claim_text": "87% of this country suffers from digestive issues like occasional irregularity",
+      "violation_reason": "In one TV ad, actress Jamie Lee Curtis tells viewers that \u201c87% of this country suffers from digestive issues like occasional irregularity\u201d and \u201cour busy lives sometimes force us to eat the wrong things at the wrong time.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-dannon-activia-002",
+      "source": "FTC vs Dannon Activia/DanActive",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2010/12/ftc-challenges-dannons-claims-activia-yogurt-danactive",
+      "category": "health_claim",
+      "claim_text": "our busy lives sometimes force us to eat the wrong things at the wrong time.",
+      "violation_reason": "In one TV ad, actress Jamie Lee Curtis tells viewers that \u201c87% of this country suffers from digestive issues like occasional irregularity\u201d and \u201cour busy lives sometimes force us to eat the wrong things at the wrong time.\u201d She reassures viewers that Activia can help.",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-dannon-activia-003",
+      "source": "FTC vs Dannon Activia/DanActive",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2010/12/ftc-challenges-dannons-claims-activia-yogurt-danactive",
+      "category": "health_claim",
+      "claim_text": "With the natural culture Bifidus Regularis, Activia eaten every day is clinically proven to help regulate your digestive system in two weeks.",
+      "violation_reason": "A superscript appears that read CLINICALLY PROVEN WITH BIFIDUS REGULARIS while a narrator says, \u201cWith the natural culture Bifidus Regularis, Activia eaten every day is clinically proven to help regulate your digestive system in two weeks.\u201d Thus, according to the FTC, Dannon claimed that eating one s",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    },
+    {
+      "id": "ftc-dannon-activia-004",
+      "source": "FTC vs Dannon Activia/DanActive",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2010/12/ftc-challenges-dannons-claims-activia-yogurt-danactive",
+      "category": "health_claim",
+      "claim_text": "a detailed scientific resource that will provide in-depth information about Bifidus Regularis and its effect on slow intestinal transit.",
+      "violation_reason": "For example, through a link on the Activia website labeled For Health Care Professionals, Dannon presented what it described as \u201ca detailed scientific resource that will provide in-depth information about Bifidus Regularis and its effect on slow intestinal transit.\u201d One document mentioned two clinic",
+      "cited_rule": "FTC Act Section 5 - Deceptive practices",
+      "platform_relevant": [
+        "youtube",
+        "meta",
+        "tiktok"
+      ],
+      "expected_status": "FAIL",
+      "severity": "CRITICAL",
+      "verbatim": true
+    }
+  ]
+}
