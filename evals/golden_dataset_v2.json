@@ -4,18 +4,22 @@
     "name": "Joint supplement unsubstantiated efficacy claim",
     "transcript": "Are your joints feeling stiff? FlexiJoint Pro maintains joint health and mobility into old age. Just two capsules a day and you'll feel twenty years younger. Order now.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-001",
-    "rationale": "Unsubstantiated health claim — 'maintains joint health and mobility' ruled illegal in FTC Example 6 (Arthricure)"
+    "rationale": "Unsubstantiated health claim \u2014 'maintains joint health and mobility' ruled illegal in FTC Example 6 (Arthricure)"
   },
   {
     "id": "eval-health-002",
     "name": "Knee pain supplement with age-reversal claim",
     "transcript": "JointEase Gold restores youthful joint function and eliminates knee pain permanently. Backed by decades of herbal wisdom. Try it risk-free for 30 days.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-001",
@@ -26,7 +30,9 @@
     "name": "Compliant joint health supplement ad",
     "transcript": "FlexiJoint contains glucosamine and chondroitin. Some studies suggest these ingredients may support joint comfort. Talk to your doctor about whether FlexiJoint is right for you. Individual results may vary.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-health-001",
@@ -37,18 +43,24 @@
     "name": "Herbal pain reliever false safety claim",
     "transcript": "Tired of ibuprofen side effects? HerbRelief is the all-natural pain solution without the side effects of over-the-counter pain relievers. 100% plant-based, zero stomach irritation guaranteed.",
     "category": "health_claim",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-002",
-    "rationale": "False safety claim — comparing favorably to OTC drugs without disclosing own side effects (FTC Example 9)"
+    "rationale": "False safety claim \u2014 comparing favorably to OTC drugs without disclosing own side effects (FTC Example 9)"
   },
   {
     "id": "eval-health-005",
     "name": "CBD pain relief without side effects",
     "transcript": "CBDCalm offers natural pain relief without any of the dangerous side effects of prescription painkillers. No addiction risk, no liver damage, just pure plant power.",
     "category": "health_claim",
-    "platforms": ["youtube", "tiktok"],
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-002",
@@ -59,7 +71,9 @@
     "name": "Compliant herbal pain product ad",
     "transcript": "HerbRelief contains turmeric and willow bark, which have been used traditionally for comfort. This product is not intended to replace medical treatment. Consult your healthcare provider before use.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-health-002",
@@ -70,18 +84,23 @@
     "name": "Sports drink with clinically tested ingredient claim",
     "transcript": "PowerFlow contains a clinically tested ingredient proven to improve blood flow by 40% and boost endurance. Used by elite athletes worldwide. Fuel your performance.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-003",
-    "rationale": "Misleading 'clinically tested' claim — studies on isolated ingredient don't prove product efficacy (FTC Example 18)"
+    "rationale": "Misleading 'clinically tested' claim \u2014 studies on isolated ingredient don't prove product efficacy (FTC Example 18)"
   },
   {
     "id": "eval-health-008",
     "name": "Pre-workout with clinical research claim",
     "transcript": "NitroBoost features ingredients backed by peer-reviewed clinical research. Increase your VO2 max and crush your personal records. The science speaks for itself.",
     "category": "health_claim",
-    "platforms": ["youtube", "tiktok"],
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-003",
@@ -92,7 +111,9 @@
     "name": "Compliant sports nutrition ad",
     "transcript": "PowerFlow is formulated with electrolytes and B vitamins to support your active lifestyle. As with any supplement, individual responses may vary. Not a substitute for a balanced diet.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-health-003",
@@ -103,18 +124,23 @@
     "name": "Heart health juice proven claim",
     "transcript": "HeartGuard juice is proven to promote cardiovascular health. Drink one glass daily and reduce your risk of heart disease. Clinically validated formula.",
     "category": "health_claim",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-004",
-    "rationale": "'Proven' claim based on single small study (FTC Example 31) — one trial doesn't support 'proven'"
+    "rationale": "'Proven' claim based on single small study (FTC Example 31) \u2014 one trial doesn't support 'proven'"
   },
   {
     "id": "eval-health-011",
     "name": "Omega-3 cardiovascular proven benefit",
     "transcript": "OmegaMax is scientifically proven to lower your cholesterol and protect your heart. Over 10,000 satisfied customers can't be wrong. Take control of your heart health today.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-004",
@@ -125,7 +151,9 @@
     "name": "Compliant heart-healthy food ad",
     "transcript": "HeartGuard juice contains antioxidants from pomegranate. While research on pomegranate and heart health is ongoing, a healthy diet including fruits may contribute to cardiovascular wellness.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-health-004",
@@ -134,9 +162,11 @@
   {
     "id": "eval-efficacy-001",
     "name": "Weight loss device with specific numbers",
-    "transcript": "The AbToner 3000 — in just 10 minutes a day for 30 days, you can effortlessly lose two or more inches and 10 pounds from your waist. FDA registered device. Results guaranteed.",
+    "transcript": "The AbToner 3000 \u2014 in just 10 minutes a day for 30 days, you can effortlessly lose two or more inches and 10 pounds from your waist. FDA registered device. Results guaranteed.",
     "category": "misleading_efficacy",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-efficacy-001",
@@ -147,18 +177,23 @@
     "name": "Weight loss belt infomercial",
     "transcript": "SlimBelt vibrating technology melts away belly fat. Lose 3 inches in your first week. No gym, no diet changes needed. Just wear it while watching TV. Thousands of 5-star reviews.",
     "category": "misleading_efficacy",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 2,
     "seed_id": "seed-efficacy-001",
-    "rationale": "Specific loss claim + 'no diet/exercise' + passive device efficacy — classic FTC violation pattern"
+    "rationale": "Specific loss claim + 'no diet/exercise' + passive device efficacy \u2014 classic FTC violation pattern"
   },
   {
     "id": "eval-efficacy-003",
     "name": "Compliant exercise equipment ad",
     "transcript": "The AbToner helps you engage your core muscles during a workout. Results depend on consistent use combined with a balanced diet and regular exercise. Consult a fitness professional before starting any program.",
     "category": "misleading_efficacy",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-efficacy-001",
@@ -169,7 +204,9 @@
     "name": "Cholesterol supplement with hedged but misleading language",
     "transcript": "Exciting new research suggests CholestAway may help maintain healthy cholesterol levels already within normal range. Promising preliminary studies point to real benefits. Try it today.",
     "category": "misleading_efficacy",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-efficacy-002",
@@ -180,18 +217,24 @@
     "name": "Brain supplement hypothalamus mechanism claim",
     "transcript": "NeuroSlim targets your brain's hypothalamus to naturally signal your body to burn stored fat while you sleep. Patented neuro-receptor technology backed by 15 years of research.",
     "category": "misleading_efficacy",
-    "platforms": ["youtube", "tiktok"],
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-efficacy-003",
-    "rationale": "Pseudo-scientific mechanism claim ('signal hypothalamus to burn fat') — FTC Florida Supplement case"
+    "rationale": "Pseudo-scientific mechanism claim ('signal hypothalamus to burn fat') \u2014 FTC Florida Supplement case"
   },
   {
     "id": "eval-efficacy-006",
     "name": "Fat-burning coffee with science claims",
     "transcript": "BurnBrew coffee activates thermogenesis at the cellular level to accelerate fat oxidation. Peer-reviewed ingredients. Doctor formulated. Lose weight with your morning coffee.",
     "category": "misleading_efficacy",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-efficacy-003",
@@ -202,7 +245,9 @@
     "name": "Compliant metabolism support supplement",
     "transcript": "MetaBoost contains green tea extract and caffeine, which some research associates with a modest increase in metabolic rate. This product is not intended for weight loss. A healthy diet and exercise are essential for weight management.",
     "category": "misleading_efficacy",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-efficacy-003",
@@ -213,7 +258,9 @@
     "name": "Sleep supplement for anxiety without interaction warning",
     "transcript": "Can't sleep? MellowNight is your all-natural solution for when life's stresses get you down or you're too anxious to fall asleep. No prescription needed. Non-habit forming. Works the first night.",
     "category": "misleading_efficacy",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-efficacy-004",
@@ -224,7 +271,10 @@
     "name": "Diabetes supplement testimonial with specific numbers",
     "transcript": "Listen to what happened to me. The first pill I took, I could feel a difference. My blood sugar went from 549 to 112 in 24 hours. GlucoBalance changed my life. Order yours today.",
     "category": "disclosure_violation",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-disclosure-001",
@@ -235,7 +285,10 @@
     "name": "Weight loss testimonial without typicality",
     "transcript": "I lost 47 pounds in just 6 weeks using TrimFast. I didn't change anything else about my life. This product is a miracle. If I can do it, so can you.",
     "category": "disclosure_violation",
-    "platforms": ["youtube", "tiktok"],
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
     "expected_status": "FAIL",
     "min_violations": 2,
     "seed_id": "seed-disclosure-001",
@@ -246,7 +299,9 @@
     "name": "Compliant supplement testimonial",
     "transcript": "I've been taking GlucoBalance for three months as part of my overall health program including diet changes and exercise. I've noticed I feel better overall. Results shown are not typical and individual results will vary. Consult your doctor.",
     "category": "disclosure_violation",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-disclosure-001",
@@ -257,7 +312,10 @@
     "name": "Diabetes symptom cure testimonial",
     "transcript": "I used to have tingling in my arms, dry mouth, and blurry vision every night. After just one week on DiabeCure, all of those symptoms are completely gone. It's like I never had diabetes.",
     "category": "disclosure_violation",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-disclosure-002",
@@ -268,7 +326,10 @@
     "name": "Influencer supplement promotion without disclosure",
     "transcript": "Hey guys, I've been using ImmunoBoost every morning and honestly I haven't been sick in months. Like this stuff actually works. Link in bio if you want to try it. You won't regret it.",
     "category": "disclosure_violation",
-    "platforms": ["youtube", "tiktok"],
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-disclosure-003",
@@ -279,7 +340,9 @@
     "name": "Immune system disease prevention claim",
     "transcript": "ImmuneShield super-charges your immune system to defeat the common cold, flu, viruses, and even deadly diseases. Pharmaceutical grade ingredients at a fraction of the cost.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 2,
     "seed_id": "seed-health-006",
@@ -290,18 +353,23 @@
     "name": "Vitamin C immune disease shield",
     "transcript": "MegaC 5000 creates an impenetrable shield against all viruses and bacteria. Eliminates cold and flu guaranteed or your money back. Why risk getting sick?",
     "category": "health_claim",
-    "platforms": ["youtube", "tiktok"],
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
     "expected_status": "FAIL",
     "min_violations": 2,
     "seed_id": "seed-health-006",
-    "rationale": "Absolute disease prevention claim ('impenetrable shield', 'eliminates', 'all viruses') — no supplement can make this claim"
+    "rationale": "Absolute disease prevention claim ('impenetrable shield', 'eliminates', 'all viruses') \u2014 no supplement can make this claim"
   },
   {
     "id": "eval-health-015",
     "name": "Compliant immune support supplement",
     "transcript": "ImmuneShield contains vitamin C and zinc, which support normal immune function. Adequate intake of these nutrients is part of a healthy lifestyle. Not intended to prevent or treat any disease.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-health-006",
@@ -312,7 +380,10 @@
     "name": "Blood pressure supplement with specific stat",
     "transcript": "HyperTone reduces health-related time-off from work by a whopping 97 percent. Lower your blood pressure naturally with our proprietary blend. Results in as little as two weeks.",
     "category": "health_claim",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 2,
     "seed_id": "seed-health-007",
@@ -323,7 +394,9 @@
     "name": "Compliant blood pressure wellness ad",
     "transcript": "HyperTone contains hawthorn berry and CoQ10. Some studies suggest these may support healthy blood pressure already within the normal range. This is not a substitute for prescribed medication. See your doctor.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-health-008",
@@ -334,7 +407,10 @@
     "name": "Probiotic digestive health with prevalence stat",
     "transcript": "Did you know 87% of Americans suffer from digestive issues? DigestPro with patented probiotic strain is clinically proven to eliminate bloating and irregularity within 48 hours.",
     "category": "health_claim",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 2,
     "seed_id": "seed-health-009",
@@ -345,7 +421,9 @@
     "name": "Yogurt digestive aid with clinical proof claim",
     "transcript": "GutRenew with live active cultures is scientifically proven to solve your digestive problems. Eat one cup daily for regularity. Clinically validated by doctors at leading universities.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-010",
@@ -356,7 +434,9 @@
     "name": "Compliant probiotic ad",
     "transcript": "GutRenew contains Lactobacillus cultures that may help maintain digestive balance when consumed as part of a balanced diet. Individual digestive experiences differ. Not intended to treat any condition.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-health-009",
@@ -367,29 +447,37 @@
     "name": "Weight loss before/after with inadequate disclaimer",
     "transcript": "Look at Sarah's transformation! She lost 45 pounds in just 8 weeks with SlimMax. These results are not typical. Your weight loss may not be the same. But Sarah did it, and you can too!",
     "category": "before_after",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-before-after-001",
-    "rationale": "Fine print disclaimer contradicted by 'you can too' — disclaimer doesn't cure misleading impression (FTC Example 38)"
+    "rationale": "Fine print disclaimer contradicted by 'you can too' \u2014 disclaimer doesn't cure misleading impression (FTC Example 38)"
   },
   {
     "id": "eval-before-after-002",
     "name": "Dramatic weight loss testimonial with asterisk",
-    "transcript": "I went from a size 18 to a size 4 in three months.* (*Results not typical.) FastBurn changed everything for me. Don't wait — start your transformation today.",
+    "transcript": "I went from a size 18 to a size 4 in three months.* (*Results not typical.) FastBurn changed everything for me. Don't wait \u2014 start your transformation today.",
     "category": "before_after",
-    "platforms": ["youtube", "tiktok"],
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-before-after-001",
-    "rationale": "Asterisk disclaimer for atypical dramatic results is insufficient — FTC requires prominent expected results disclosure"
+    "rationale": "Asterisk disclaimer for atypical dramatic results is insufficient \u2014 FTC requires prominent expected results disclosure"
   },
   {
     "id": "eval-before-after-003",
     "name": "Compliant weight management testimonial",
     "transcript": "I've been using SlimMax alongside a 1500 calorie diet and walking 30 minutes daily. Over 6 months, I've gradually lost weight. In a clinical study, average weight loss was 3 pounds over 8 weeks compared to 1 pound for placebo.",
     "category": "before_after",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-before-after-001",
@@ -400,7 +488,9 @@
     "name": "Nobel Prize research misattribution",
     "transcript": "BrainMax is formulated based on Nobel Prize-winning neuroscience research. Proven effective by over $5 million in NIH-funded studies. The smartest choice for your brain.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-011",
@@ -411,7 +501,10 @@
     "name": "Harvard research brain supplement",
     "transcript": "Developed from research at Harvard Medical School. CogniPlus is clinically proven to reverse age-related cognitive decline. Restore your mental sharpness in just 14 days.",
     "category": "health_claim",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 2,
     "seed_id": "seed-health-011",
@@ -422,7 +515,9 @@
     "name": "Compliant brain health supplement",
     "transcript": "CogniPlus contains DHA and phosphatidylserine, nutrients that play a role in brain function. While some research exists on these nutrients, we make no claims about treating or preventing any condition. Speak with your healthcare provider.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-health-011",
@@ -433,7 +528,9 @@
     "name": "Memory software clinically proven",
     "transcript": "BrainTrainer is clinically proven to improve your memory, focus, and cognitive performance. Used by executives at Fortune 500 companies. Sharpen your mind in just 5 minutes a day.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-health-005",
@@ -442,9 +539,11 @@
   {
     "id": "eval-health-025",
     "name": "Compliant brain training app",
-    "transcript": "BrainTrainer offers puzzles and exercises designed to challenge your working memory. While enjoyable, no app can guarantee cognitive improvement. Think of it as a gym for your brain — results depend on consistent practice.",
+    "transcript": "BrainTrainer offers puzzles and exercises designed to challenge your working memory. While enjoyable, no app can guarantee cognitive improvement. Think of it as a gym for your brain \u2014 results depend on consistent practice.",
     "category": "health_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-health-005",
@@ -453,42 +552,53 @@
   {
     "id": "eval-financial-001",
     "name": "Crypto guaranteed returns",
-    "transcript": "CryptoWealth AI guarantees 500% returns in 30 days. Zero risk — our algorithm never loses. Join 50,000 members already earning passive income. Limited spots available, act now.",
+    "transcript": "CryptoWealth AI guarantees 500% returns in 30 days. Zero risk \u2014 our algorithm never loses. Join 50,000 members already earning passive income. Limited spots available, act now.",
     "category": "financial_claim",
-    "platforms": ["youtube", "tiktok"],
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
     "expected_status": "FAIL",
     "min_violations": 2,
     "seed_id": null,
-    "rationale": "Guaranteed returns + zero risk + specific ROI + urgency scarcity — violates financial advertising rules on all platforms"
+    "rationale": "Guaranteed returns + zero risk + specific ROI + urgency scarcity \u2014 violates financial advertising rules on all platforms"
   },
   {
     "id": "eval-financial-002",
     "name": "Forex trading bot guaranteed income",
     "transcript": "ForexMaster bot makes you money while you sleep. Guaranteed minimum $500 per day. No experience needed, our AI does everything. Join the financial freedom revolution.",
     "category": "financial_claim",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 2,
     "seed_id": null,
-    "rationale": "Guaranteed daily income + no risk/effort claims + implied algorithmic certainty — deceptive financial claim"
+    "rationale": "Guaranteed daily income + no risk/effort claims + implied algorithmic certainty \u2014 deceptive financial claim"
   },
   {
     "id": "eval-financial-003",
     "name": "Investment course with earnings claims",
     "transcript": "My students are making $10,000 a month following my system. This exact blueprint took me from broke to millionaire in 18 months. Enroll today and change your financial future.",
     "category": "financial_claim",
-    "platforms": ["youtube", "tiktok"],
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": null,
-    "rationale": "Specific earnings claims without typicality disclosure or 'results not typical' — implies these are common outcomes"
+    "rationale": "Specific earnings claims without typicality disclosure or 'results not typical' \u2014 implies these are common outcomes"
   },
   {
     "id": "eval-financial-004",
     "name": "Compliant investment education ad",
     "transcript": "Learn the fundamentals of investing with our educational course. Trading involves substantial risk of loss and is not suitable for all investors. Past performance does not guarantee future results. Only invest what you can afford to lose.",
     "category": "financial_claim",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": null,
@@ -497,31 +607,39 @@
   {
     "id": "eval-urgency-001",
     "name": "Fake scarcity supplement offer",
-    "transcript": "WARNING: Due to overwhelming demand, we only have 47 bottles left. This price won't last — after midnight tonight it goes back to $89.99. Order in the next 15 minutes and get free shipping.",
+    "transcript": "WARNING: Due to overwhelming demand, we only have 47 bottles left. This price won't last \u2014 after midnight tonight it goes back to $89.99. Order in the next 15 minutes and get free shipping.",
     "category": "deceptive_urgency",
-    "platforms": ["youtube", "meta"],
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": null,
-    "rationale": "Fabricated scarcity + time pressure — if this offer recurs regularly, 'tonight only' is deceptive urgency"
+    "rationale": "Fabricated scarcity + time pressure \u2014 if this offer recurs regularly, 'tonight only' is deceptive urgency"
   },
   {
     "id": "eval-urgency-002",
     "name": "Limited time offer always running",
     "transcript": "Flash sale! 70% off everything. Today only! This is your last chance to save big. Once it's gone, it's gone forever. Don't miss out on this once-in-a-lifetime deal.",
     "category": "deceptive_urgency",
-    "platforms": ["youtube", "tiktok"],
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": null,
-    "rationale": "If this 'today only' sale runs repeatedly, it's deceptive urgency — 'once-in-a-lifetime' implies unique event"
+    "rationale": "If this 'today only' sale runs repeatedly, it's deceptive urgency \u2014 'once-in-a-lifetime' implies unique event"
   },
   {
     "id": "eval-urgency-003",
     "name": "Compliant limited promotion",
-    "transcript": "We're offering 20% off through the end of this month as part of our summer promotion. After July 31st, regular pricing resumes. No pressure — shop when you're ready.",
+    "transcript": "We're offering 20% off through the end of this month as part of our summer promotion. After July 31st, regular pricing resumes. No pressure \u2014 shop when you're ready.",
     "category": "deceptive_urgency",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": null,
@@ -532,21 +650,705 @@
     "name": "Lifestyle influencer undisclosed promotion",
     "transcript": "Good morning everyone! Starting my day with this amazing green smoothie from VitaGreens. Honestly the best thing I've added to my routine this year. The energy is unreal. Swipe up to get yours!",
     "category": "disclosure_violation",
-    "platforms": ["tiktok", "youtube"],
+    "platforms": [
+      "tiktok",
+      "youtube"
+    ],
     "expected_status": "FAIL",
     "min_violations": 1,
     "seed_id": "seed-disclosure-003",
-    "rationale": "Paid promotion framed as organic endorsement without #ad or material connection disclosure — FTC Endorsement Guides"
+    "rationale": "Paid promotion framed as organic endorsement without #ad or material connection disclosure \u2014 FTC Endorsement Guides"
   },
   {
     "id": "eval-disclosure-007",
     "name": "Compliant influencer promotion",
     "transcript": "Ad. VitaGreens sent me this to try and I've been enjoying it in my morning routine. I can't make any health claims about it, but I like the taste. If you're interested, my affiliate link is in the description.",
     "category": "disclosure_violation",
-    "platforms": ["youtube"],
+    "platforms": [
+      "youtube"
+    ],
     "expected_status": "PASS",
     "min_violations": 0,
     "seed_id": "seed-disclosure-003",
     "rationale": "Clear 'Ad' disclosure at start, acknowledges gifted product, no efficacy claims, transparent affiliate relationship"
+  },
+  {
+    "id": "eval-financial-005",
+    "name": "Real estate guaranteed passive income",
+    "transcript": "Our real estate investment program guarantees you $3,000 in monthly passive income with zero management required. Properties handpicked by our AI. Start building generational wealth with just $500 down.",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Guaranteed income + specific dollar amounts + zero effort/risk language \u2014 deceptive financial claims"
+  },
+  {
+    "id": "eval-financial-006",
+    "name": "Day trading system with win rate",
+    "transcript": "Our trading system has a 94% win rate. Average daily profit: $847. Join 12,000 members who quit their 9-to-5. Free masterclass shows you exactly how. No financial experience needed.",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Specific win rate + daily profit number + implied guaranteed success \u2014 misleading financial performance claims"
+  },
+  {
+    "id": "eval-financial-007",
+    "name": "NFT investment opportunity guaranteed appreciation",
+    "transcript": "This NFT collection will 10x in value guaranteed. Early investors in our last drop made 2000% returns. Mint now before it sells out \u2014 only 100 spots left at this price.",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Guaranteed appreciation + past returns implied as future guarantee + false scarcity"
+  },
+  {
+    "id": "eval-financial-008",
+    "name": "MLM income opportunity testimonial",
+    "transcript": "I made $25,000 in my first month with this system. I went from living paycheck to paycheck to financial freedom. The opportunity is here \u2014 are you going to take it or stay broke?",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Specific income testimonial without typicality disclosure or income disclosure statement required by FTC"
+  },
+  {
+    "id": "eval-financial-009",
+    "name": "Compliant investment disclaimer ad",
+    "transcript": "Our course teaches the principles of value investing. All investments carry risk including potential loss of principal. Past performance of any strategy does not guarantee future results. Only invest money you can afford to lose.",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Educational framing, comprehensive risk warnings, no performance promises"
+  },
+  {
+    "id": "eval-financial-010",
+    "name": "Compliant fintech app ad",
+    "transcript": "SmartSave helps you track your spending and set savings goals. We don't provide investment advice. Your money is FDIC insured up to $250,000 through our partner bank. Fees may apply.",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "No earnings claims, states not investment advice, factual FDIC disclosure, transparent fees"
+  },
+  {
+    "id": "eval-financial-011",
+    "name": "Dropshipping guaranteed income",
+    "transcript": "My dropshipping students are averaging $15K per month within 90 days. Proven system \u2014 just copy and paste. I'll show you the exact products making me six figures. DM me 'START' for free training.",
+    "category": "financial_claim",
+    "platforms": [
+      "tiktok",
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Specific income claims without typicality disclosure + implied ease ('copy and paste') \u2014 deceptive income opportunity"
+  },
+  {
+    "id": "eval-financial-012",
+    "name": "Binary options zero risk trading",
+    "transcript": "Binary options with our signal service \u2014 zero risk, maximum reward. Our algorithm predicts market movements with 98% accuracy. Start with just $100 and watch it grow exponentially.",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Zero risk claim for inherently risky investment + specific accuracy percentage + exponential growth promise"
+  },
+  {
+    "id": "eval-urgency-004",
+    "name": "Countdown timer supplement scarcity",
+    "transcript": "ALERT: We just got notified that due to ingredient shortages, production of KetoBlast will stop next month. We only have 200 bottles left in our warehouse. Once they're gone, they're gone forever.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Fabricated supply shortage to create false scarcity \u2014 if product continues selling, this is deceptive"
+  },
+  {
+    "id": "eval-urgency-005",
+    "name": "Free trial expiring misleading offer",
+    "transcript": "Your exclusive free trial expires in 2 hours! After that, the price goes to $197 per month. This link will never work again. Seriously \u2014 this is the last time I'm offering this.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Fake countdown urgency + 'never again' language \u2014 if offer recurs, this is deceptive time pressure"
+  },
+  {
+    "id": "eval-urgency-006",
+    "name": "Flash sale that never ends",
+    "transcript": "MASSIVE flash sale happening RIGHT NOW! 80% off our entire collection. But you have to act fast \u2014 this deal expires at midnight. Use code LASTCHANCE.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "meta",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "If 'flash sale' is perpetually running (common dark pattern), 'expires at midnight' is deceptive urgency"
+  },
+  {
+    "id": "eval-urgency-007",
+    "name": "Fake waitlist course launch",
+    "transcript": "We had 10,000 people on the waitlist for this course. We can only accept 50 more students. After that, enrollment closes permanently. This is not a marketing gimmick \u2014 it's a capacity issue.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "'Enrollment closes permanently' + specific numbers designed to pressure \u2014 if course reopens, this is deceptive"
+  },
+  {
+    "id": "eval-urgency-008",
+    "name": "Compliant seasonal sale",
+    "transcript": "Our annual Black Friday sale runs November 24-27. Select items are 30% off while supplies last. Regular pricing returns November 28. See website for full terms.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Specific real dates, reasonable discount, 'while supplies last' is honest, terms referenced"
+  },
+  {
+    "id": "eval-urgency-009",
+    "name": "Compliant limited edition product",
+    "transcript": "We produced a limited run of 500 units for our anniversary collection. Once they sell out, this colorway won't be restocked. Each unit is numbered.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Genuine limited production with verifiable numbering \u2014 not manufactured urgency"
+  },
+  {
+    "id": "eval-urgency-010",
+    "name": "Price anchoring with fake original price",
+    "transcript": "Originally $299, now just $29! That's 90% savings! But hurry, at this price point we expect to sell out within the hour. Don't miss the deal of the century.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "If product was never actually sold at $299, the anchor price is deceptive + urgency pressure"
+  },
+  {
+    "id": "eval-disclosure-008",
+    "name": "Family vlog sponsored by food brand",
+    "transcript": "Today we're making the kids' favorite breakfast \u2014 these amazing organic pancakes from NatureFarm! The whole family loves them. They taste so much better than regular pancakes. Link in description for 15% off!",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Sponsored content integrated into family content without clear #ad disclosure \u2014 FTC requires conspicuous disclosure"
+  },
+  {
+    "id": "eval-disclosure-009",
+    "name": "Fitness influencer undisclosed partnership",
+    "transcript": "My morning routine starts with ProteinMax shake. I've been drinking it for two years now and my recovery has never been better. Best protein shake on the market, hands down.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Brand ambassador making efficacy claims without disclosing material connection \u2014 FTC Endorsement Guides violation"
+  },
+  {
+    "id": "eval-disclosure-010",
+    "name": "Doctor endorsement without conflict disclosure",
+    "transcript": "As a board-certified dermatologist, I recommend GlowSkin serum to all my patients. The clinical results speak for themselves. This is the only product I trust for anti-aging.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "If doctor has financial relationship with brand (paid endorser, equity), failure to disclose is deceptive"
+  },
+  {
+    "id": "eval-disclosure-011",
+    "name": "Fake customer review in ad",
+    "transcript": "Real customer Lisa M. says: 'I've tried everything and nothing worked until SkinPerfect. My wrinkles disappeared in 3 days.' Join thousands of satisfied customers. Order now.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Fabricated or unverifiable testimonial + specific timeframe ('3 days') efficacy claim without substantiation"
+  },
+  {
+    "id": "eval-disclosure-012",
+    "name": "Compliant sponsored podcast ad",
+    "transcript": "This episode is brought to you by ProteinMax. They're a sponsor of the show. I've tried their product \u2014 I like the chocolate flavor personally, but your mileage may vary. Check them out at the link if you're interested.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Clear sponsorship disclosure upfront, personal opinion framing, 'your mileage may vary', no efficacy claims"
+  },
+  {
+    "id": "eval-disclosure-013",
+    "name": "Compliant doctor product recommendation",
+    "transcript": "Disclosure: I'm a paid consultant for GlowSkin. That said, I've reviewed their published clinical data and believe it shows promise for hydration. This is not medical advice \u2014 see your own dermatologist for personalized recommendations.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Financial relationship disclosed upfront, qualified language, explicit not-medical-advice disclaimer"
+  },
+  {
+    "id": "eval-before-after-004",
+    "name": "Hair growth before/after photos",
+    "transcript": "Look at these results! Before using HairMax, John had visible thinning. After just 30 days, full thick hair. The photos don't lie. See what HairMax can do for you.",
+    "category": "before_after",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Before/after with specific timeframe (30 days) for hair growth without typicality or substantiation disclosure"
+  },
+  {
+    "id": "eval-before-after-005",
+    "name": "Skin cream transformation 7 days",
+    "transcript": "Day 1 versus Day 7. The transformation is real. DermaGlow eliminated 90% of my wrinkles in one week flat. I can't believe it. If you have wrinkles, you NEED this.",
+    "category": "before_after",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Specific percentage claim (90%) + specific unrealistic timeframe (7 days) + no disclaimer about typicality"
+  },
+  {
+    "id": "eval-before-after-006",
+    "name": "Fitness transformation sponsored post",
+    "transcript": "12 weeks on the FitPro program and look at these results! Down 30 pounds, up 15 pounds of muscle. This program works if you work it. Link in bio for my discount code.",
+    "category": "before_after",
+    "platforms": [
+      "tiktok",
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Specific body comp numbers without typicality + undisclosed affiliate/sponsorship + implied anyone can achieve same"
+  },
+  {
+    "id": "eval-before-after-007",
+    "name": "Acne product before/after testimonial",
+    "transcript": "My skin was COVERED in cystic acne. After 2 weeks of ClearFace, my skin is completely clear. Zero breakouts since. This product literally cured my acne. Before and after pics in comments.",
+    "category": "before_after",
+    "platforms": [
+      "tiktok",
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "'Cured my acne' is disease treatment claim + dramatic before/after without typicality + specific timeframe"
+  },
+  {
+    "id": "eval-before-after-008",
+    "name": "Compliant fitness transformation",
+    "transcript": "Here's my progress over 6 months of consistent training and nutrition coaching with FitPro. I worked with a registered dietitian and trained 5 days per week. Individual results depend on starting point, diet, and consistency.",
+    "category": "before_after",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Long realistic timeline, mentions professional guidance, acknowledges individual variation, credits effort not product"
+  },
+  {
+    "id": "eval-before-after-009",
+    "name": "Compliant skincare progress documentation",
+    "transcript": "I've been documenting my skin journey over 3 months using several products. Results have been gradual and I've also changed my diet and sleep habits. Everyone's skin is different \u2014 what works for me might not work for you.",
+    "category": "before_after",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Multi-factor attribution, realistic timeline, explicit individual variation disclaimer, no single product efficacy claim"
+  },
+  {
+    "id": "eval-efficacy-009",
+    "name": "Detox tea weight loss claim",
+    "transcript": "DetoxSlim tea flushes toxins from your body and burns stubborn belly fat overnight. Lose up to 5 pounds in your first 24 hours. All natural ingredients. No side effects.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "tiktok",
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Pseudoscientific 'detox' + specific weight loss timeframe + 'no side effects' safety claim without evidence"
+  },
+  {
+    "id": "eval-efficacy-010",
+    "name": "Collagen anti-aging reversal",
+    "transcript": "CollagenPure reverses 10 years of aging in just 4 weeks. Clinically proven to eliminate wrinkles, tighten sagging skin, and restore youthful collagen levels. See visible results in 72 hours.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "'Reverses 10 years' + 'eliminate wrinkles' + specific unrealistic timeframes without adequate clinical support"
+  },
+  {
+    "id": "eval-efficacy-011",
+    "name": "Testosterone booster with mechanism claims",
+    "transcript": "AlphaT naturally triggers your body to produce 300% more testosterone. Increase muscle mass, energy, and performance in days. Clinically dosed formula based on 47 studies.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Specific percentage increase (300%) + mechanism claim + 'in days' timeframe + '47 studies' misrepresentation"
+  },
+  {
+    "id": "eval-efficacy-012",
+    "name": "Eye cream dark circles vanish instantly",
+    "transcript": "Watch dark circles and puffy eyes vanish instantly with our patented peptide serum. One application and you'll look 5 years younger. Over 50,000 five-star reviews can't be wrong.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "meta",
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "'Vanish instantly' + 'look 5 years younger' specific claim + review count used as proof of efficacy"
+  },
+  {
+    "id": "eval-efficacy-013",
+    "name": "Hair growth supplement regrow in 14 days",
+    "transcript": "ReGrowMax stimulates dormant hair follicles at the molecular level. See new hair growth in as little as 14 days. FDA compliant formula with patented delivery technology.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Mechanism claim + unrealistic timeframe (hair growth cycle is months) + 'FDA compliant' misused as endorsement"
+  },
+  {
+    "id": "eval-efficacy-014",
+    "name": "Compliant anti-aging skincare ad",
+    "transcript": "Our serum contains retinol and hyaluronic acid, ingredients studied for their potential role in skin hydration and texture. Individual results vary based on skin type, age, and consistent use over several months.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Ingredient-level claims (not product), 'potential role', realistic timeline ('several months'), individual variation"
+  },
+  {
+    "id": "eval-efficacy-015",
+    "name": "Compliant hair supplement ad",
+    "transcript": "HairVita contains biotin and saw palmetto. Research on these nutrients and hair health is ongoing. We recommend consistent use for at least 3-6 months before evaluating results. Not a treatment for hair loss conditions.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Honest timeline, 'research ongoing', explicit not-a-treatment disclaimer, no specific efficacy promise"
+  },
+  {
+    "id": "eval-efficacy-016",
+    "name": "CBD oil cures everything",
+    "transcript": "CBD oil cures anxiety, depression, chronic pain, insomnia, and inflammation. Backed by thousands of studies. No prescription needed. Works faster than any pharmaceutical.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "'Cures' multiple conditions (disease claims) + drug comparison + 'thousands of studies' unsubstantiated claim"
+  },
+  {
+    "id": "eval-efficacy-017",
+    "name": "Probiotic cures IBS claim",
+    "transcript": "Struggling with IBS? BioFlora probiotic is the clinically proven cure. 9 out of 10 gastroenterologists recommend it. End your digestive suffering permanently with one capsule daily.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "'Cure' for diagnosed condition + unsubstantiated doctor recommendation stat + 'permanently' efficacy claim"
+  },
+  {
+    "id": "eval-efficacy-018",
+    "name": "Compliant CBD wellness ad",
+    "transcript": "Our CBD oil is derived from hemp and third-party tested for purity. Some users report it helps them feel more relaxed. CBD is not FDA approved to diagnose, treat, cure, or prevent any disease. Consult your doctor before use.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Subjective user reports, explicit FDA disclaimer, doctor referral, no disease/condition claims"
+  },
+  {
+    "id": "eval-health-026",
+    "name": "Cancer prevention supplement",
+    "transcript": "CellShield contains powerful antioxidants that prevent cancer cell growth. Protect yourself and your family from this deadly disease. Why wait until it's too late?",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Cancer prevention claim for supplement \u2014 one of FTC's most seriously enforced violations + fear-based urgency"
+  },
+  {
+    "id": "eval-health-027",
+    "name": "Autism supplement cure claim",
+    "transcript": "NeuroBalance has helped hundreds of children reduce autism symptoms dramatically. Parents report improved focus and social skills within the first week. Give your child the breakthrough they deserve.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Implied cure/treatment for autism + unsubstantiated testimonials + 'first week' unrealistic timeframe \u2014 extremely problematic"
+  },
+  {
+    "id": "eval-health-028",
+    "name": "Supplement prevents Alzheimers",
+    "transcript": "Studies show MindGuard reduces your risk of Alzheimer's by 60%. The earlier you start, the more protection you get. Don't let dementia steal your golden years.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Specific disease risk reduction percentage + Alzheimer's prevention claim + fear-based marketing \u2014 no supplement proven for this"
+  },
+  {
+    "id": "eval-health-029",
+    "name": "Compliant wellness supplement general health",
+    "transcript": "DailyVita provides essential vitamins and minerals to support your general health and wellbeing. A supplement is not a replacement for a varied, balanced diet. If you have any medical conditions, consult your healthcare provider.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "General wellness/structure-function claim, no disease references, proper disclaimers"
+  },
+  {
+    "id": "eval-health-030",
+    "name": "Compliant vitamin D immunity support",
+    "transcript": "Vitamin D plays a role in normal immune function. Many adults don't get enough from sunlight alone, especially in winter months. Our supplement provides 1000 IU per serving. Not intended to prevent any disease.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Factual nutrient role statement, addresses real deficiency concern, specific dosage, explicit disease disclaimer"
+  },
+  {
+    "id": "eval-health-031",
+    "name": "Diabetes reversal program",
+    "transcript": "Our 30-day program reverses Type 2 diabetes naturally. No more insulin injections. No more metformin. Our clients are going back to their doctors and being told they no longer have diabetes.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "'Reverses diabetes' + 'no more insulin/metformin' (implied stop medication) \u2014 extremely dangerous unsubstantiated claim"
+  },
+  {
+    "id": "eval-health-032",
+    "name": "Turmeric cures arthritis",
+    "transcript": "TurmericMax eliminates joint inflammation and cures arthritis pain permanently. Over 200 studies prove turmeric is nature's most powerful anti-inflammatory. Why suffer when the solution is this simple?",
+    "category": "health_claim",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "'Cures arthritis permanently' disease treatment claim + '200 studies prove' misrepresentation of research"
+  },
+  {
+    "id": "eval-health-033",
+    "name": "Compliant turmeric supplement ad",
+    "transcript": "TurmericMax contains curcumin, which has been studied for its potential anti-inflammatory properties. While research is promising, we make no claims about treating arthritis or any medical condition. Always consult your doctor.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Ingredient research framing, 'potential' qualifier, explicit no-treatment-claim, doctor referral"
+  },
+  {
+    "id": "eval-multiplatform-001",
+    "name": "Weight loss ad tested across YouTube and TikTok",
+    "transcript": "SkinnyFit helps you drop 3 dress sizes in 2 weeks. Just mix one scoop in your morning coffee. No gym needed, no food restrictions. Join the 100,000 women who already transformed their bodies.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Specific body change timeframe + no diet/exercise needed + unverified user count \u2014 violates both YouTube and TikTok policies"
+  },
+  {
+    "id": "eval-multiplatform-002",
+    "name": "Keto supplement multi-platform ad",
+    "transcript": "KetoBlast puts your body into ketosis within 60 minutes. Burn fat all day long without changing what you eat. As seen on Shark Tank. Limited supply available.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube",
+      "meta",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Unrealistic mechanism ('ketosis in 60 minutes') + no behavior change needed + false celebrity endorsement (Shark Tank)"
+  },
+  {
+    "id": "eval-multiplatform-003",
+    "name": "Teeth whitening instant results all platforms",
+    "transcript": "WhitePro whitens teeth 8 shades in one application. Dentist-strength formula you can use at home. 100% enamel safe guaranteed. See instant results or your money back.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube",
+      "meta",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Specific shade claim in one use + absolute safety guarantee ('100% enamel safe') \u2014 both unsubstantiated"
+  },
+  {
+    "id": "eval-disclosure-014",
+    "name": "Tech reviewer undisclosed free product",
+    "transcript": "Alright so I've been testing this new laptop for a few weeks and I have to say, it's the best laptop I've ever used. The display is incredible, battery life is insane. If you're looking for a new laptop, this is the one.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "If reviewer received laptop for free, failure to disclose material connection violates FTC Endorsement Guides"
+  },
+  {
+    "id": "eval-disclosure-015",
+    "name": "Compliant tech review with disclosure",
+    "transcript": "Full disclosure: this laptop was sent to me for free by the manufacturer. That said, all opinions are my own and they don't get approval over what I say. I'll tell you what I like and what I don't.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Clear disclosure of gifted product, editorial independence stated, balanced review framing"
+  },
+  {
+    "id": "eval-health-034",
+    "name": "Anti-vaccine supplement alternative",
+    "transcript": "You don't need vaccines when you have NaturalImmune. Our proprietary blend provides the same protection naturally. Strengthen your body's defenses the way nature intended.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Implies supplement replaces vaccines (extremely dangerous misinformation) + unsubstantiated disease protection claim"
+  },
+  {
+    "id": "eval-health-035",
+    "name": "Heavy metal detox dangerous claim",
+    "transcript": "Our chelation drops safely remove heavy metals, parasites, and toxins from your body in just 7 days. Pharmaceutical companies don't want you to know about this. Take back your health.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Medical treatment claim (chelation) + conspiracy framing + unrealistic timeframe + multiple unsubstantiated health claims"
+  },
+  {
+    "id": "eval-efficacy-019",
+    "name": "Nootropic 10x productivity",
+    "transcript": "NeuroPeak unlocks 100% of your brain's potential. Experience 10x productivity, laser focus, and photographic memory. Used by Silicon Valley executives and NASA scientists.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "'100% brain potential' myth + specific multiplier (10x) + unverified celebrity user claims + impossible benefits"
+  },
+  {
+    "id": "eval-efficacy-020",
+    "name": "Compliant focus supplement",
+    "transcript": "NeuroPeak contains caffeine and L-theanine, a combination some research associates with sustained attention. Effects are comparable to a cup of green tea. Not a substitute for sleep or healthy work habits.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Honest comparison (green tea equivalent), 'some research associates', proper perspective-setting"
   }
 ]
