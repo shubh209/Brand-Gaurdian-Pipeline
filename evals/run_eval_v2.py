@@ -52,7 +52,19 @@ def run_single(case: dict, auditor: ComplianceAuditor, fast: bool = False) -> di
 
     start = time.time()
     try:
-        report = auditor.audit(analysis, platforms, skip_expansion=fast)
+        # Per-case timeout: 90s max. If LLM hangs, we get ERROR instead of blocking the run.
+        import signal
+
+        def _case_timeout(signum, frame):
+            raise TimeoutError(f"Case {case['id']} timed out after 90s")
+
+        old_handler = signal.signal(signal.SIGALRM, _case_timeout)
+        signal.alarm(90)
+        try:
+            report = auditor.audit(analysis, platforms, skip_expansion=fast)
+        finally:
+            signal.alarm(0)
+            signal.signal(signal.SIGALRM, old_handler)
         elapsed = time.time() - start
 
         actual_status = report.overall_status

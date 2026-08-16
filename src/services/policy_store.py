@@ -18,7 +18,7 @@ logger = logging.getLogger("brand-guardian")
 _store: AzureSearch | None = None
 _store_lock = threading.Lock()
 
-_ALLOWED_PLATFORMS = {"youtube", "tiktok", "facebook", "generic", "x"}
+_ALLOWED_PLATFORMS = {"youtube", "tiktok", "facebook", "meta", "generic", "x"}
 
 
 @dataclass
@@ -80,6 +80,10 @@ def search_policy_chunks(
 ) -> list[RetrievedChunk]:
     if platform and platform not in _ALLOWED_PLATFORMS:
         raise ValueError(f"Unknown platform: {platform!r}. Allowed: {_ALLOWED_PLATFORMS}")
+
+    # ponytail: normalize 'meta' to 'facebook' (indexed as 'facebook' in vector store)
+    if platform == "meta":
+        platform = "facebook"
 
     store = get_vector_store()
     top_k = k or rag_top_k()

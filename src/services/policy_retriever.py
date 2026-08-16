@@ -41,6 +41,7 @@ def _get_mini_llm():
             base_url=phi_endpoint,
             api_key=phi_key,
             temperature=0.1,
+            request_timeout=30,
         )
     from langchain_openai import AzureChatOpenAI
     return AzureChatOpenAI(
@@ -49,6 +50,7 @@ def _get_mini_llm():
         api_key=config.AZURE_OPENAI_API_KEY,
         openai_api_version=config.AZURE_OPENAI_API_VERSION,
         temperature=0.1,
+        request_timeout=30,
     )
 
 
