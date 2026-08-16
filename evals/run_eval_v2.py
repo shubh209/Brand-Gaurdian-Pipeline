@@ -45,14 +45,14 @@ def _make_analysis(transcript: str) -> AnalysisResult:
     )
 
 
-def run_single(case: dict, auditor: ComplianceAuditor) -> dict:
+def run_single(case: dict, auditor: ComplianceAuditor, fast: bool = False) -> dict:
     """Run one eval case and return scored result."""
     analysis = _make_analysis(case["transcript"])
     platforms = case.get("platforms", ["youtube"])
 
     start = time.time()
     try:
-        report = auditor.audit(analysis, platforms)
+        report = auditor.audit(analysis, platforms, skip_expansion=fast)
         elapsed = time.time() - start
 
         actual_status = report.overall_status
@@ -99,6 +99,7 @@ def main():
     parser = argparse.ArgumentParser(description="Run eval v2 golden dataset")
     parser.add_argument("--limit", type=int, default=None, help="Max cases to run")
     parser.add_argument("--category", type=str, default=None, help="Filter by category")
+    parser.add_argument("--fast", action="store_true", help="Skip query expansion (faster, less accurate retrieval)")
     args = parser.parse_args()
 
     dataset_path = Path(__file__).parent / "golden_dataset_v2.json"
@@ -117,7 +118,7 @@ def main():
 
     for i, case in enumerate(dataset, 1):
         logger.info("[%d/%d] %s...", i, len(dataset), case["name"][:50])
-        result = run_single(case, auditor)
+        result = run_single(case, auditor, fast=args.fast)
         results.append(result)
         mark = "PASS" if result["pass"] else "FAIL"
         status_mark = "✓" if result["status_correct"] else "✗"

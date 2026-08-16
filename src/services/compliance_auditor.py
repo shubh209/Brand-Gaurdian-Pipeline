@@ -153,15 +153,16 @@ class ComplianceAuditor:
     def __init__(self):
         self._retriever = PolicyRetriever()
 
-    def audit(self, analysis: AnalysisResult, platforms: list[str]) -> AuditReport:
+    def audit(self, analysis: AnalysisResult, platforms: list[str], skip_expansion: bool = False) -> AuditReport:
         """
         Run the full compliance audit on analyzed video content.
         Returns AuditReport with per-platform status and violations.
+        skip_expansion: if True, skip query expansion for faster retrieval (eval --fast mode).
         """
-        return self._audit_traced(analysis, platforms)
+        return self._audit_traced(analysis, platforms, skip_expansion)
 
     @observe(name="compliance_audit")
-    def _audit_traced(self, analysis: AnalysisResult, platforms: list[str]) -> AuditReport:
+    def _audit_traced(self, analysis: AnalysisResult, platforms: list[str], skip_expansion: bool = False) -> AuditReport:
         """Traced inner method — creates the top-level Langfuse trace."""
         if not platforms:
             platforms = ["youtube"]
@@ -184,7 +185,7 @@ class ComplianceAuditor:
 
         # Stage 2: Retrieve policy chunks per claim
         claim_texts = [c["claim"] for c in claims]
-        retrieval_map = self._retriever.retrieve_batch(claim_texts, platforms)
+        retrieval_map = self._retriever.retrieve_batch(claim_texts, platforms, skip_expansion=skip_expansion)
         total_chunks = len({
             chunk.chunk_id
             for chunks in retrieval_map.values()

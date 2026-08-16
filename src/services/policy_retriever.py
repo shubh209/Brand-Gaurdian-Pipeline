@@ -64,6 +64,65 @@ _EXPAND_PROMPT = (
 )
 
 
+_BATCH_EXPAND_PROMPT = (
+    "Rewrite each advertising claim below into regulatory/policy terminology for compliance search. "
+    "Be concise, 1-2 phrases per claim. Return a JSON array of expanded strings in the same order.\n"
+    "Examples: 'burns fat 3x faster' → 'unsubstantiated weight loss efficacy claim'; "
+    "'only $29 today' → 'pricing claim urgency'\n\n"
+    "Claims:\n{claims_list}"
+)
+
+
+def _batch_expand_claims(claims: list[str]) -> dict[str, str]:
+    """
+    Expand all claims in one LLM call (instead of N sequential calls).
+    ponytail: single round-trip. Falls back to original claims on any failure.
+    """
+    if not claims:
+        return {}
+    if len(claims) == 1:
+        # Single claim — use the existing per-claim function
+        return {claims[0]: _expand_claim(claims[0])}
+
+    claims_list = "\n".join(f"{i+1}. {c}" for i, c in enumerate(claims))
+    prompt = _BATCH_EXPAND_PROMPT.format(claims_list=claims_list)
+
+    try:
+        import json
+        handler = get_langchain_handler()
+
+        import signal
+        def _timeout_handler(signum, frame):
+            raise TimeoutError("batch_expand timed out")
+        old_handler = signal.signal(signal.SIGALRM, _timeout_handler)
+        signal.alarm(30)  # 30s for batch (generous)
+        try:
+            response = _get_mini_llm().invoke(
+                [HumanMessage(content=prompt)],
+                config={"callbacks": [handler] if handler else []},
+            )
+        finally:
+            signal.alarm(0)
+            signal.signal(signal.SIGALRM, old_handler)
+
+        # Parse JSON array response
+        content = response.content.strip()
+        if "```" in content:
+            import re
+            match = re.search(r"```(?:json)?\s*(.*?)```", content, re.DOTALL)
+            if match:
+                content = match.group(1).strip()
+        expanded_list = json.loads(content)
+
+        if isinstance(expanded_list, list) and len(expanded_list) == len(claims):
+            return {claims[i]: expanded_list[i] for i in range(len(claims))}
+        # Length mismatch — fallback
+        return {c: c for c in claims}
+    except Exception:
+        # Fallback: use original claims without expansion
+        return {c: c for c in claims}
+
+
 @observe(name="expand_claim")
 def _expand_claim(claim: str) -> str:
     """Rewrite consumer claim into policy terminology for better retrieval."""
@@ -147,17 +206,52 @@ class PolicyRetriever:
         claims: list[str],
         platforms: list[str],
         k_per_claim: int = 5,
+        skip_expansion: bool = False,
     ) -> dict[str, list[PolicyChunk]]:
         """
         Retrieve for multiple claims. Returns {claim: [chunks]}.
         Deduplicates across claims at the retrieval level.
 
-        ponytail: sequential per-claim. Upgrade path: asyncio.gather if latency matters.
+        skip_expansion: if True, skip query expansion (faster, for eval --fast mode).
         """
+        # Batch expand all claims in one LLM call (instead of N sequential calls)
+        if skip_expansion:
+            expanded_map = {c: c for c in claims}
+        else:
+            expanded_map = _batch_expand_claims(claims)
+
         results: dict[str, list[PolicyChunk]] = {}
         for claim in claims:
-            results[claim] = self.retrieve(claim, platforms, k=k_per_claim)
+            expanded = expanded_map.get(claim, claim)
+            results[claim] = self._retrieve_with_expanded(expanded, claim, platforms, k_per_claim)
         return results
+
+    def _retrieve_with_expanded(
+        self,
+        expanded: str,
+        original_claim: str,
+        platforms: list[str],
+        k: int,
+    ) -> list[PolicyChunk]:
+        """Retrieve using pre-expanded query."""
+        if not expanded.strip():
+            return []
+
+        seen: set[str] = set()
+        all_chunks: list[RetrievedChunk] = []
+
+        for platform in platforms:
+            chunks = search_policy_chunks(expanded, platform=platform)
+            for chunk in chunks:
+                if chunk.chunk_id not in seen:
+                    seen.add(chunk.chunk_id)
+                    all_chunks.append(chunk)
+
+        if not all_chunks:
+            return []
+
+        reranked = rerank(original_claim, all_chunks, top_n=k)
+        return [_to_policy_chunk(c) for c in reranked]
 
     def retrieval_eval(
         self,
