@@ -26,19 +26,31 @@ This session covered frontend implementation, repo cleanup, production hardening
 
 ### Step 1: Get baseline eval results
 
-Run in terminal (takes ~25 min):
-```bash
-cd /Users/shubhkapadia/Desktop/Development/AI-LLM/Youtube-Ads-Compliance-Pipeline/Youtube-Ads-Compliance-Pipeline
-PYTHONPATH=. uv run python evals/run_eval_v2.py --fast
+**COMPLETED.** Baseline established:
+
+```
+Overall: 76.9% (80/104)
+False Positive Rate: 68.8% (22/32 PASS cases flagged as violations)
+False Negative Rate: 2.8% (2/72 FAIL cases missed)
+
+Per-category:
+  financial_claim:       92% (11/12)
+  deceptive_urgency:     90% (9/10)
+  before_after:          89% (8/9)
+  misleading_efficacy:   78% (18/23)
+  health_claim:          71% (25/35)
+  disclosure_violation:  60% (9/15)
 ```
 
-Results save to `evals/eval_results_v2.json`. This establishes the **champion baseline**.
-
-Early signal from 3-case test: 2/3 passed (66.7%). Case 3 (compliant joint supplement ad) was incorrectly flagged as FAIL — this is a **false positive problem** where the system over-flags hedged/compliant language.
+**Root cause:** The system catches 97% of violations but only recognizes 31% of compliant ads. GPT-4o's reasoning prompt flags ads even when they use proper hedging and disclaimers.
 
 ### Step 2: Build the Self-Improving Champion Loop
 
-The user provided a detailed reference on controlled improvement loops (article about 9-part dependable loops + champion/challenger pattern). The next session should implement this for the compliance pipeline.
+Priority rounds for the loop:
+
+1. **Round 1:** Add explicit PASS criteria to reasoning prompt — "If the ad uses 'may', 'some research suggests', 'individual results vary', 'not intended to treat', and does NOT make absolute claims, return no violations"
+2. **Round 2:** Fix disclosure detection — distinguish "#ad missing" (violation) from "This episode is brought to you by..." (compliant)
+3. **Round 3:** Reduce health_claim false positives on properly qualified supplement ads
 
 **Loop specification:**
 

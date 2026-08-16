@@ -1,0 +1,3221 @@
+{
+  "run_at": "2026-08-16T16:19:19Z",
+  "total_cases": 104,
+  "passed": 80,
+  "accuracy_pct": 76.9,
+  "false_positive_rate": 0.688,
+  "false_negative_rate": 0.028,
+  "errors": 0,
+  "per_category": {
+    "health_claim": {
+      "total": 35,
+      "passed": 25,
+      "accuracy_pct": 71.4
+    },
+    "misleading_efficacy": {
+      "total": 23,
+      "passed": 18,
+      "accuracy_pct": 78.3
+    },
+    "disclosure_violation": {
+      "total": 15,
+      "passed": 9,
+      "accuracy_pct": 60.0
+    },
+    "before_after": {
+      "total": 9,
+      "passed": 8,
+      "accuracy_pct": 88.9
+    },
+    "financial_claim": {
+      "total": 12,
+      "passed": 11,
+      "accuracy_pct": 91.7
+    },
+    "deceptive_urgency": {
+      "total": 10,
+      "passed": 9,
+      "accuracy_pct": 90.0
+    }
+  },
+  "results": [
+    {
+      "id": "eval-health-001",
+      "name": "Joint supplement unsubstantiated efficacy claim",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 22.1,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "FlexiJoint Pro maintains joint health and mobility into old age."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Just two capsules a day and you'll feel twenty years younger."
+        },
+        {
+          "severity": "INFO",
+          "category": "pricing_claim",
+          "claim": "Order now."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-002",
+      "name": "Knee pain supplement with age-reversal claim",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 13.4,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "JointEase Gold restores youthful joint function and eliminates knee pain permane"
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Backed by decades of herbal wisdom."
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "Try it risk-free for 30 days."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-003",
+      "name": "Compliant joint health supplement ad",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 16.9,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "FlexiJoint contains glucosamine and chondroitin"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Some studies suggest these ingredients may support joint comfort"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Talk to your doctor about whether FlexiJoint is right for you"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Individual results may vary"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-004",
+      "name": "Herbal pain reliever false safety claim",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 2,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 12.1,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "HerbRelief is the all-natural pain solution without the side effects of over-the"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "100% plant-based, zero stomach irritation guaranteed."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-005",
+      "name": "CBD pain relief without side effects",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 5,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 25.2,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "CBDCalm offers natural pain relief"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "CBDCalm without any of the dangerous side effects of prescription painkillers"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "No addiction risk"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "No liver damage"
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Just pure plant power"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-006",
+      "name": "Compliant herbal pain product ad",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 13.7,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "HerbRelief contains turmeric and willow bark, which have been used traditionally"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "This product is not intended to replace medical treatment."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Consult your healthcare provider before use."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-007",
+      "name": "Sports drink with clinically tested ingredient claim",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 13.0,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "PowerFlow contains a clinically tested ingredient proven to improve blood flow b"
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Used by elite athletes worldwide."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Fuel your performance."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-008",
+      "name": "Pre-workout with clinical research claim",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 16.8,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "NitroBoost features ingredients backed by peer-reviewed clinical research."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Increase your VO2 max and crush your personal records."
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "The science speaks for itself."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-009",
+      "name": "Compliant sports nutrition ad",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "status_correct": true,
+      "expected_min_violations": 0,
+      "actual_violations": 0,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 10.4,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-health-010",
+      "name": "Heart health juice proven claim",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 18.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "HeartGuard juice is proven to promote cardiovascular health."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Drink one glass daily and reduce your risk of heart disease."
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Clinically validated formula."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-011",
+      "name": "Omega-3 cardiovascular proven benefit",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 12.2,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "OmegaMax is scientifically proven to lower your cholesterol and protect your hea"
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "Over 10,000 satisfied customers can't be wrong."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Take control of your heart health today."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-012",
+      "name": "Compliant heart-healthy food ad",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 2,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 9.6,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "HeartGuard juice contains antioxidants from pomegranate."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "A healthy diet including fruits may contribute to cardiovascular wellness."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-001",
+      "name": "Weight loss device with specific numbers",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 12.5,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Lose two or more inches and 10 pounds from your waist"
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "FDA registered device"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Results guaranteed"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-002",
+      "name": "Weight loss belt infomercial",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 5,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 26.1,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "SlimBelt vibrating technology melts away belly fat"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Lose 3 inches in your first week"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "No gym, no diet changes needed"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Just wear it while watching TV"
+        },
+        {
+          "severity": "INFO",
+          "category": "testimonial",
+          "claim": "Thousands of 5-star reviews"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-003",
+      "name": "Compliant exercise equipment ad",
+      "category": "misleading_efficacy",
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "status_correct": true,
+      "expected_min_violations": 0,
+      "actual_violations": 0,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 10.0,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-004",
+      "name": "Cholesterol supplement with hedged but misleading language",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 13.2,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "CholestAway may help maintain healthy cholesterol levels already within normal r"
+        },
+        {
+          "severity": "WARNING",
+          "category": "health_claim",
+          "claim": "Promising preliminary studies point to real benefits."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Try it today."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-005",
+      "name": "Brain supplement hypothalamus mechanism claim",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 2,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 13.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "NeuroSlim targets your brain's hypothalamus to naturally signal your body to bur"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Patented neuro-receptor technology backed by 15 years of research."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-006",
+      "name": "Fat-burning coffee with science claims",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 22.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "BurnBrew coffee activates thermogenesis at the cellular level to accelerate fat "
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "Peer-reviewed ingredients."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Doctor formulated."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Lose weight with your morning coffee."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-007",
+      "name": "Compliant metabolism support supplement",
+      "category": "misleading_efficacy",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 16.5,
+      "violations": [
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "MetaBoost contains green tea extract and caffeine"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "MetaBoost is associated with a modest increase in metabolic rate"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "This product is not intended for weight loss"
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "A healthy diet and exercise are essential for weight management"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-008",
+      "name": "Sleep supplement for anxiety without interaction warning",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 17.9,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "MellowNight is an all-natural solution for when life's stresses get you down or "
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "No prescription needed."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Non-habit forming."
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Works the first night."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-001",
+      "name": "Diabetes supplement testimonial with specific numbers",
+      "category": "disclosure_violation",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 53.7,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "The first pill I took, I could feel a difference."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "My blood sugar went from 549 to 112 in 24 hours."
+        },
+        {
+          "severity": "INFO",
+          "category": "testimonial",
+          "claim": "GlucoBalance changed my life."
+        },
+        {
+          "severity": "INFO",
+          "category": "pricing_claim",
+          "claim": "Order yours today."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-002",
+      "name": "Weight loss testimonial without typicality",
+      "category": "disclosure_violation",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 22.0,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "I lost 47 pounds in just 6 weeks using TrimFast."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "general",
+          "claim": "I didn't change anything else about my life."
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "This product is a miracle."
+        },
+        {
+          "severity": "INFO",
+          "category": "testimonial",
+          "claim": "If I can do it, so can you."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-003",
+      "name": "Compliant supplement testimonial",
+      "category": "disclosure_violation",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 18.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "GlucoBalance is part of an overall health program including diet changes and exe"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "testimonial",
+          "claim": "GlucoBalance has improved the user's overall feeling"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "GlucoBalance results are not typical and individual results will vary"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Consult your doctor before starting GlucoBalance"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-004",
+      "name": "Diabetes symptom cure testimonial",
+      "category": "disclosure_violation",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 17.9,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "DiabeCure can alleviate symptoms of diabetes such as tingling in arms, dry mouth"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "DiabeCure can completely remove diabetes symptoms after one week"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "DiabeCure can make a person feel like they never had diabetes"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-005",
+      "name": "Influencer supplement promotion without disclosure",
+      "category": "disclosure_violation",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 23.9,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "testimonial",
+          "claim": "ImmunoBoost has been effective in preventing illness"
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "ImmunoBoost is effective"
+        },
+        {
+          "severity": "INFO",
+          "category": "testimonial",
+          "claim": "ImmunoBoost is recommended"
+        },
+        {
+          "severity": "INFO",
+          "category": "testimonial",
+          "claim": "ImmunoBoost will not lead to regret"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-013",
+      "name": "Immune system disease prevention claim",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 2,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 73.5,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "ImmuneShield super-charges your immune system to defeat the common cold, flu, vi"
+        },
+        {
+          "severity": "WARNING",
+          "category": "pricing_claim",
+          "claim": "Pharmaceutical grade ingredients at a fraction of the cost."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-014",
+      "name": "Vitamin C immune disease shield",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 17.7,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "creates an impenetrable shield against all viruses and bacteria"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "pricing_claim",
+          "claim": "Eliminates cold and flu guaranteed or your money back"
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Why risk getting sick?"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-015",
+      "name": "Compliant immune support supplement",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 43.1,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "ImmuneShield contains vitamin C and zinc, which support normal immune function."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Adequate intake of these nutrients is part of a healthy lifestyle."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Not intended to prevent or treat any disease."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-016",
+      "name": "Blood pressure supplement with specific stat",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 49.0,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "HyperTone reduces health-related time-off from work by a whopping 97 percent"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Lower your blood pressure naturally with our proprietary blend"
+        },
+        {
+          "severity": "WARNING",
+          "category": "before_after",
+          "claim": "Results in as little as two weeks"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-017",
+      "name": "Compliant blood pressure wellness ad",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 16.5,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "HyperTone contains hawthorn berry and CoQ10"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Some studies suggest these may support healthy blood pressure already within the"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "This is not a substitute for prescribed medication"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "See your doctor"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-018",
+      "name": "Probiotic digestive health with prevalence stat",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 2,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 12.7,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "DigestPro with patented probiotic strain is clinically proven to eliminate bloat"
+        },
+        {
+          "severity": "WARNING",
+          "category": "general",
+          "claim": "Did you know 87% of Americans suffer from digestive issues?"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-019",
+      "name": "Yogurt digestive aid with clinical proof claim",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 12.5,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "GutRenew with live active cultures is scientifically proven to solve your digest"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Eat one cup daily for regularity."
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Clinically validated by doctors at leading universities."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-020",
+      "name": "Compliant probiotic ad",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 13.5,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "GutRenew contains Lactobacillus cultures that may help maintain digestive balanc"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Individual digestive experiences differ."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Not intended to treat any condition."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-before-after-001",
+      "name": "Weight loss before/after with inadequate disclaimer",
+      "category": "before_after",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 53.1,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Sarah lost 45 pounds in just 8 weeks with SlimMax"
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "These results are not typical"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Your weight loss may not be the same"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "testimonial",
+          "claim": "But Sarah did it, and you can too!"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-before-after-002",
+      "name": "Dramatic weight loss testimonial with asterisk",
+      "category": "before_after",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 20.6,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "I went from a size 18 to a size 4 in three months."
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "FastBurn changed everything for me."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Don't wait \u2014 start your transformation today."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "disclosure",
+          "claim": "Results not typical."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-before-after-003",
+      "name": "Compliant weight management testimonial",
+      "category": "before_after",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 13.9,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "SlimMax is used alongside a 1500 calorie diet and walking 30 minutes daily"
+        },
+        {
+          "severity": "INFO",
+          "category": "testimonial",
+          "claim": "Over 6 months, I've gradually lost weight"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "In a clinical study, average weight loss was 3 pounds over 8 weeks compared to 1"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-021",
+      "name": "Nobel Prize research misattribution",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 43.0,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "BrainMax is formulated based on Nobel Prize-winning neuroscience research."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Proven effective by over $5 million in NIH-funded studies."
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "The smartest choice for your brain."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-022",
+      "name": "Harvard research brain supplement",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 16.2,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "CogniPlus is clinically proven to reverse age-related cognitive decline"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Restore your mental sharpness in just 14 days"
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "Developed from research at Harvard Medical School"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-023",
+      "name": "Compliant brain health supplement",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 14.1,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "CogniPlus contains DHA and phosphatidylserine, nutrients that play a role in bra"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "While some research exists on these nutrients, we make no claims about treating "
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Speak with your healthcare provider."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-024",
+      "name": "Memory software clinically proven",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 45.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "BrainTrainer is clinically proven to improve your memory, focus, and cognitive p"
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "Used by executives at Fortune 500 companies."
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Sharpen your mind in just 5 minutes a day."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-025",
+      "name": "Compliant brain training app",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "status_correct": true,
+      "expected_min_violations": 0,
+      "actual_violations": 0,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 9.6,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-financial-001",
+      "name": "Crypto guaranteed returns",
+      "category": "financial_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 21.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "guarantees 500% returns in 30 days"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Zero risk \u2014 our algorithm never loses"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Join 50,000 members already earning passive income"
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Limited spots available, act now"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-002",
+      "name": "Forex trading bot guaranteed income",
+      "category": "financial_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 19.8,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "ForexMaster bot makes you money while you sleep."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "pricing_claim",
+          "claim": "Guaranteed minimum $500 per day."
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "No experience needed, our AI does everything."
+        },
+        {
+          "severity": "INFO",
+          "category": "testimonial",
+          "claim": "Join the financial freedom revolution."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-003",
+      "name": "Investment course with earnings claims",
+      "category": "financial_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 16.9,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "My students are making $10,000 a month following my system."
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "This exact blueprint took me from broke to millionaire in 18 months."
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Enroll today and change your financial future."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-004",
+      "name": "Compliant investment education ad",
+      "category": "financial_claim",
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "status_correct": true,
+      "expected_min_violations": 0,
+      "actual_violations": 0,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 0.8,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-urgency-001",
+      "name": "Fake scarcity supplement offer",
+      "category": "deceptive_urgency",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 21.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "disclosure",
+          "claim": "Due to overwhelming demand, we only have 47 bottles left."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "pricing_claim",
+          "claim": "This price won't last \u2014 after midnight tonight it goes back to $89."
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "99"
+        },
+        {
+          "severity": "WARNING",
+          "category": "general",
+          "claim": "Order in the next 15 minutes and get free shipping."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-urgency-002",
+      "name": "Limited time offer always running",
+      "category": "deceptive_urgency",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 20.2,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "pricing_claim",
+          "claim": "70% off everything"
+        },
+        {
+          "severity": "INFO",
+          "category": "pricing_claim",
+          "claim": "Today only"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Once it's gone, it's gone forever"
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Don't miss out on this once-in-a-lifetime deal"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-urgency-003",
+      "name": "Compliant limited promotion",
+      "category": "deceptive_urgency",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 5,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 19.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "pricing_claim",
+          "claim": "20% off"
+        },
+        {
+          "severity": "WARNING",
+          "category": "pricing_claim",
+          "claim": "through the end of this month"
+        },
+        {
+          "severity": "INFO",
+          "category": "pricing_claim",
+          "claim": "summer promotion"
+        },
+        {
+          "severity": "INFO",
+          "category": "pricing_claim",
+          "claim": "regular pricing resumes"
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "No pressure \u2014 shop when you're ready"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-006",
+      "name": "Lifestyle influencer undisclosed promotion",
+      "category": "disclosure_violation",
+      "expected_status": "FAIL",
+      "actual_status": "PASS",
+      "status_correct": false,
+      "expected_min_violations": 1,
+      "actual_violations": 0,
+      "violations_met": false,
+      "pass": false,
+      "elapsed_seconds": 17.6,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-007",
+      "name": "Compliant influencer promotion",
+      "category": "disclosure_violation",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 14.1,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "VitaGreens sent me this to try and I've been enjoying it in my morning routine."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "I can't make any health claims about it, but I like the taste."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "If you're interested, my affiliate link is in the description."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-005",
+      "name": "Real estate guaranteed passive income",
+      "category": "financial_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 47.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "guarantees you $3,000 in monthly passive income with zero management required"
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Properties handpicked by our AI"
+        },
+        {
+          "severity": "WARNING",
+          "category": "pricing_claim",
+          "claim": "Start building generational wealth with just $500 down"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-006",
+      "name": "Day trading system with win rate",
+      "category": "financial_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 5,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 25.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Our trading system has a 94% win rate"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "pricing_claim",
+          "claim": "Average daily profit: $847"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Join 12,000 members who quit their 9-to-5"
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Free masterclass shows you exactly how"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "No financial experience needed"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-007",
+      "name": "NFT investment opportunity guaranteed appreciation",
+      "category": "financial_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 16.6,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "This NFT collection will 10x in value guaranteed."
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "Early investors in our last drop made 2000% returns."
+        },
+        {
+          "severity": "INFO",
+          "category": "pricing_claim",
+          "claim": "Mint now before it sells out \u2014 only 100 spots left at this price."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-008",
+      "name": "MLM income opportunity testimonial",
+      "category": "financial_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 18.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "testimonial",
+          "claim": "I made $25,000 in my first month with this system."
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "I went from living paycheck to paycheck to financial freedom."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "The opportunity is here \u2014 are you going to take it or stay broke?."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-009",
+      "name": "Compliant investment disclaimer ad",
+      "category": "financial_claim",
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "status_correct": true,
+      "expected_min_violations": 0,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 16.3,
+      "violations": [
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Our course teaches the principles of value investing."
+        },
+        {
+          "severity": "INFO",
+          "category": "health_claim",
+          "claim": "All investments carry risk including potential loss of principal."
+        },
+        {
+          "severity": "INFO",
+          "category": "health_claim",
+          "claim": "Past performance of any strategy does not guarantee future results."
+        },
+        {
+          "severity": "INFO",
+          "category": "health_claim",
+          "claim": "Only invest money you can afford to lose."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-010",
+      "name": "Compliant fintech app ad",
+      "category": "financial_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 1,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 44.9,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "disclosure",
+          "claim": "Fees may apply."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-011",
+      "name": "Dropshipping guaranteed income",
+      "category": "financial_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 20.6,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "pricing_claim",
+          "claim": "My dropshipping students are averaging $15K per month within 90 days."
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Proven system \u2014 just copy and paste."
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "I'll show you the exact products making me six figures."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-financial-012",
+      "name": "Binary options zero risk trading",
+      "category": "financial_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 15.8,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "pricing_claim",
+          "claim": "zero risk, maximum reward"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Our algorithm predicts market movements with 98% accuracy"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "pricing_claim",
+          "claim": "Start with just $100 and watch it grow exponentially"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-urgency-004",
+      "name": "Countdown timer supplement scarcity",
+      "category": "deceptive_urgency",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 16.0,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "KetoBlast production will stop next month due to ingredient shortages"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Only 200 bottles of KetoBlast left in the warehouse"
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "Once they're gone, they're gone forever"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-urgency-005",
+      "name": "Free trial expiring misleading offer",
+      "category": "deceptive_urgency",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 5,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 24.5,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "pricing_claim",
+          "claim": "Exclusive free trial"
+        },
+        {
+          "severity": "WARNING",
+          "category": "pricing_claim",
+          "claim": "Free trial expires in 2 hours"
+        },
+        {
+          "severity": "INFO",
+          "category": "pricing_claim",
+          "claim": "Price after trial is $197 per month"
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "This link will never work again"
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "Last time offering this"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-urgency-006",
+      "name": "Flash sale that never ends",
+      "category": "deceptive_urgency",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 15.9,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "pricing_claim",
+          "claim": "80% off our entire collection"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "This deal expires at midnight"
+        },
+        {
+          "severity": "INFO",
+          "category": "pricing_claim",
+          "claim": "Use code LASTCHANCE"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-urgency-007",
+      "name": "Fake waitlist course launch",
+      "category": "deceptive_urgency",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 14.1,
+      "violations": [
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "The course has a limited number of spots available."
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Enrollment for the course will close permanently after accepting 50 more student"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "The course is not a marketing gimmick, but due to capacity issues."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-urgency-008",
+      "name": "Compliant seasonal sale",
+      "category": "deceptive_urgency",
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "status_correct": true,
+      "expected_min_violations": 0,
+      "actual_violations": 0,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 12.8,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-urgency-009",
+      "name": "Compliant limited edition product",
+      "category": "deceptive_urgency",
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "status_correct": true,
+      "expected_min_violations": 0,
+      "actual_violations": 0,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 10.0,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-urgency-010",
+      "name": "Price anchoring with fake original price",
+      "category": "deceptive_urgency",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 16.9,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "pricing_claim",
+          "claim": "Originally $299, now just $29! That's 90% savings!"
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "But hurry, at this price point we expect to sell out within the hour."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Don't miss the deal of the century."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-008",
+      "name": "Family vlog sponsored by food brand",
+      "category": "disclosure_violation",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 44.0,
+      "violations": [
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "NatureFarm organic pancakes are the kids' favorite breakfast"
+        },
+        {
+          "severity": "WARNING",
+          "category": "health_claim",
+          "claim": "NatureFarm organic pancakes taste better than regular pancakes"
+        },
+        {
+          "severity": "INFO",
+          "category": "pricing_claim",
+          "claim": "15% off on NatureFarm organic pancakes"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-009",
+      "name": "Fitness influencer undisclosed partnership",
+      "category": "disclosure_violation",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 2,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 47.0,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "testimonial",
+          "claim": "ProteinMax shake has improved recovery"
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "ProteinMax shake is the best protein shake on the market"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-010",
+      "name": "Doctor endorsement without conflict disclosure",
+      "category": "disclosure_violation",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 18.1,
+      "violations": [
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "GlowSkin serum is recommended by a board-certified dermatologist."
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "GlowSkin serum has shown clinical results."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "GlowSkin serum is the only product trusted for anti-aging."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-011",
+      "name": "Fake customer review in ad",
+      "category": "disclosure_violation",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 16.7,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "SkinPerfect can help with wrinkles"
+        },
+        {
+          "severity": "INFO",
+          "category": "testimonial",
+          "claim": "SkinPerfect has a high satisfaction rate"
+        },
+        {
+          "severity": "INFO",
+          "category": "pricing_claim",
+          "claim": "SkinPerfect is available for purchase"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-012",
+      "name": "Compliant sponsored podcast ad",
+      "category": "disclosure_violation",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 12.1,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "disclosure",
+          "claim": "ProteinMax is a sponsor of the show"
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "The product has a chocolate flavor"
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "The product's taste may vary by individual"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-013",
+      "name": "Compliant doctor product recommendation",
+      "category": "disclosure_violation",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 1,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 12.7,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "I've reviewed their published clinical data and believe it shows promise for hyd"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-before-after-004",
+      "name": "Hair growth before/after photos",
+      "category": "before_after",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 22.5,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "before_after",
+          "claim": "Visible thinning before using HairMax"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "before_after",
+          "claim": "Full thick hair after 30 days of using HairMax"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "HairMax results are verifiable"
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "HairMax can improve hair thickness"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-before-after-005",
+      "name": "Skin cream transformation 7 days",
+      "category": "before_after",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 18.0,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "DermaGlow eliminated 90% of my wrinkles in one week flat"
+        },
+        {
+          "severity": "INFO",
+          "category": "testimonial",
+          "claim": "I can't believe it"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "If you have wrinkles, you NEED this"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-before-after-006",
+      "name": "Fitness transformation sponsored post",
+      "category": "before_after",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 17.5,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "before_after",
+          "claim": "12 weeks on the FitPro program and look at these results! Down 30 pounds, up 15 "
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "This program works if you work it."
+        },
+        {
+          "severity": "WARNING",
+          "category": "pricing_claim",
+          "claim": "Link in bio for my discount code."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-before-after-007",
+      "name": "Acne product before/after testimonial",
+      "category": "before_after",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 87.1,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "before_after",
+          "claim": "After 2 weeks of ClearFace, my skin is completely clear."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "testimonial",
+          "claim": "This product literally cured my acne."
+        },
+        {
+          "severity": "WARNING",
+          "category": "general",
+          "claim": "Before and after pics in comments."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-before-after-008",
+      "name": "Compliant fitness transformation",
+      "category": "before_after",
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "status_correct": true,
+      "expected_min_violations": 0,
+      "actual_violations": 0,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 41.1,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-before-after-009",
+      "name": "Compliant skincare progress documentation",
+      "category": "before_after",
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "status_correct": true,
+      "expected_min_violations": 0,
+      "actual_violations": 0,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 11.3,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-009",
+      "name": "Detox tea weight loss claim",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 23.1,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "DetoxSlim tea flushes toxins from your body and burns stubborn belly fat overnig"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Lose up to 5 pounds in your first 24 hours."
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "All natural ingredients."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "disclosure",
+          "claim": "No side effects."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-010",
+      "name": "Collagen anti-aging reversal",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 17.9,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "CollagenPure reverses 10 years of aging in just 4 weeks"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Clinically proven to eliminate wrinkles, tighten sagging skin, and restore youth"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "See visible results in 72 hours"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-011",
+      "name": "Testosterone booster with mechanism claims",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 19.2,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "AlphaT naturally triggers your body to produce 300% more testosterone"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Increase muscle mass, energy, and performance in days"
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "Clinically dosed formula based on 47 studies"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-012",
+      "name": "Eye cream dark circles vanish instantly",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 17.5,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Watch dark circles and puffy eyes vanish instantly with our patented peptide ser"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "One application and you'll look 5 years younger."
+        },
+        {
+          "severity": "INFO",
+          "category": "testimonial",
+          "claim": "Over 50,000 five-star reviews can't be wrong."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-013",
+      "name": "Hair growth supplement regrow in 14 days",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 15.8,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "ReGrowMax stimulates dormant hair follicles at the molecular level."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "before_after",
+          "claim": "See new hair growth in as little as 14 days."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "FDA compliant formula with patented delivery technology."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-014",
+      "name": "Compliant anti-aging skincare ad",
+      "category": "misleading_efficacy",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 2,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 9.6,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Our serum contains retinol and hyaluronic acid, ingredients studied for their po"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Individual results vary based on skin type, age, and consistent use over several"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-015",
+      "name": "Compliant hair supplement ad",
+      "category": "misleading_efficacy",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 16.9,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "HairVita contains biotin and saw palmetto"
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Research on these nutrients and hair health is ongoing"
+        },
+        {
+          "severity": "WARNING",
+          "category": "general",
+          "claim": "We recommend consistent use for at least 3-6 months before evaluating results"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Not a treatment for hair loss conditions"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-016",
+      "name": "CBD oil cures everything",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 22.2,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "CBD oil cures anxiety, depression, chronic pain, insomnia, and inflammation"
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "Backed by thousands of studies"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "No prescription needed"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Works faster than any pharmaceutical"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-017",
+      "name": "Probiotic cures IBS claim",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 20.1,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "BioFlora probiotic is the clinically proven cure for IBS"
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "9 out of 10 gastroenterologists recommend BioFlora probiotic"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "End your digestive suffering permanently with one capsule daily"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-018",
+      "name": "Compliant CBD wellness ad",
+      "category": "misleading_efficacy",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 48.2,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Our CBD oil is derived from hemp and third-party tested for purity."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "testimonial",
+          "claim": "Some users report it helps them feel more relaxed."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "CBD is not FDA approved to diagnose, treat, cure, or prevent any disease."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Consult your doctor before use."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-026",
+      "name": "Cancer prevention supplement",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 15.9,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "CellShield contains powerful antioxidants that prevent cancer cell growth."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Protect yourself and your family from this deadly disease."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Why wait until it's too late?"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-027",
+      "name": "Autism supplement cure claim",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 18.8,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "NeuroBalance has helped hundreds of children reduce autism symptoms dramatically"
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "Parents report improved focus and social skills within the first week."
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Give your child the breakthrough they deserve."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-028",
+      "name": "Supplement prevents Alzheimers",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 14.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "MindGuard reduces your risk of Alzheimer's by 60%"
+        },
+        {
+          "severity": "WARNING",
+          "category": "health_claim",
+          "claim": "The earlier you start, the more protection you get"
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Don't let dementia steal your golden years"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-029",
+      "name": "Compliant wellness supplement general health",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 13.8,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "DailyVita provides essential vitamins and minerals to support your general healt"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "A supplement is not a replacement for a varied, balanced diet."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "If you have any medical conditions, consult your healthcare provider."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-030",
+      "name": "Compliant vitamin D immunity support",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 17.5,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "health_claim",
+          "claim": "Vitamin D plays a role in normal immune function"
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Many adults don't get enough from sunlight alone, especially in winter months"
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Our supplement provides 1000 IU per serving"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Not intended to prevent any disease"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-031",
+      "name": "Diabetes reversal program",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 5,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 21.3,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "Our 30-day program reverses Type 2 diabetes naturally."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "No more insulin injections."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "No more metformin."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "testimonial",
+          "claim": "Our clients are going back to their doctors and being told they no longer have d"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "disclosure",
+          "claim": "ON-SCREEN TEXT: (none)"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-032",
+      "name": "Turmeric cures arthritis",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 47.4,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "TurmericMax eliminates joint inflammation and cures arthritis pain permanently."
+        },
+        {
+          "severity": "WARNING",
+          "category": "health_claim",
+          "claim": "Over 200 studies prove turmeric is nature's most powerful anti-inflammatory."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Why suffer when the solution is this simple?"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-033",
+      "name": "Compliant turmeric supplement ad",
+      "category": "health_claim",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 13.5,
+      "violations": [
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "TurmericMax contains curcumin, which has been studied for its potential anti-inf"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "While research is promising, we make no claims about treating arthritis or any m"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Always consult your doctor."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-multiplatform-001",
+      "name": "Weight loss ad tested across YouTube and TikTok",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 22.7,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "SkinnyFit helps you drop 3 dress sizes in 2 weeks."
+        },
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "Just mix one scoop in your morning coffee."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "No gym needed, no food restrictions."
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "Join the 100,000 women who already transformed their bodies."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-multiplatform-002",
+      "name": "Keto supplement multi-platform ad",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 26.7,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "KetoBlast puts your body into ketosis within 60 minutes."
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Burn fat all day long without changing what you eat."
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "As seen on Shark Tank."
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Limited supply available."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-multiplatform-003",
+      "name": "Teeth whitening instant results all platforms",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 1,
+      "actual_violations": 4,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 26.7,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "WhitePro whitens teeth 8 shades in one application"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Dentist-strength formula you can use at home"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "100% enamel safe guaranteed"
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "See instant results or your money back"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-014",
+      "name": "Tech reviewer undisclosed free product",
+      "category": "disclosure_violation",
+      "expected_status": "FAIL",
+      "actual_status": "PASS",
+      "status_correct": false,
+      "expected_min_violations": 1,
+      "actual_violations": 0,
+      "violations_met": false,
+      "pass": false,
+      "elapsed_seconds": 41.2,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-disclosure-015",
+      "name": "Compliant tech review with disclosure",
+      "category": "disclosure_violation",
+      "expected_status": "PASS",
+      "actual_status": "PASS",
+      "status_correct": true,
+      "expected_min_violations": 0,
+      "actual_violations": 0,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 10.0,
+      "violations": [],
+      "error": null
+    },
+    {
+      "id": "eval-health-034",
+      "name": "Anti-vaccine supplement alternative",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 48.1,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "health_claim",
+          "claim": "NaturalImmune provides protection without vaccines"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Our proprietary blend provides the same protection naturally"
+        },
+        {
+          "severity": "WARNING",
+          "category": "health_claim",
+          "claim": "Strengthen your body's defenses the way nature intended"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-health-035",
+      "name": "Heavy metal detox dangerous claim",
+      "category": "health_claim",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 14.0,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Our chelation drops safely remove heavy metals, parasites, and toxins from your "
+        },
+        {
+          "severity": "WARNING",
+          "category": "disclosure",
+          "claim": "Pharmaceutical companies don't want you to know about this."
+        },
+        {
+          "severity": "INFO",
+          "category": "general",
+          "claim": "Take back your health."
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-019",
+      "name": "Nootropic 10x productivity",
+      "category": "misleading_efficacy",
+      "expected_status": "FAIL",
+      "actual_status": "FAIL",
+      "status_correct": true,
+      "expected_min_violations": 2,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": true,
+      "elapsed_seconds": 48.8,
+      "violations": [
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Unlocks 100% of your brain's potential"
+        },
+        {
+          "severity": "CRITICAL",
+          "category": "product_claim",
+          "claim": "Experience 10x productivity, laser focus, and photographic memory"
+        },
+        {
+          "severity": "WARNING",
+          "category": "testimonial",
+          "claim": "Used by Silicon Valley executives and NASA scientists"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "eval-efficacy-020",
+      "name": "Compliant focus supplement",
+      "category": "misleading_efficacy",
+      "expected_status": "PASS",
+      "actual_status": "FAIL",
+      "status_correct": false,
+      "expected_min_violations": 0,
+      "actual_violations": 3,
+      "violations_met": true,
+      "pass": false,
+      "elapsed_seconds": 12.4,
+      "violations": [
+        {
+          "severity": "INFO",
+          "category": "product_claim",
+          "claim": "NeuroPeak contains caffeine and L-theanine"
+        },
+        {
+          "severity": "WARNING",
+          "category": "product_claim",
+          "claim": "Effects are comparable to a cup of green tea"
+        },
+        {
+          "severity": "INFO",
+          "category": "disclosure",
+          "claim": "Not a substitute for sleep or healthy work habits"
+        }
+      ],
+      "error": null
+    }
+  ]
+}
