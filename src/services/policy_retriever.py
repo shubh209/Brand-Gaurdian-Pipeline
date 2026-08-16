@@ -70,10 +70,24 @@ def _expand_claim(claim: str) -> str:
     try:
         prompt = _EXPAND_PROMPT.format(claim=claim)
         handler = get_langchain_handler()
-        return _get_mini_llm().invoke(
-            [HumanMessage(content=prompt)],
-            config={"callbacks": [handler] if handler else []},
-        ).content.strip()
+        # ponytail: 15s timeout per expansion call. If Phi-4-mini is cold, fallback to original claim.
+        # Ceiling: loses query expansion on cold start. Upgrade path: batch all claims in one LLM call.
+        import signal
+
+        def _timeout_handler(signum, frame):
+            raise TimeoutError("expand_claim timed out")
+
+        old_handler = signal.signal(signal.SIGALRM, _timeout_handler)
+        signal.alarm(15)
+        try:
+            result = _get_mini_llm().invoke(
+                [HumanMessage(content=prompt)],
+                config={"callbacks": [handler] if handler else []},
+            ).content.strip()
+        finally:
+            signal.alarm(0)
+            signal.signal(signal.SIGALRM, old_handler)
+        return result
     except Exception:
         return claim  # fallback: use original
 
