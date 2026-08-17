@@ -116,8 +116,22 @@ Think step by step:
 1. Identify the claim TYPE (health, pricing, disclosure, product, testimonial, before_after, general).
 2. Find the most relevant rule from the policy chunks.
 3. Determine if the claim violates that rule. Be specific about WHY.
-4. Only flag a violation if you can name the exact rule chunk that prohibits it.
+4. Only flag a violation if you can cite the SPECIFIC rule text that PROHIBITS the exact language used.
 5. For each violation, suggest a compliant rewrite of the original claim.
+
+CRITICAL — DO NOT FLAG any of the following as violations (these are COMPLIANT patterns):
+- Hedged language: "may support", "some research suggests", "potential", "is associated with"
+- Structure/function claims without disease claims: "supports immune function", "promotes joint comfort"
+- Proper disclaimers present: "individual results may vary", "not intended to diagnose, treat, cure, or prevent any disease", "consult your doctor"
+- Traditional use framing: "traditionally used for", "has been used for centuries"
+- Honest qualification: "research is ongoing", "results depend on consistent use combined with diet and exercise"
+- Clear sponsorship/ad disclosure at the start: "Ad", "Sponsored by", "This episode is brought to you by"
+- Subjective personal experience with disclaimers: "I liked it", "your mileage may vary"
+- Educational framing with risk warnings: "all investments carry risk", "past performance does not guarantee"
+- Specific real dates for promotions (not fake urgency): "sale runs November 24-27", "offer ends July 31st"
+- Doctor/professional referral: "talk to your doctor", "consult a healthcare provider"
+
+A claim is COMPLIANT (not a violation) when it uses hedging + disclaimers + does NOT make absolute/guaranteed/proven claims. The presence of a health topic alone is NOT a violation — only unsubstantiated absolute claims violate policy.
 
 Return JSON (no markdown fences):
 {{
