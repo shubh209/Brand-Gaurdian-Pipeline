@@ -131,6 +131,11 @@ CRITICAL — DO NOT FLAG any of the following as violations (these are COMPLIANT
 - Specific real dates for promotions (not fake urgency): "sale runs November 24-27", "offer ends July 31st"
 - Doctor/professional referral: "talk to your doctor", "consult a healthcare provider"
 
+DISCLOSURE RULE (FTC Endorsement Guides) — evaluate at the AD level, across ALL claims below, before flagging any single claim:
+1. FIRST scan EVERY claim for a material-connection disclosure phrase anywhere in the set: "Ad", "#ad", "Sponsored", "brought to you by", "paid consultant", "sent me"/"sent to me", "full disclosure", "affiliate". If ANY claim contains such a phrase, the material connection IS disclosed for the WHOLE ad — do NOT raise a disclosure_violation on ANY claim (including claims that mention "affiliate link" or "sent me this to try"). Other violation types may still apply.
+2. Only if NO claim anywhere contains a disclosure phrase, AND the content is a first-person endorsement of a named brand/product ("this amazing X from BrandName", "best X I've ever used", "I've been using...", "my morning routine with..."), FLAG a single disclosure_violation (CRITICAL). This applies EVEN IF the endorsement sounds like casual personal experience — an undisclosed brand endorsement that drives action ("swipe up to get yours", "link in description", "% off", "order now") is a textbook FTC Endorsement Guides violation. The "subjective personal experience" leniency does NOT apply when a specific brand is promoted with a call to action and no disclosure.
+Do NOT assume a disclosure exists — it must be written in one of the claims.
+
 A claim is COMPLIANT (not a violation) when it uses hedging + disclaimers + does NOT make absolute/guaranteed/proven claims. The presence of a health topic alone is NOT a violation — only unsubstantiated absolute claims violate policy.
 
 Return JSON (no markdown fences):
