@@ -31,27 +31,9 @@ class PolicyChunk:
 
 
 def _get_mini_llm():
-    """Cheap model for query expansion. Phi-4-mini if configured, else GPT-4o."""
-    phi_endpoint = config.PHI4_ENDPOINT
-    phi_key = config.PHI4_API_KEY
-    if phi_endpoint and phi_key:
-        from langchain_openai import ChatOpenAI
-        return ChatOpenAI(
-            model="Phi-4-mini-instruct",
-            base_url=phi_endpoint,
-            api_key=phi_key,
-            temperature=0.1,
-            request_timeout=30,
-        )
-    from langchain_openai import AzureChatOpenAI
-    return AzureChatOpenAI(
-        azure_deployment=config.AZURE_OPENAI_CHAT_DEPLOYMENT,
-        azure_endpoint=config.AZURE_OPENAI_ENDPOINT,
-        api_key=config.AZURE_OPENAI_API_KEY,
-        openai_api_version=config.AZURE_OPENAI_API_VERSION,
-        temperature=0.1,
-        request_timeout=30,
-    )
+    """Cheap model for query expansion, via the provider seam."""
+    from src.services import llm_factory
+    return llm_factory.mini()
 
 
 # ponytail: query expansion prompt — rewrite consumer language to policy terminology.

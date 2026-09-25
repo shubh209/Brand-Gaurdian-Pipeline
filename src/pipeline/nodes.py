@@ -4,9 +4,9 @@ import os
 import re
 from typing import Any, Dict
 
-from langchain_openai import AzureChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage
 
+from src.services import llm_factory
 from src.pipeline.state import VideoAuditState
 from src.services.ingestion import HybridIngestionService
 from src.services.policy_store import format_chunks_for_prompt, search_policy_chunks
@@ -27,43 +27,14 @@ def _require_env(var_name: str) -> str:
     return value
 
 
-def _llm(temperature: float = 0.1) -> AzureChatOpenAI:
-    # ponytail: new instance per call — cheap models are fast enough.
-    # Upgrade to module singleton if latency becomes measurable.
-    return AzureChatOpenAI(
-        azure_deployment=_require_env("AZURE_OPENAI_CHAT_DEPLOYMENT"),
-        azure_endpoint=_require_env("AZURE_OPENAI_ENDPOINT"),
-        api_key=_require_env("AZURE_OPENAI_API_KEY"),
-        openai_api_version=_require_env("AZURE_OPENAI_API_VERSION"),
-        temperature=temperature,
-        request_timeout=60,
-    )
+def _llm(temperature: float = 0.1):
+    # Provider seam: vendor/model chosen by config. See src/services/llm_factory.py.
+    return llm_factory.chat(temperature=temperature)
 
 
 def _mini_llm(temperature: float = 0.1):
-    """Return a cheap/fast model for extraction tasks.
-    ponytail: uses Phi-4-mini on Azure AI Foundry if configured, falls back to GPT-4o.
-    """
-    phi_endpoint = os.getenv("PHI4_ENDPOINT")
-    phi_key = os.getenv("PHI4_API_KEY")
-    if phi_endpoint and phi_key:
-        from langchain_openai import ChatOpenAI
-        return ChatOpenAI(
-            model="Phi-4-mini-instruct",
-            base_url=phi_endpoint,
-            api_key=phi_key,
-            temperature=temperature,
-            request_timeout=60,
-        )
-    deployment = os.getenv("AZURE_OPENAI_MINI_DEPLOYMENT", "gpt-4o")
-    return AzureChatOpenAI(
-        azure_deployment=deployment,
-        azure_endpoint=_require_env("AZURE_OPENAI_ENDPOINT"),
-        api_key=_require_env("AZURE_OPENAI_API_KEY"),
-        openai_api_version=_require_env("AZURE_OPENAI_API_VERSION"),
-        temperature=temperature,
-        request_timeout=60,
-    )
+    """Cheap/fast model for extraction tasks, via the provider seam."""
+    return llm_factory.mini(temperature=temperature)
 
 
 def _expand_claim(claim: str) -> str:

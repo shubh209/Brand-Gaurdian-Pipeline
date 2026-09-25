@@ -14,9 +14,8 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 
 from langchain_core.messages import HumanMessage, SystemMessage
-from langchain_openai import AzureChatOpenAI
-
 from src.config import config
+from src.services import llm_factory
 from src.errors import RetryableError, PermanentError
 from src.services.policy_retriever import PolicyRetriever, PolicyChunk
 from src.services.video_analyzer import AnalysisResult
@@ -52,31 +51,14 @@ class AuditReport:
 
 # ── LLM helpers ───────────────────────────────────────────────────────────────
 
-def _llm(temperature: float = 0.1) -> AzureChatOpenAI:
-    return AzureChatOpenAI(
-        azure_deployment=config.AZURE_OPENAI_CHAT_DEPLOYMENT,
-        azure_endpoint=config.AZURE_OPENAI_ENDPOINT,
-        api_key=config.AZURE_OPENAI_API_KEY,
-        openai_api_version=config.AZURE_OPENAI_API_VERSION,
-        temperature=temperature,
-        request_timeout=60,
-    )
+def _llm(temperature: float = 0.1):
+    # Provider seam: vendor/model chosen by config. See src/services/llm_factory.py.
+    return llm_factory.chat(temperature=temperature)
 
 
 def _mini_llm():
-    """Cheap model for claim extraction."""
-    phi_endpoint = config.PHI4_ENDPOINT
-    phi_key = config.PHI4_API_KEY
-    if phi_endpoint and phi_key:
-        from langchain_openai import ChatOpenAI
-        return ChatOpenAI(
-            model="Phi-4-mini-instruct",
-            base_url=phi_endpoint,
-            api_key=phi_key,
-            temperature=0.1,
-            request_timeout=30,
-        )
-    return _llm(temperature=0.1)
+    """Cheap model for claim extraction, via the provider seam."""
+    return llm_factory.mini()
 
 
 def _parse_json(content: str) -> dict | list:
@@ -359,14 +341,20 @@ class ComplianceAuditor:
 
         try:
             handler = get_langchain_handler()
+            # ponytail: logprobs gated by provider — gpt-oss on Groq 400s on it.
+            # When unsupported, _extract_confidence falls back to a 0.7 default.
+            # Ceiling: no real per-response confidence on Groq. Upgrade path: a provider
+            # that returns logprobs, or a separate self-rated-confidence prompt.
+            invoke_kwargs = {"config": {"callbacks": [handler] if handler else []}}
+            if llm_factory.supports_logprobs():
+                invoke_kwargs["logprobs"] = True
+                invoke_kwargs["top_logprobs"] = 5
             response = _llm(temperature=0.1).invoke(
                 [SystemMessage(content=system), HumanMessage(content=user)],
-                logprobs=True,
-                top_logprobs=5,
-                config={"callbacks": [handler] if handler else []},
+                **invoke_kwargs,
             )
 
-            # Extract confidence from logprobs
+            # Extract confidence from logprobs (falls back to 0.7 when unavailable)
             confidence = self._extract_confidence(response)
 
             result = _parse_json(response.content)
