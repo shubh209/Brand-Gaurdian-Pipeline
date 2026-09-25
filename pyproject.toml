@@ -42,6 +42,7 @@ dependencies = [
     "python-magic>=0.4.27",
     "pytesseract>=0.3.13",
     "litellm>=1.102.1",
+    "sentence-transformers>=6.1.0",
 ]
 
 [tool.pytest.ini_options]
