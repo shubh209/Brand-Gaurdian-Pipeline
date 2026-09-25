@@ -1,6 +1,5 @@
 import json
 import logging
-import os
 import re
 from typing import Any, Dict
 
@@ -18,13 +17,6 @@ logging.basicConfig(level=logging.INFO)
 logging.getLogger("azure.core.pipeline.policies.http_logging_policy").setLevel(logging.WARNING)
 logging.getLogger("azure.monitor").setLevel(logging.WARNING)
 logging.getLogger("azure.identity").setLevel(logging.WARNING)
-
-
-def _require_env(var_name: str) -> str:
-    value = os.getenv(var_name)
-    if not value:
-        raise ValueError(f"Missing required environment variable: {var_name}")
-    return value
 
 
 def _llm(temperature: float = 0.1):

@@ -3,8 +3,8 @@ LLM provider seam — one place that hands out chat + mini LLM clients.
 
 Built on LiteLLM (via LangChain's ChatLiteLLM) so the vendor is a config value:
 `LLM_PROVIDER` + LiteLLM-style model IDs (`groq/openai/gpt-oss-120b`, `openai/gpt-4o`,
-`gemini/gemini-2.0-flash`, `openrouter/...`). Callers use the returned object exactly
-like the old `AzureChatOpenAI`: `.invoke([messages], config={...}).content`.
+`gemini/gemini-2.0-flash`, `openrouter/...`). Callers use the returned object with the
+standard LangChain chat interface: `.invoke([messages], config={...}).content`.
 
 ponytail: SDK-level seam only. No routing/fallback/proxy — if multi-model routing is
 ever needed, add a LiteLLM Proxy or OpenRouter behind this same seam (see epic #23).
@@ -24,9 +24,8 @@ def _ensure_provider_key() -> None:
     """LiteLLM reads provider credentials from env vars. Bridge our config into them."""
     if config.LLM_PROVIDER == "groq" and config.GROQ_API_KEY:
         os.environ.setdefault("GROQ_API_KEY", config.GROQ_API_KEY)
-    elif config.LLM_PROVIDER in ("openai", "azure") and config.AZURE_OPENAI_API_KEY:
-        # OpenAI-compatible fallbacks read OPENAI_API_KEY; wired if/when those providers are used.
-        os.environ.setdefault("OPENAI_API_KEY", config.AZURE_OPENAI_API_KEY)
+    # OpenAI is a supported future (paid) provider; it reads OPENAI_API_KEY from env directly.
+    # Azure is intentionally not a provider option — removed in the Azure-off migration (#5).
 
 
 def supports_logprobs() -> bool:
