@@ -33,6 +33,9 @@ class Config:
     # ponytail: Azure is no longer required to boot — it is one provider among several,
     # selected by these knobs. See docs/MIGRATION_PLAN.md and epic #23.
     LLM_PROVIDER: str = field(default_factory=lambda: _optional("LLM_PROVIDER", "groq"))
+    # Model IDs are LiteLLM-style (provider/model). Swapping a model is a config change.
+    LLM_CHAT_MODEL: str = field(default_factory=lambda: _optional("LLM_CHAT_MODEL", "groq/openai/gpt-oss-120b"))
+    LLM_MINI_MODEL: str = field(default_factory=lambda: _optional("LLM_MINI_MODEL", "groq/openai/gpt-oss-20b"))
     EMBEDDING_PROVIDER: str = field(default_factory=lambda: _optional("EMBEDDING_PROVIDER", "local"))
     EMBEDDING_MODEL: str = field(default_factory=lambda: _optional("EMBEDDING_MODEL", "all-MiniLM-L6-v2"))
     VECTOR_STORE: str = field(default_factory=lambda: _optional("VECTOR_STORE", "pgvector"))
