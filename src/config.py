@@ -45,6 +45,9 @@ class Config:
     # Supabase (data layer: Postgres + pgvector + storage)
     SUPABASE_URL: str = field(default_factory=lambda: _optional("SUPABASE_URL", ""))
     SUPABASE_KEY: str = field(default_factory=lambda: _optional("SUPABASE_KEY", ""))
+    # Service-role key: full-access, server-side only (backend storage read/write).
+    # NEVER expose client-side. Kept in .env / Fly secrets; never logged.
+    SUPABASE_SERVICE_KEY: str = field(default_factory=lambda: _optional("SUPABASE_SERVICE_KEY", ""))
 
     # Azure OpenAI (optional — retained only until the seam migration removes it)
     AZURE_OPENAI_ENDPOINT: str = field(default_factory=lambda: _optional("AZURE_OPENAI_ENDPOINT", ""))
