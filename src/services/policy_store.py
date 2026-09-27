@@ -93,20 +93,23 @@ def search_policy_chunks(
     store = get_vector_store()
     top_k = k or rag_top_k()
 
-    filters = None
+    # pgvector metadata filter (dict), translated from the old Azure OData string.
+    # Restrict to the requested platform plus 'generic' (cross-platform) rules.
+    pg_filter = None
     if platform:
-        filters = f"platform eq '{platform}' or platform eq 'generic'"
+        pg_filter = {"platform": {"$in": [platform, "generic"]}}
 
-    # ponytail: try semantic hybrid search first; falls back if semantic ranker not configured
+    # ponytail: pgvector has no semantic-hybrid search (that was Azure-only); the
+    # cross-encoder reranker downstream (policy_retriever) compensates for ranking quality.
+    # Ceiling: pure vector similarity, no BM25 hybrid. Upgrade: add a pgvector full-text
+    # hybrid query if recall proves insufficient after the #15 eval.
+    # Note: PGVector scores are DISTANCES (lower = closer), unlike Azure relevance (higher
+    # = better). rag_min_score defaults to 0.0 (off) and the reranker re-scores, so the
+    # RetrievedChunk.score here is only a coarse ordering signal.
     try:
-        results = store.semantic_hybrid_search_with_score(
-            query_text, k=top_k, filters=filters
-        )
+        results = store.similarity_search_with_score(query_text, k=top_k, filter=pg_filter)
     except Exception:
-        try:
-            results = store.similarity_search_with_score(query_text, k=top_k, filters=filters)
-        except Exception:
-            results = store.similarity_search_with_score(query_text, k=top_k)
+        results = store.similarity_search_with_score(query_text, k=top_k)
 
     chunks: list[RetrievedChunk] = []
     for doc, score in results:
