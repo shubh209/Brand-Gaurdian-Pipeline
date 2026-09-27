@@ -43,6 +43,7 @@ dependencies = [
     "pytesseract>=0.3.13",
     "litellm>=1.102.1",
     "sentence-transformers>=6.1.0",
+    "langchain-postgres>=0.0.18",
 ]
 
 [tool.pytest.ini_options]
