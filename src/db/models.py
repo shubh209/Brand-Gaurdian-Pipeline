@@ -147,6 +147,19 @@ class DeadLetterJob(Base):
     failed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
+class AuditJob(Base):
+    """Postgres-backed work queue. Replaces the Azure Storage Queue.
+    A row is claimed invisibly (claimed_until in the future) via SELECT ... FOR UPDATE
+    SKIP LOCKED, deleted on success, and becomes visible again after claimed_until passes.
+    """
+    __tablename__ = "audit_jobs"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    payload: Mapped[dict] = mapped_column(JSONB, nullable=False)
+    claimed_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
 class TeamApiKey(Base):
     __tablename__ = "team_api_keys"
 
