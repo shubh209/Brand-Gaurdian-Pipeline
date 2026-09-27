@@ -8,7 +8,8 @@ import sqlalchemy as sa
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 
 revision = "004"
-down_revision = "003"
+# Fixed broken chain: 003's real revision id is "003_new_architecture", not "003".
+down_revision = "003_new_architecture"
 branch_labels = None
 depends_on = None
 

@@ -1,16 +1,12 @@
-import os
 from collections.abc import Generator
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql+psycopg2://postgres:postgres@localhost:5432/brand_guardian",
-)
+from src.config import config  # loads .env — single source of truth for DATABASE_URL
 
 engine = create_engine(
-    DATABASE_URL,
+    config.DATABASE_URL,
     pool_pre_ping=True,
     connect_args={"connect_timeout": 10},
 )
