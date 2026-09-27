@@ -120,6 +120,13 @@ def run_policy_index(
         all_splits = splits
         logger.info("Fallback PDF indexing: %d chunks", len(all_splits))
 
+    # ponytail: strip NUL (0x00) bytes — Postgres text columns reject them (pgvector
+    # store). PDF extraction can emit them (e.g. "e\x00ective"). Azure AI Search tolerated
+    # them; Postgres does not. One guard at the write choke point covers every source.
+    for split in all_splits:
+        if "\x00" in split.page_content:
+            split.page_content = split.page_content.replace("\x00", "")
+
     store = get_vector_store()
 
     # ponytail: wipe-and-replace — delete all existing docs before adding new ones.
