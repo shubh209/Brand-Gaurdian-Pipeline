@@ -1,18 +1,19 @@
 """
-Worker: polls Azure Storage Queue, processes uploaded videos through the audit pipeline.
-Run as: python -m src.worker.main
+Worker: polls the Postgres job queue, processes uploaded videos through the pipeline.
+Storage + queue go through the provider seams (Supabase). Run as: python -m src.worker.main
 """
 import json
 import logging
-import os
 import time
 
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
-from src.errors import RetryableError, PermanentError
 from src.config import config
+from src.errors import RetryableError, PermanentError
+from src.services import queue as job_queue
+from src.services import storage
 
 logger = logging.getLogger("brand-guardian.worker")
 logging.basicConfig(level=logging.INFO)
@@ -22,31 +23,10 @@ MAX_RETRIES = 3
 BACKOFF_BASE = 2  # seconds: 2, 4, 8
 
 
-def _queue_client():
-    from azure.storage.queue import QueueClient
-    conn_str = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
-    queue_name = os.getenv("AZURE_STORAGE_QUEUE_NAME", "audit-jobs")
-    return QueueClient.from_connection_string(conn_str, queue_name)
-
-
-def _blob_client(blob_name: str):
-    from azure.storage.blob import BlobClient
-    conn_str = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
-    container = os.getenv("AZURE_STORAGE_CONTAINER", "uploads")
-    return BlobClient.from_connection_string(conn_str, container, blob_name)
-
-
-def _delete_blob(blob_url: str) -> None:
-    try:
-        # Extract blob name from URL path
-        path = blob_url.split("/")
-        # blob name is everything after container segment
-        container = os.getenv("AZURE_STORAGE_CONTAINER", "uploads")
-        idx = path.index(container) + 1
-        blob_name = "/".join(path[idx:])
-        _blob_client(blob_name).delete_blob()
-    except Exception as exc:
-        logger.warning("Failed to delete blob %s: %s", blob_url, exc)
+def _blob_key(body: dict) -> str:
+    """The storage key for a job's video. New producers send blob_key; fall back to
+    deriving it from the audit_id for any older messages."""
+    return body.get("blob_key") or storage.key_for_audit(body["audit_id"])
 
 
 def _process_message(db, message_body: dict) -> None:
@@ -61,21 +41,20 @@ def _process_message(db, message_body: dict) -> None:
     from src.tracing import update_trace
 
     audit_id = message_body["audit_id"]
-    blob_url = message_body["blob_url"]
+    blob_key = _blob_key(message_body)
     platforms = message_body.get("platforms", ["youtube"])
     email = message_body.get("email")
 
     # Attach audit context to Langfuse trace
     update_trace(
         session_id=audit_id,
-        metadata={"platforms": platforms, "blob_url": blob_url, "audit_mode": "file"},
+        metadata={"platforms": platforms, "blob_key": blob_key, "audit_mode": "file"},
         tags=["worker", "upload"] + platforms,
     )
-    email = message_body.get("email")
 
-    # Download blob to temp file for VideoAnalyzer
+    # Download video to a temp file for VideoAnalyzer
     update_processing_status(db, audit_id, "transcribing")
-    tmp_path = _download_blob_to_temp(blob_url)
+    tmp_path = storage.download_to_temp(blob_key, suffix=".mp4")
 
     try:
         # Stage 1: VideoAnalyzer (Whisper + OCR + optional Vision)
@@ -120,7 +99,7 @@ def _process_message(db, message_body: dict) -> None:
             audit.ai_status = report.overall_status
             audit.final_status = report.overall_status
             audit.final_report = final_report
-            audit.model_version = config.AZURE_OPENAI_CHAT_DEPLOYMENT
+            audit.model_version = config.LLM_CHAT_MODEL
             db.commit()
 
         if email:
@@ -130,28 +109,11 @@ def _process_message(db, message_body: dict) -> None:
             except Exception as exc:
                 logger.warning("Email send failed for audit %s: %s", audit_id, exc)
 
-        _delete_blob(blob_url)
+        # ponytail: keep the blob on success cleanup; delete after processing completes.
+        storage.delete(blob_key)
 
     finally:
         Path(tmp_path).unlink(missing_ok=True)
-
-
-def _download_blob_to_temp(blob_url: str) -> str:
-    """Download blob to a local temp file. Returns the temp file path."""
-    import tempfile
-    from azure.storage.blob import BlobClient
-    import os
-
-    conn_str = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
-    container = os.getenv("AZURE_STORAGE_CONTAINER", "uploads")
-    blob_name = "/".join(blob_url.split("/")[4:])
-
-    tmp = tempfile.NamedTemporaryFile(suffix=".mp4", delete=False)
-    tmp.close()
-    blob = BlobClient.from_connection_string(conn_str, container, blob_name)
-    with open(tmp.name, "wb") as f:
-        f.write(blob.download_blob().readall())
-    return tmp.name
 
 
 def _dead_letter(db, audit_id: str, error_message: str, payload: dict) -> None:
@@ -170,16 +132,12 @@ def run_worker():
     from src.db.session import SessionLocal
     from src.db.repository import update_processing_status
 
-    queue = _queue_client()
-    logger.info("Worker started. Polling queue every 5s...")
+    logger.info("Worker started. Polling the Postgres queue every 5s...")
 
     while True:
-        messages = queue.receive_messages(
-            max_messages=1,
-            visibility_timeout=600,
-        )
-        for msg in messages:
-            body = json.loads(msg.content)
+        msg = job_queue.receive(visibility_timeout=600)
+        if msg is not None:
+            body = msg.body
             audit_id = body.get("audit_id", "unknown")
             logger.info("Processing audit %s", audit_id)
 
@@ -229,7 +187,10 @@ def run_worker():
             finally:
                 db.close()
 
-            queue.delete_message(msg)
+            # Remove the job from the queue. Retryable failures already exhausted their
+            # attempts inside the loop above; dead-lettering has recorded permanent ones,
+            # so the message is done either way.
+            job_queue.delete(msg.id)
 
         time.sleep(5)
 
