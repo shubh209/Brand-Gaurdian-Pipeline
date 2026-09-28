@@ -6,7 +6,6 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "azure-identity>=1.25.1",
-    "azure-monitor-opentelemetry>=1.8.3",
     "azure-search-documents>=11.6.0",
     "azure-storage-blob>=12.27.1",
     "azure-storage-queue>=12.9.0",
@@ -17,7 +16,6 @@ dependencies = [
     "langchain-openai>=1.1.6",
     "langgraph>=1.0.5",
     "langsmith>=0.5.2",
-    "opentelemetry-instrumentation-fastapi>=0.60b0",
     "psycopg2-binary>=2.9.11",
     "pydantic>=2.12.5",
     "pypdf>=6.5.0",

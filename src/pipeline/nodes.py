@@ -15,7 +15,6 @@ from src.services.video_indexer import YouTubeTranscriptService
 logger = logging.getLogger("brand-guardian")
 logging.basicConfig(level=logging.INFO)
 logging.getLogger("azure.core.pipeline.policies.http_logging_policy").setLevel(logging.WARNING)
-logging.getLogger("azure.monitor").setLevel(logging.WARNING)
 logging.getLogger("azure.identity").setLevel(logging.WARNING)
 
 
