@@ -24,36 +24,16 @@ _SAS_EXPIRY_MINUTES = 5
 def presign_upload(
     user: UserContext = Depends(require_audit_submitter),
 ):
-    """Generate a presigned URL for direct-to-blob upload."""
-    from azure.storage.blob import BlobClient, generate_blob_sas, BlobSasPermissions
-
-    conn_str = os.environ.get("AZURE_STORAGE_CONNECTION_STRING", "")
-    container = os.getenv("AZURE_STORAGE_CONTAINER", "uploads")
-    account_name = os.getenv("AZURE_STORAGE_ACCOUNT_NAME", "")
-    account_key = os.getenv("AZURE_STORAGE_ACCOUNT_KEY", "")
-
-    if not conn_str:
-        raise HTTPException(status_code=503, detail="Storage not configured")
-
-    # ponytail: extract account_name and account_key from connection string if not set separately
-    if not account_name or not account_key:
-        parts = dict(p.split("=", 1) for p in conn_str.split(";") if "=" in p)
-        account_name = parts.get("AccountName", "")
-        account_key = parts.get("AccountKey", "")
+    """Generate a signed URL for direct-to-storage upload (Supabase Storage)."""
+    from src.services import storage
 
     audit_id = str(uuid.uuid4())
-    blob_name = f"uploads/{audit_id}.mp4"
+    blob_name = storage.key_for_audit(audit_id)
 
-    sas_token = generate_blob_sas(
-        account_name=account_name,
-        container_name=container,
-        blob_name=blob_name,
-        account_key=account_key,
-        permission=BlobSasPermissions(write=True, create=True),
-        expiry=datetime.now(timezone.utc) + timedelta(minutes=_SAS_EXPIRY_MINUTES),
-    )
-
-    upload_url = f"https://{account_name}.blob.core.windows.net/{container}/{blob_name}?{sas_token}"
+    try:
+        upload_url = storage.presign_upload(blob_name)
+    except Exception:
+        raise HTTPException(status_code=503, detail="Storage not configured")
 
     return PresignResponse(
         upload_url=upload_url,
@@ -75,23 +55,16 @@ def start_audit(
     db: Session = Depends(get_db),
 ):
     """Tell backend the file is uploaded — enqueue processing job."""
-    container = os.getenv("AZURE_STORAGE_CONTAINER", "uploads")
-    account_name = os.getenv("AZURE_STORAGE_ACCOUNT_NAME", "")
-    conn_str = os.environ.get("AZURE_STORAGE_CONNECTION_STRING", "")
+    from src.services import storage, queue as job_queue
 
-    if not account_name and conn_str:
-        parts = dict(p.split("=", 1) for p in conn_str.split(";") if "=" in p)
-        account_name = parts.get("AccountName", "")
-
-    blob_name = f"uploads/{audit_id}.mp4"
-    blob_url = f"https://{account_name}.blob.core.windows.net/{container}/{blob_name}"
+    blob_key = storage.key_for_audit(audit_id)
 
     # Create audit record
     audit = Audit(
         team_id=user.team_id,
         user_id=user.user_id,
         session_id=audit_id,
-        video_url=blob_url,
+        video_url=blob_key,
         video_id=f"vid_{audit_id[:8]}",
         ai_status="PENDING",
         final_status="PENDING",
@@ -103,19 +76,15 @@ def start_audit(
     db.add(audit)
     db.commit()
 
-    # Enqueue job
+    # Enqueue job on the Postgres queue
     try:
-        from azure.storage.queue import QueueClient
-        queue_name = os.getenv("AZURE_STORAGE_QUEUE_NAME", "audit-jobs")
-        if conn_str:
-            q = QueueClient.from_connection_string(conn_str, queue_name)
-            q.send_message(json.dumps({
-                "audit_id": audit_id,
-                "blob_url": blob_url,
-                "platforms": body.platforms,
-                "email": body.email,
-            }))
+        job_queue.enqueue({
+            "audit_id": audit_id,
+            "blob_key": blob_key,
+            "platforms": body.platforms,
+            "email": body.email,
+        })
     except Exception:
-        pass  # ponytail: queue failure logged by worker retry. Audit stays "pending".
+        pass  # ponytail: queue failure leaves the audit "pending"; client can retry start.
 
     return AuditStartResponse(audit_id=audit_id, status="pending")
