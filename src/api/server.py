@@ -62,7 +62,6 @@ langfuse_handler = _setup_langfuse()
 
 logging.basicConfig(level=logging.INFO)
 logging.getLogger("azure.core.pipeline.policies.http_logging_policy").setLevel(logging.WARNING)
-logging.getLogger("azure.monitor").setLevel(logging.WARNING)
 logging.getLogger("azure.identity").setLevel(logging.WARNING)
 logger = logging.getLogger("api-server")
 
