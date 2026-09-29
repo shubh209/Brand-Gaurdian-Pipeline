@@ -1,0 +1,29 @@
+[
+  {
+    "model": "all-MiniLM-L6-v2",
+    "chunks": 37,
+    "passed": 8,
+    "total": 15,
+    "accuracy_pct": 53.3,
+    "false_pos": 0,
+    "false_neg": 7
+  },
+  {
+    "model": "BAAI/bge-small-en-v1.5",
+    "chunks": 37,
+    "passed": 7,
+    "total": 15,
+    "accuracy_pct": 46.7,
+    "false_pos": 0,
+    "false_neg": 8
+  },
+  {
+    "model": "sentence-transformers/all-mpnet-base-v2",
+    "chunks": 37,
+    "passed": 0,
+    "total": 15,
+    "accuracy_pct": 0.0,
+    "false_pos": 0,
+    "false_neg": 0
+  }
+]
