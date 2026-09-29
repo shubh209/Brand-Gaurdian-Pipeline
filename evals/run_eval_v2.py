@@ -52,19 +52,11 @@ def run_single(case: dict, auditor: ComplianceAuditor, fast: bool = False) -> di
 
     start = time.time()
     try:
-        # Per-case timeout: 90s max. If LLM hangs, we get ERROR instead of blocking the run.
-        import signal
-
-        def _case_timeout(signum, frame):
-            raise TimeoutError(f"Case {case['id']} timed out after 90s")
-
-        old_handler = signal.signal(signal.SIGALRM, _case_timeout)
-        signal.alarm(90)
-        try:
-            report = auditor.audit(analysis, platforms, skip_expansion=fast)
-        finally:
-            signal.alarm(0)
-            signal.signal(signal.SIGALRM, old_handler)
+        # ponytail: use concurrent.futures for real timeout — SIGALRM doesn't interrupt blocking I/O
+        from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeout
+        with ThreadPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(auditor.audit, analysis, platforms, fast)
+            report = future.result(timeout=90)
         elapsed = time.time() - start
 
         actual_status = report.overall_status
@@ -112,9 +104,10 @@ def main():
     parser.add_argument("--limit", type=int, default=None, help="Max cases to run")
     parser.add_argument("--category", type=str, default=None, help="Filter by category")
     parser.add_argument("--fast", action="store_true", help="Skip query expansion (faster, less accurate retrieval)")
+    parser.add_argument("--dataset", type=str, default=None, help="Path to dataset JSON (default: golden_dataset_v2.json)")
     args = parser.parse_args()
 
-    dataset_path = Path(__file__).parent / "golden_dataset_v2.json"
+    dataset_path = Path(args.dataset) if args.dataset else Path(__file__).parent / "golden_dataset_v2.json"
     with open(dataset_path) as f:
         dataset = json.load(f)
 

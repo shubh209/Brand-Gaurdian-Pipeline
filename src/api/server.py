@@ -62,7 +62,6 @@ langfuse_handler = _setup_langfuse()
 
 logging.basicConfig(level=logging.INFO)
 logging.getLogger("azure.core.pipeline.policies.http_logging_policy").setLevel(logging.WARNING)
-logging.getLogger("azure.monitor").setLevel(logging.WARNING)
 logging.getLogger("azure.identity").setLevel(logging.WARNING)
 logger = logging.getLogger("api-server")
 
@@ -321,34 +320,22 @@ async def upload_video_for_audit(
     finally:
         Path(tmp.name).unlink(missing_ok=True)
 
-    # Upload to Azure Blob
-    blob_url = ""
+    # Upload to Supabase Storage
+    from src.services import storage, queue as job_queue
+    blob_key = storage.key_for_audit(audit_id)
     try:
-        from azure.storage.blob import BlobClient
-        conn_str = os.getenv("AZURE_STORAGE_CONNECTION_STRING", "")
-        container = os.getenv("AZURE_STORAGE_CONTAINER", "uploads")
-        blob_name = f"uploads/{audit_id}{ext}"
-        if conn_str:
-            blob = BlobClient.from_connection_string(conn_str, container, blob_name)
-            blob.upload_blob(content, overwrite=True)
-            blob_url = blob.url
+        storage.upload(blob_key, content, content_type="video/mp4")
     except Exception as exc:
-        logger.warning("Blob upload failed for audit %s: %s", audit_id, exc)
+        logger.warning("Storage upload failed for audit %s: %s", audit_id, exc)
 
-    # Enqueue job
+    # Enqueue job on the Postgres queue
     try:
-        from azure.storage.queue import QueueClient
-        import json as _json
-        conn_str = os.getenv("AZURE_STORAGE_CONNECTION_STRING", "")
-        queue_name = os.getenv("AZURE_STORAGE_QUEUE_NAME", "audit-jobs")
-        if conn_str:
-            q = QueueClient.from_connection_string(conn_str, queue_name)
-            q.send_message(_json.dumps({
-                "audit_id": audit_id,
-                "blob_url": blob_url,
-                "platforms": platforms,
-                "email": email,
-            }))
+        job_queue.enqueue({
+            "audit_id": audit_id,
+            "blob_key": blob_key,
+            "platforms": platforms,
+            "email": email,
+        })
     except Exception as exc:
         logger.warning("Queue enqueue failed for audit %s: %s", audit_id, exc)
 
@@ -359,7 +346,7 @@ async def upload_video_for_audit(
             team_id=user.team_id,
             user_id=user.user_id,
             session_id=audit_id,
-            video_url=blob_url or f"upload:{audit_id}",
+            video_url=blob_key,
             video_id=f"vid_{audit_id[:8]}",
             ai_status="PENDING",
             final_status="PENDING",

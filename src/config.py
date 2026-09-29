@@ -29,21 +29,41 @@ def _optional(name: str, default: str = "") -> str:
 class Config:
     """Immutable app config. All required vars validated at construction time."""
 
-    # Azure OpenAI
-    AZURE_OPENAI_ENDPOINT: str = field(default_factory=lambda: _require("AZURE_OPENAI_ENDPOINT"))
-    AZURE_OPENAI_API_KEY: str = field(default_factory=lambda: _require("AZURE_OPENAI_API_KEY"))
+    # ── Provider seam (migration: which vendor backs each concern) ──────────────
+    # ponytail: Azure is no longer required to boot — it is one provider among several,
+    # selected by these knobs. See docs/MIGRATION_PLAN.md and epic #23.
+    LLM_PROVIDER: str = field(default_factory=lambda: _optional("LLM_PROVIDER", "groq"))
+    # Model IDs are LiteLLM-style (provider/model). Swapping a model is a config change.
+    LLM_CHAT_MODEL: str = field(default_factory=lambda: _optional("LLM_CHAT_MODEL", "groq/openai/gpt-oss-120b"))
+    LLM_MINI_MODEL: str = field(default_factory=lambda: _optional("LLM_MINI_MODEL", "groq/openai/gpt-oss-20b"))
+    EMBEDDING_PROVIDER: str = field(default_factory=lambda: _optional("EMBEDDING_PROVIDER", "local"))
+    EMBEDDING_MODEL: str = field(default_factory=lambda: _optional("EMBEDDING_MODEL", "all-MiniLM-L6-v2"))
+    VECTOR_STORE: str = field(default_factory=lambda: _optional("VECTOR_STORE", "pgvector"))
+    STORAGE_BACKEND: str = field(default_factory=lambda: _optional("STORAGE_BACKEND", "supabase"))
+    QUEUE_BACKEND: str = field(default_factory=lambda: _optional("QUEUE_BACKEND", "postgres"))
+
+    # Supabase (data layer: Postgres + pgvector + storage)
+    SUPABASE_URL: str = field(default_factory=lambda: _optional("SUPABASE_URL", ""))
+    SUPABASE_KEY: str = field(default_factory=lambda: _optional("SUPABASE_KEY", ""))
+    # Service-role key: full-access, server-side only (backend storage read/write).
+    # NEVER expose client-side. Kept in .env / Fly secrets; never logged.
+    SUPABASE_SERVICE_KEY: str = field(default_factory=lambda: _optional("SUPABASE_SERVICE_KEY", ""))
+
+    # Azure OpenAI (optional — retained only until the seam migration removes it)
+    AZURE_OPENAI_ENDPOINT: str = field(default_factory=lambda: _optional("AZURE_OPENAI_ENDPOINT", ""))
+    AZURE_OPENAI_API_KEY: str = field(default_factory=lambda: _optional("AZURE_OPENAI_API_KEY", ""))
     AZURE_OPENAI_API_VERSION: str = field(default_factory=lambda: _optional("AZURE_OPENAI_API_VERSION", "2024-02-01"))
-    AZURE_OPENAI_CHAT_DEPLOYMENT: str = field(default_factory=lambda: _require("AZURE_OPENAI_CHAT_DEPLOYMENT"))
-    AZURE_OPENAI_EMBEDDING_DEPLOYMENT: str = field(default_factory=lambda: _require("AZURE_OPENAI_EMBEDDING_DEPLOYMENT"))
+    AZURE_OPENAI_CHAT_DEPLOYMENT: str = field(default_factory=lambda: _optional("AZURE_OPENAI_CHAT_DEPLOYMENT", ""))
+    AZURE_OPENAI_EMBEDDING_DEPLOYMENT: str = field(default_factory=lambda: _optional("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", ""))
     AZURE_OPENAI_WHISPER_DEPLOYMENT: str = field(default_factory=lambda: _optional("AZURE_OPENAI_WHISPER_DEPLOYMENT", "whisper"))
 
-    # Azure AI Search
-    AZURE_SEARCH_ENDPOINT: str = field(default_factory=lambda: _require("AZURE_SEARCH_ENDPOINT"))
-    AZURE_SEARCH_API_KEY: str = field(default_factory=lambda: _require("AZURE_SEARCH_API_KEY"))
+    # Azure AI Search (optional — retained only until the seam migration removes it)
+    AZURE_SEARCH_ENDPOINT: str = field(default_factory=lambda: _optional("AZURE_SEARCH_ENDPOINT", ""))
+    AZURE_SEARCH_API_KEY: str = field(default_factory=lambda: _optional("AZURE_SEARCH_API_KEY", ""))
     AZURE_SEARCH_INDEX_NAME: str = field(default_factory=lambda: _optional("AZURE_SEARCH_INDEX_NAME", "brand-compliance-rules"))
 
-    # Azure Storage
-    AZURE_STORAGE_CONNECTION_STRING: str = field(default_factory=lambda: _require("AZURE_STORAGE_CONNECTION_STRING"))
+    # Azure Storage (optional — retained only until the seam migration removes it)
+    AZURE_STORAGE_CONNECTION_STRING: str = field(default_factory=lambda: _optional("AZURE_STORAGE_CONNECTION_STRING", ""))
     AZURE_STORAGE_CONTAINER: str = field(default_factory=lambda: _optional("AZURE_STORAGE_CONTAINER", "uploads"))
     AZURE_STORAGE_QUEUE_NAME: str = field(default_factory=lambda: _optional("AZURE_STORAGE_QUEUE_NAME", "audit-jobs"))
 

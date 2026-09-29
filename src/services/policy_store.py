@@ -1,21 +1,24 @@
 import logging
+import logging
 import os
 import threading
 import uuid
 from dataclasses import dataclass
 
-from langchain_openai import AzureOpenAIEmbeddings
-from langchain_community.vectorstores import AzureSearch
 from sqlalchemy.orm import Session
 
+from src.config import config
 from src.db.models import PolicyVersion
 from src.db.repository import get_current_policy_version
 
 logger = logging.getLogger("brand-guardian")
 
+# Collection name for the pgvector store (one logical index of policy chunks).
+_PGVECTOR_COLLECTION = "brand_compliance_rules"
+
 # ponytail: module-level singleton. Not safe across forked processes.
 # Upgrade: use a connection pool if multi-process workers are added.
-_store: AzureSearch | None = None
+_store = None
 _store_lock = threading.Lock()
 
 _ALLOWED_PLATFORMS = {"youtube", "tiktok", "facebook", "meta", "generic", "x"}
@@ -31,29 +34,31 @@ class RetrievedChunk:
     platform: str | None = None
 
 
-def _require_env(name: str) -> str:
-    value = os.getenv(name)
-    if not value:
-        raise ValueError(f"Missing required environment variable: {name}")
-    return value
+def _pgvector_connection() -> str:
+    """DATABASE_URL as a psycopg (v3) URL, which langchain_postgres.PGVector requires."""
+    url = config.DATABASE_URL
+    # Normalize any psycopg2 / bare scheme to the psycopg v3 driver.
+    for prefix in ("postgresql+psycopg2://", "postgres://", "postgresql://"):
+        if url.startswith(prefix):
+            return "postgresql+psycopg://" + url[len(prefix):]
+    return url
 
 
-def _build_store() -> AzureSearch:
-    embeddings = AzureOpenAIEmbeddings(
-        azure_deployment=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-3-small"),
-        azure_endpoint=_require_env("AZURE_OPENAI_ENDPOINT"),
-        api_key=_require_env("AZURE_OPENAI_API_KEY"),
-        openai_api_version=os.getenv("AZURE_OPENAI_API_VERSION", "2024-02-01"),
-    )
-    return AzureSearch(
-        azure_search_endpoint=_require_env("AZURE_SEARCH_ENDPOINT"),
-        azure_search_key=_require_env("AZURE_SEARCH_API_KEY"),
-        index_name=_require_env("AZURE_SEARCH_INDEX_NAME"),
-        embedding_function=embeddings.embed_query,
-    )
+def _build_store():
+    """Build the vector store selected by VECTOR_STORE. pgvector is the live backend."""
+    if config.VECTOR_STORE == "pgvector":
+        from langchain_postgres import PGVector
+        from src.services.embeddings_factory import get_embeddings
+        return PGVector(
+            embeddings=get_embeddings(),
+            collection_name=_PGVECTOR_COLLECTION,
+            connection=_pgvector_connection(),
+            use_jsonb=True,
+        )
+    raise ValueError(f"Unknown VECTOR_STORE: {config.VECTOR_STORE!r} (expected 'pgvector')")
 
 
-def get_vector_store() -> AzureSearch:
+def get_vector_store():
     global _store
     if _store is None:
         with _store_lock:
@@ -88,20 +93,23 @@ def search_policy_chunks(
     store = get_vector_store()
     top_k = k or rag_top_k()
 
-    filters = None
+    # pgvector metadata filter (dict), translated from the old Azure OData string.
+    # Restrict to the requested platform plus 'generic' (cross-platform) rules.
+    pg_filter = None
     if platform:
-        filters = f"platform eq '{platform}' or platform eq 'generic'"
+        pg_filter = {"platform": {"$in": [platform, "generic"]}}
 
-    # ponytail: try semantic hybrid search first; falls back if semantic ranker not configured
+    # ponytail: pgvector has no semantic-hybrid search (that was Azure-only); the
+    # cross-encoder reranker downstream (policy_retriever) compensates for ranking quality.
+    # Ceiling: pure vector similarity, no BM25 hybrid. Upgrade: add a pgvector full-text
+    # hybrid query if recall proves insufficient after the #15 eval.
+    # Note: PGVector scores are DISTANCES (lower = closer), unlike Azure relevance (higher
+    # = better). rag_min_score defaults to 0.0 (off) and the reranker re-scores, so the
+    # RetrievedChunk.score here is only a coarse ordering signal.
     try:
-        results = store.semantic_hybrid_search_with_score(
-            query_text, k=top_k, filters=filters
-        )
+        results = store.similarity_search_with_score(query_text, k=top_k, filter=pg_filter)
     except Exception:
-        try:
-            results = store.similarity_search_with_score(query_text, k=top_k, filters=filters)
-        except Exception:
-            results = store.similarity_search_with_score(query_text, k=top_k)
+        results = store.similarity_search_with_score(query_text, k=top_k)
 
     chunks: list[RetrievedChunk] = []
     for doc, score in results:

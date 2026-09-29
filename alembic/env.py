@@ -4,6 +4,7 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
+from src.config import config as app_config  # loads .env, single source of truth
 from src.db.models import Base
 
 config = context.config
@@ -15,10 +16,8 @@ target_metadata = Base.metadata
 
 
 def get_url() -> str:
-    return os.getenv(
-        "DATABASE_URL",
-        "postgresql+psycopg2://postgres:postgres@localhost:5432/brand_guardian",
-    )
+    # Use the app config so alembic and the app read the same DATABASE_URL (from .env).
+    return app_config.DATABASE_URL
 
 
 def run_migrations_offline() -> None:

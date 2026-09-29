@@ -1,0 +1,445 @@
+[
+  {
+    "id": "eval-health-002",
+    "name": "Knee pain supplement with age-reversal claim",
+    "transcript": "JointEase Gold restores youthful joint function and eliminates knee pain permanently. Backed by decades of herbal wisdom. Try it risk-free for 30 days.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "seed_id": "seed-health-001",
+    "rationale": "Unsubstantiated health claim with permanence language; no clinical evidence for 'eliminates permanently'"
+  },
+  {
+    "id": "eval-health-009",
+    "name": "Compliant sports nutrition ad",
+    "transcript": "PowerFlow is formulated with electrolytes and B vitamins to support your active lifestyle. As with any supplement, individual responses may vary. Not a substitute for a balanced diet.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "seed_id": "seed-health-003",
+    "rationale": "Structure/function claim ('support active lifestyle') without efficacy promise"
+  },
+  {
+    "id": "eval-health-010",
+    "name": "Heart health juice proven claim",
+    "transcript": "HeartGuard juice is proven to promote cardiovascular health. Drink one glass daily and reduce your risk of heart disease. Clinically validated formula.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "seed_id": "seed-health-004",
+    "rationale": "'Proven' claim based on single small study (FTC Example 31) \u2014 one trial doesn't support 'proven'"
+  },
+  {
+    "id": "eval-health-011",
+    "name": "Omega-3 cardiovascular proven benefit",
+    "transcript": "OmegaMax is scientifically proven to lower your cholesterol and protect your heart. Over 10,000 satisfied customers can't be wrong. Take control of your heart health today.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "seed_id": "seed-health-004",
+    "rationale": "'Scientifically proven' disease prevention claim for supplement without adequate substantiation"
+  },
+  {
+    "id": "eval-efficacy-004",
+    "name": "Cholesterol supplement with hedged but misleading language",
+    "transcript": "Exciting new research suggests CholestAway may help maintain healthy cholesterol levels already within normal range. Promising preliminary studies point to real benefits. Try it today.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "seed_id": "seed-efficacy-002",
+    "rationale": "Qualifiers like 'promising' and 'preliminary' provide positive spin that misleads rather than disclaims (FTC Example 12)"
+  },
+  {
+    "id": "eval-disclosure-002",
+    "name": "Weight loss testimonial without typicality",
+    "transcript": "I lost 47 pounds in just 6 weeks using TrimFast. I didn't change anything else about my life. This product is a miracle. If I can do it, so can you.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "seed_id": "seed-disclosure-001",
+    "rationale": "Testimonial with specific atypical results + no disclaimer + 'miracle' language + implied anyone can replicate"
+  },
+  {
+    "id": "eval-health-014",
+    "name": "Vitamin C immune disease shield",
+    "transcript": "MegaC 5000 creates an impenetrable shield against all viruses and bacteria. Eliminates cold and flu guaranteed or your money back. Why risk getting sick?",
+    "category": "health_claim",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "seed_id": "seed-health-006",
+    "rationale": "Absolute disease prevention claim ('impenetrable shield', 'eliminates', 'all viruses') \u2014 no supplement can make this claim"
+  },
+  {
+    "id": "eval-health-018",
+    "name": "Probiotic digestive health with prevalence stat",
+    "transcript": "Did you know 87% of Americans suffer from digestive issues? DigestPro with patented probiotic strain is clinically proven to eliminate bloating and irregularity within 48 hours.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "seed_id": "seed-health-009",
+    "rationale": "Unsubstantiated prevalence statistic + 'clinically proven' + 'eliminate' efficacy claim (FTC Dannon case)"
+  },
+  {
+    "id": "eval-health-020",
+    "name": "Compliant probiotic ad",
+    "transcript": "GutRenew contains Lactobacillus cultures that may help maintain digestive balance when consumed as part of a balanced diet. Individual digestive experiences differ. Not intended to treat any condition.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "seed_id": "seed-health-009",
+    "rationale": "Structure/function ('maintain digestive balance'), hedged ('may help'), proper disclaimers"
+  },
+  {
+    "id": "eval-before-after-001",
+    "name": "Weight loss before/after with inadequate disclaimer",
+    "transcript": "Look at Sarah's transformation! She lost 45 pounds in just 8 weeks with SlimMax. These results are not typical. Your weight loss may not be the same. But Sarah did it, and you can too!",
+    "category": "before_after",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "seed_id": "seed-before-after-001",
+    "rationale": "Fine print disclaimer contradicted by 'you can too' \u2014 disclaimer doesn't cure misleading impression (FTC Example 38)"
+  },
+  {
+    "id": "eval-health-022",
+    "name": "Harvard research brain supplement",
+    "transcript": "Developed from research at Harvard Medical School. CogniPlus is clinically proven to reverse age-related cognitive decline. Restore your mental sharpness in just 14 days.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "seed_id": "seed-health-011",
+    "rationale": "Misattributing university research + 'reverse cognitive decline' disease claim + specific timeframe"
+  },
+  {
+    "id": "eval-financial-001",
+    "name": "Crypto guaranteed returns",
+    "transcript": "CryptoWealth AI guarantees 500% returns in 30 days. Zero risk \u2014 our algorithm never loses. Join 50,000 members already earning passive income. Limited spots available, act now.",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "seed_id": null,
+    "rationale": "Guaranteed returns + zero risk + specific ROI + urgency scarcity \u2014 violates financial advertising rules on all platforms"
+  },
+  {
+    "id": "eval-financial-002",
+    "name": "Forex trading bot guaranteed income",
+    "transcript": "ForexMaster bot makes you money while you sleep. Guaranteed minimum $500 per day. No experience needed, our AI does everything. Join the financial freedom revolution.",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "seed_id": null,
+    "rationale": "Guaranteed daily income + no risk/effort claims + implied algorithmic certainty \u2014 deceptive financial claim"
+  },
+  {
+    "id": "eval-financial-004",
+    "name": "Compliant investment education ad",
+    "transcript": "Learn the fundamentals of investing with our educational course. Trading involves substantial risk of loss and is not suitable for all investors. Past performance does not guarantee future results. Only invest what you can afford to lose.",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "seed_id": null,
+    "rationale": "Educational framing, prominent risk disclosure, no earnings claims, proper disclaimers"
+  },
+  {
+    "id": "eval-financial-007",
+    "name": "NFT investment opportunity guaranteed appreciation",
+    "transcript": "This NFT collection will 10x in value guaranteed. Early investors in our last drop made 2000% returns. Mint now before it sells out \u2014 only 100 spots left at this price.",
+    "category": "financial_claim",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Guaranteed appreciation + past returns implied as future guarantee + false scarcity"
+  },
+  {
+    "id": "eval-financial-011",
+    "name": "Dropshipping guaranteed income",
+    "transcript": "My dropshipping students are averaging $15K per month within 90 days. Proven system \u2014 just copy and paste. I'll show you the exact products making me six figures. DM me 'START' for free training.",
+    "category": "financial_claim",
+    "platforms": [
+      "tiktok",
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Specific income claims without typicality disclosure + implied ease ('copy and paste') \u2014 deceptive income opportunity"
+  },
+  {
+    "id": "eval-urgency-004",
+    "name": "Countdown timer supplement scarcity",
+    "transcript": "ALERT: We just got notified that due to ingredient shortages, production of KetoBlast will stop next month. We only have 200 bottles left in our warehouse. Once they're gone, they're gone forever.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Fabricated supply shortage to create false scarcity \u2014 if product continues selling, this is deceptive"
+  },
+  {
+    "id": "eval-urgency-005",
+    "name": "Free trial expiring misleading offer",
+    "transcript": "Your exclusive free trial expires in 2 hours! After that, the price goes to $197 per month. This link will never work again. Seriously \u2014 this is the last time I'm offering this.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Fake countdown urgency + 'never again' language \u2014 if offer recurs, this is deceptive time pressure"
+  },
+  {
+    "id": "eval-urgency-006",
+    "name": "Flash sale that never ends",
+    "transcript": "MASSIVE flash sale happening RIGHT NOW! 80% off our entire collection. But you have to act fast \u2014 this deal expires at midnight. Use code LASTCHANCE.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "meta",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "If 'flash sale' is perpetually running (common dark pattern), 'expires at midnight' is deceptive urgency"
+  },
+  {
+    "id": "eval-urgency-009",
+    "name": "Compliant limited edition product",
+    "transcript": "We produced a limited run of 500 units for our anniversary collection. Once they sell out, this colorway won't be restocked. Each unit is numbered.",
+    "category": "deceptive_urgency",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Genuine limited production with verifiable numbering \u2014 not manufactured urgency"
+  },
+  {
+    "id": "eval-disclosure-008",
+    "name": "Family vlog sponsored by food brand",
+    "transcript": "Today we're making the kids' favorite breakfast \u2014 these amazing organic pancakes from NatureFarm! The whole family loves them. They taste so much better than regular pancakes. Link in description for 15% off!",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Sponsored content integrated into family content without clear #ad disclosure \u2014 FTC requires conspicuous disclosure"
+  },
+  {
+    "id": "eval-disclosure-009",
+    "name": "Fitness influencer undisclosed partnership",
+    "transcript": "My morning routine starts with ProteinMax shake. I've been drinking it for two years now and my recovery has never been better. Best protein shake on the market, hands down.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "Brand ambassador making efficacy claims without disclosing material connection \u2014 FTC Endorsement Guides violation"
+  },
+  {
+    "id": "eval-disclosure-010",
+    "name": "Doctor endorsement without conflict disclosure",
+    "transcript": "As a board-certified dermatologist, I recommend GlowSkin serum to all my patients. The clinical results speak for themselves. This is the only product I trust for anti-aging.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "If doctor has financial relationship with brand (paid endorser, equity), failure to disclose is deceptive"
+  },
+  {
+    "id": "eval-disclosure-011",
+    "name": "Fake customer review in ad",
+    "transcript": "Real customer Lisa M. says: 'I've tried everything and nothing worked until SkinPerfect. My wrinkles disappeared in 3 days.' Join thousands of satisfied customers. Order now.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube",
+      "meta"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Fabricated or unverifiable testimonial + specific timeframe ('3 days') efficacy claim without substantiation"
+  },
+  {
+    "id": "eval-before-after-005",
+    "name": "Skin cream transformation 7 days",
+    "transcript": "Day 1 versus Day 7. The transformation is real. DermaGlow eliminated 90% of my wrinkles in one week flat. I can't believe it. If you have wrinkles, you NEED this.",
+    "category": "before_after",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Specific percentage claim (90%) + specific unrealistic timeframe (7 days) + no disclaimer about typicality"
+  },
+  {
+    "id": "eval-before-after-006",
+    "name": "Fitness transformation sponsored post",
+    "transcript": "12 weeks on the FitPro program and look at these results! Down 30 pounds, up 15 pounds of muscle. This program works if you work it. Link in bio for my discount code.",
+    "category": "before_after",
+    "platforms": [
+      "tiktok",
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Specific body comp numbers without typicality + undisclosed affiliate/sponsorship + implied anyone can achieve same"
+  },
+  {
+    "id": "eval-before-after-009",
+    "name": "Compliant skincare progress documentation",
+    "transcript": "I've been documenting my skin journey over 3 months using several products. Results have been gradual and I've also changed my diet and sleep habits. Everyone's skin is different \u2014 what works for me might not work for you.",
+    "category": "before_after",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Multi-factor attribution, realistic timeline, explicit individual variation disclaimer, no single product efficacy claim"
+  },
+  {
+    "id": "eval-efficacy-011",
+    "name": "Testosterone booster with mechanism claims",
+    "transcript": "AlphaT naturally triggers your body to produce 300% more testosterone. Increase muscle mass, energy, and performance in days. Clinically dosed formula based on 47 studies.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Specific percentage increase (300%) + mechanism claim + 'in days' timeframe + '47 studies' misrepresentation"
+  },
+  {
+    "id": "eval-efficacy-014",
+    "name": "Compliant anti-aging skincare ad",
+    "transcript": "Our serum contains retinol and hyaluronic acid, ingredients studied for their potential role in skin hydration and texture. Individual results vary based on skin type, age, and consistent use over several months.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Ingredient-level claims (not product), 'potential role', realistic timeline ('several months'), individual variation"
+  },
+  {
+    "id": "eval-efficacy-015",
+    "name": "Compliant hair supplement ad",
+    "transcript": "HairVita contains biotin and saw palmetto. Research on these nutrients and hair health is ongoing. We recommend consistent use for at least 3-6 months before evaluating results. Not a treatment for hair loss conditions.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Honest timeline, 'research ongoing', explicit not-a-treatment disclaimer, no specific efficacy promise"
+  },
+  {
+    "id": "eval-health-029",
+    "name": "Compliant wellness supplement general health",
+    "transcript": "DailyVita provides essential vitamins and minerals to support your general health and wellbeing. A supplement is not a replacement for a varied, balanced diet. If you have any medical conditions, consult your healthcare provider.",
+    "category": "health_claim",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "General wellness/structure-function claim, no disease references, proper disclaimers"
+  },
+  {
+    "id": "eval-multiplatform-002",
+    "name": "Keto supplement multi-platform ad",
+    "transcript": "KetoBlast puts your body into ketosis within 60 minutes. Burn fat all day long without changing what you eat. As seen on Shark Tank. Limited supply available.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube",
+      "meta",
+      "tiktok"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 2,
+    "rationale": "Unrealistic mechanism ('ketosis in 60 minutes') + no behavior change needed + false celebrity endorsement (Shark Tank)"
+  },
+  {
+    "id": "eval-disclosure-014",
+    "name": "Tech reviewer undisclosed free product",
+    "transcript": "Alright so I've been testing this new laptop for a few weeks and I have to say, it's the best laptop I've ever used. The display is incredible, battery life is insane. If you're looking for a new laptop, this is the one.",
+    "category": "disclosure_violation",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "FAIL",
+    "min_violations": 1,
+    "rationale": "If reviewer received laptop for free, failure to disclose material connection violates FTC Endorsement Guides"
+  },
+  {
+    "id": "eval-efficacy-020",
+    "name": "Compliant focus supplement",
+    "transcript": "NeuroPeak contains caffeine and L-theanine, a combination some research associates with sustained attention. Effects are comparable to a cup of green tea. Not a substitute for sleep or healthy work habits.",
+    "category": "misleading_efficacy",
+    "platforms": [
+      "youtube"
+    ],
+    "expected_status": "PASS",
+    "min_violations": 0,
+    "rationale": "Honest comparison (green tea equivalent), 'some research associates', proper perspective-setting"
+  }
+]
